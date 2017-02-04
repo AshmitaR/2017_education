@@ -1,0 +1,233 @@
+<permissions>
+
+	<!-- USER Category -->
+	<permission>
+		<id>USER_C</id>
+		<name>USER_C</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_R</id>
+		<name>USER_R</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_U</id>
+		<name>USER_U</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_D</id>
+		<name>USER_D</name>
+		<category>USER</category>
+	</permission>
+
+
+	<!-- POSITION Category -->
+	<permission>
+		<id>POSITION_C</id>
+		<name>POSITION_C</name>
+		<category>POSITION</category>
+	</permission>
+
+	<permission>
+		<id>POSITION_R</id>
+		<name>POSITION_R</name>
+		<category>POSITION</category>
+	</permission>
+
+	<permission>
+		<id>POSITION_U</id>
+		<name>POSITION_U</name>
+		<category>POSITION</category>
+	</permission>
+
+	<permission>
+		<id>POSITION_D</id>
+		<name>POSITION_D</name>
+		<category>POSITION</category>
+	</permission>
+
+	<!-- ASSIGN USER POSITION Category -->
+	<permission>
+		<id>ASSIGN_USER_POSITION_C</id>
+		<name>ASSIGN_USER_POSITION_C</name>
+		<category>ASSIGN USER POSITION</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_POSITION_R</id>
+		<name>ASSIGN_USER_POSITION_R</name>
+		<category>ASSIGN USER POSITION</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_POSITION_U</id>
+		<name>ASSIGN_USER_POSITION_U</name>
+		<category>ASSIGN USER POSITION</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_POSITION_D</id>
+		<name>ASSIGN_USER_POSITION_D</name>
+		<category>ASSIGN USER POSITION</category>
+	</permission>
+
+
+	<!-- ROLE Category -->
+	<permission>
+		<id>ROLE_C</id>
+		<name>ROLE_C</name>
+		<category>ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ROLE_R</id>
+		<name>ROLE_R</name>
+		<category>ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ROLE_U</id>
+		<name>ROLE_U</name>
+		<category>ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ROLE_D</id>
+		<name>ROLE_D</name>
+		<category>ROLE</category>
+	</permission>
+
+
+	<!-- ASSIGN USER ROLE Category -->
+	<permission>
+		<id>ASSIGN_USER_ROLE_C</id>
+		<name>ASSIGN_USER_ROLE_C</name>
+		<category>ASSIGN USER ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_ROLE_R</id>
+		<name>ASSIGN_USER_ROLE_R</name>
+		<category>ASSIGN USER ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_ROLE_U</id>
+		<name>ASSIGN_USER_ROLE_U</name>
+		<category>ASSIGN USER ROLE</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_ROLE_D</id>
+		<name>ASSIGN_USER_ROLE_D</name>
+		<category>ASSIGN USER ROLE</category>
+	</permission>
+
+	<!-- SCHOOL Category -->
+	<permission>
+		<id>SCHOOL_C</id>
+		<name>SCHOOL_C</name>
+		<category>SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>SCHOOL_R</id>
+		<name>SCHOOL_R</name>
+		<category>SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>SCHOOL_U</id>
+		<name>SCHOOL_U</name>
+		<category>SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>SCHOOL_D</id>
+		<name>SCHOOL_D</name>
+		<category>SCHOOL</category>
+	</permission>
+
+
+	<!-- DISCIPLINE Category -->
+	<permission>
+		<id>DISCIPLINE_C</id>
+		<name>DISCIPLINE_C</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_R</id>
+		<name>DISCIPLINE_R</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_U</id>
+		<name>DISCIPLINE_U</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_D</id>
+		<name>DISCIPLINE_D</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+
+	<!-- ASSIGN DISCIPLINE SCHOOL Category -->
+	<permission>
+		<id>ASSIGN_DISCIPLINE_SCHOOL_C</id>
+		<name>ASSIGN_DISCIPLINE_SCHOOL_C</name>
+		<category>ASSIGN DISCIPLINE SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_DISCIPLINE_SCHOOL_R</id>
+		<name>ASSIGN_DISCIPLINE_SCHOOL_R</name>
+		<category>ASSIGN DISCIPLINE SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_DISCIPLINE_SCHOOL_U</id>
+		<name>ASSIGN_DISCIPLINE_SCHOOL_U</name>
+		<category>ASSIGN DISCIPLINE SCHOOL</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_DISCIPLINE_SCHOOL_D</id>
+		<name>ASSIGN_DISCIPLINE_SCHOOL_D</name>
+		<category>ASSIGN DISCIPLINE SCHOOL</category>
+	</permission>
+
+		<!-- ASSIGN USER DISCIPLINE Category -->
+	<permission>
+		<id>ASSIGN_USER_DISCIPLINE_C</id>
+		<name>ASSIGN_USER_DISCIPLINE_C</name>
+		<category>ASSIGN USER DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_DISCIPLINE_R</id>
+		<name>ASSIGN_USER_DISCIPLINE_R</name>
+		<category>ASSIGN USER DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_DISCIPLINE_U</id>
+		<name>ASSIGN_USER_DISCIPLINE_U</name>
+		<category>ASSIGN USER DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>ASSIGN_USER_DISCIPLINE_D</id>
+		<name>ASSIGN_USER_DISCIPLINE_D</name>
+		<category>ASSIGN USER DISCIPLINE</category>
+	</permission>
+
+</permissions>
