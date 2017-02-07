@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `tbl_club`
 --
 
-CREATE TABLE `tbl_club` (
+CREATE TABLE `tbl_club_1` (
   `ID` varchar(20) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Description` varchar(300) NOT NULL,
