@@ -123,6 +123,7 @@ class DBUtil implements I_DBUtil {
 	
 	// Securing input data
 	public function secureInput($value) {
+		$value=trim($value);
 		return mysqli_real_escape_string($this->_connection, $value);
 	}
 }
