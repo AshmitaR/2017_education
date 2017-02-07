@@ -17,6 +17,7 @@ class PermissionXML{
             $this->$k = $row[$k];
 
     }
+
 }
 
 /*
@@ -28,6 +29,7 @@ class XMLtoPermission{
 
     var $_filename;
     var $_parsed;
+    private $_DB;
 
     function __construct($fileToRead){
         
@@ -65,6 +67,7 @@ class XMLtoPermission{
                 continue;
             }
         }
+        echo '<br> permission load is successful';
         return $tdb;
     }
 
@@ -84,12 +87,35 @@ class XMLtoPermission{
         return $this->readXML();
     }
 
+    //stores the already loaded permission data into the database
+    public function saveInDB($Permissions){
+        //first time storing all the permissions into the permission database
+        
+        $this->_DB = DBUtil::getInstance();
+
+            //beginning a transaction   
+        $this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+    
+
+        for ($i=0; $i < sizeof($Permissions); $i++) { 
+            $Permission = $Permissions[$i];
+
+            
+            $SQL = "INSERT INTO tbl_Permission(ID,Name,Category) 
+                                        VALUES('".$Permission->id."','".$Permission->name."','".$Permission->category."')"; 
+            
+        
+            $SQL = $this->_DB->doQuery($SQL);
+        }   
+
+        //closing the transaction
+        $this->_DB->getConnection()->commit();
+
+        echo '<br> permission saved to database';
+    }
+
 
 }
 
-
-$db = new XMLtoPermission("permission.xml");
-echo "** Database of Permission objects:\n";
-print_r($db->load());
 
 ?>

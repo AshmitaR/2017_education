@@ -51,7 +51,7 @@
 		<category>POSITION</category>
 	</permission>
 
-	<!-- ASSIGN USER POSITION Category -->
+	<!-- ASSIGN USER POSITION Category 
 	<permission>
 		<id>ASSIGN_USER_POSITION_C</id>
 		<name>ASSIGN_USER_POSITION_C</name>
@@ -74,7 +74,7 @@
 		<id>ASSIGN_USER_POSITION_D</id>
 		<name>ASSIGN_USER_POSITION_D</name>
 		<category>ASSIGN USER POSITION</category>
-	</permission>
+	</permission> -->
 
 
 	<!-- ROLE Category -->
@@ -103,7 +103,7 @@
 	</permission>
 
 
-	<!-- ASSIGN USER ROLE Category -->
+	<!-- ASSIGN USER ROLE Category 
 	<permission>
 		<id>ASSIGN_USER_ROLE_C</id>
 		<name>ASSIGN_USER_ROLE_C</name>
@@ -126,7 +126,7 @@
 		<id>ASSIGN_USER_ROLE_D</id>
 		<name>ASSIGN_USER_ROLE_D</name>
 		<category>ASSIGN USER ROLE</category>
-	</permission>
+	</permission> -->
 
 	<!-- SCHOOL Category -->
 	<permission>
@@ -180,7 +180,7 @@
 	</permission>
 
 
-	<!-- ASSIGN DISCIPLINE SCHOOL Category -->
+	<!-- ASSIGN DISCIPLINE SCHOOL Category 
 	<permission>
 		<id>ASSIGN_DISCIPLINE_SCHOOL_C</id>
 		<name>ASSIGN_DISCIPLINE_SCHOOL_C</name>
@@ -203,9 +203,9 @@
 		<id>ASSIGN_DISCIPLINE_SCHOOL_D</id>
 		<name>ASSIGN_DISCIPLINE_SCHOOL_D</name>
 		<category>ASSIGN DISCIPLINE SCHOOL</category>
-	</permission>
+	</permission> -->
 
-		<!-- ASSIGN USER DISCIPLINE Category -->
+		<!-- ASSIGN USER DISCIPLINE Category 
 	<permission>
 		<id>ASSIGN_USER_DISCIPLINE_C</id>
 		<name>ASSIGN_USER_DISCIPLINE_C</name>
@@ -228,6 +228,6 @@
 		<id>ASSIGN_USER_DISCIPLINE_D</id>
 		<name>ASSIGN_USER_DISCIPLINE_D</name>
 		<category>ASSIGN USER DISCIPLINE</category>
-	</permission>
+	</permission> -->
 
 </permissions>

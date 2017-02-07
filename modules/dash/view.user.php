@@ -30,7 +30,7 @@ include_once '/../../common/class.common.php';
 					if(isset($_GET['edit'])) echo $globalUser->getEmail();  ?>" /></td>
 				</tr>
 				<tr>
-					<td><input type="text" name="txtPassword" placeholder="Password" value="<?php 
+					<td><input type="password" name="txtPassword" placeholder="Password" value="<?php 
 					if(isset($_GET['edit'])) echo $globalUser->getPassword();  ?>" /></td>
 				</tr>
 				<tr>
