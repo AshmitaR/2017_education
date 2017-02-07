@@ -24,23 +24,27 @@ if(isset($_POST['save']))
      $User->setFirstName($_DB->secureInput($_POST['txtFirstName']));
      $User->setLastName($_DB->secureInput($_POST['txtLastName']));
 
-     
-    foreach ($_POST['assignedRoles'] as $select)
-	{
-		$Role = new Role();
-		$Role->setID($select);
-		$Roles[]=$Role;
+    
+    if(isset($_POST['assignedRoles'])){ 
+	    foreach ($_POST['assignedRoles'] as $select)
+		{
+			$Role = new Role();
+			$Role->setID($select);
+			$Roles[]=$Role;
+		}
+		$User->setRoles($Roles);
 	}
-	$User->setRoles($Roles);
-
-	foreach ($_POST['assignedPositions'] as $select)
-	{
-		$Position = new Position();
-		$Position->setID($select);
-		$Positions[]=$Position;
-	}
-	$User->setPositions($Positions);
 	
+	if(isset($_POST['assignedPositions'])){
+		foreach ($_POST['assignedPositions'] as $select)
+		{
+			$Position = new Position();
+			$Position->setID($select);
+			$Positions[]=$Position;
+		}
+		$User->setPositions($Positions);
+	}
+
 	$_UserBAO->createUser($User);		 
 }
 
@@ -77,24 +81,28 @@ if(isset($_POST['update']))
     $User->setFirstName( $_POST['txtFirstName'] );
     $User->setLastName( $_POST['txtLastName'] );
 
-    foreach ($_POST['assignedRoles'] as $select)
-	{
-		$Role = new Role();
-		$Role->setID($select);
-		$Roles[]=$Role;
+    if(isset($_POST['assignedRoles'])){
+
+	    foreach ($_POST['assignedRoles'] as $select)
+		{
+			$Role = new Role();
+			$Role->setID($select);
+			$Roles[]=$Role;
+		}
+
+		$User->setRoles($Roles);
 	}
 
-	$User->setRoles($Roles);
+	if(isset($_POST['assignedPositions'])){
+	    foreach ($_POST['assignedPositions'] as $select)
+		{
+			$Position = new Position();
+			$Position->setID($select);
+			$Positions[]=$Position;
+		}
 
-    foreach ($_POST['assignedPositions'] as $select)
-	{
-		$Position = new Position();
-		$Position->setID($select);
-		$Positions[]=$Position;
+		$User->setPositions($Positions);
 	}
-
-	$User->setPositions($Positions);
-
 
 	$_UserBAO->updateUser($User);
 
