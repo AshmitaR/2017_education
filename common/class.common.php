@@ -199,6 +199,7 @@ class Role{
 
     private $_ID;
     private $_Name;
+    private $_Permissions;
 
 
     public function setID ( $ID ) {
@@ -216,6 +217,14 @@ class Role{
 
     public function getName() {
         return $this->_Name;
+    }
+
+    public function setPermissions( $Permissions ) {
+        $this->_Permissions = $Permissions;
+    }
+
+    public function getPermissions() {
+        return $this->_Permissions;
     }
 
 }

@@ -51,30 +51,6 @@
 		<category>POSITION</category>
 	</permission>
 
-	<!-- ASSIGN USER POSITION Category 
-	<permission>
-		<id>ASSIGN_USER_POSITION_C</id>
-		<name>ASSIGN_USER_POSITION_C</name>
-		<category>ASSIGN USER POSITION</category>
-	</permission>
-
-	<permission>
-		<id>ASSIGN_USER_POSITION_R</id>
-		<name>ASSIGN_USER_POSITION_R</name>
-		<category>ASSIGN USER POSITION</category>
-	</permission>
-
-	<permission>
-		<id>ASSIGN_USER_POSITION_U</id>
-		<name>ASSIGN_USER_POSITION_U</name>
-		<category>ASSIGN USER POSITION</category>
-	</permission>
-
-	<permission>
-		<id>ASSIGN_USER_POSITION_D</id>
-		<name>ASSIGN_USER_POSITION_D</name>
-		<category>ASSIGN USER POSITION</category>
-	</permission> -->
 
 
 	<!-- ROLE Category -->
@@ -102,31 +78,6 @@
 		<category>ROLE</category>
 	</permission>
 
-
-	<!-- ASSIGN USER ROLE Category 
-	<permission>
-		<id>ASSIGN_USER_ROLE_C</id>
-		<name>ASSIGN_USER_ROLE_C</name>
-		<category>ASSIGN USER ROLE</category>
-	</permission>
-
-	<permission>
-		<id>ASSIGN_USER_ROLE_R</id>
-		<name>ASSIGN_USER_ROLE_R</name>
-		<category>ASSIGN USER ROLE</category>
-	</permission>
-
-	<permission>
-		<id>ASSIGN_USER_ROLE_U</id>
-		<name>ASSIGN_USER_ROLE_U</name>
-		<category>ASSIGN USER ROLE</category>
-	</permission>
-
-	<permission>
-		<id>ASSIGN_USER_ROLE_D</id>
-		<name>ASSIGN_USER_ROLE_D</name>
-		<category>ASSIGN USER ROLE</category>
-	</permission> -->
 
 	<!-- SCHOOL Category -->
 	<permission>
@@ -179,55 +130,208 @@
 		<category>DISCIPLINE</category>
 	</permission>
 
-
-	<!-- ASSIGN DISCIPLINE SCHOOL Category 
+	
+	<!-- TERM Category -->
 	<permission>
-		<id>ASSIGN_DISCIPLINE_SCHOOL_C</id>
-		<name>ASSIGN_DISCIPLINE_SCHOOL_C</name>
-		<category>ASSIGN DISCIPLINE SCHOOL</category>
+		<id>TERM_C</id>
+		<name>TERM_C</name>
+		<category>TERM</category>
 	</permission>
 
 	<permission>
-		<id>ASSIGN_DISCIPLINE_SCHOOL_R</id>
-		<name>ASSIGN_DISCIPLINE_SCHOOL_R</name>
-		<category>ASSIGN DISCIPLINE SCHOOL</category>
+		<id>TERM_R</id>
+		<name>TERM_R</name>
+		<category>TERM</category>
 	</permission>
 
 	<permission>
-		<id>ASSIGN_DISCIPLINE_SCHOOL_U</id>
-		<name>ASSIGN_DISCIPLINE_SCHOOL_U</name>
-		<category>ASSIGN DISCIPLINE SCHOOL</category>
+		<id>TERM_U</id>
+		<name>TERM_U</name>
+		<category>TERM</category>
 	</permission>
 
 	<permission>
-		<id>ASSIGN_DISCIPLINE_SCHOOL_D</id>
-		<name>ASSIGN_DISCIPLINE_SCHOOL_D</name>
-		<category>ASSIGN DISCIPLINE SCHOOL</category>
-	</permission> -->
+		<id>TERM_D</id>
+		<name>TERM_D</name>
+		<category>TERM</category>
+	</permission>
 
-		<!-- ASSIGN USER DISCIPLINE Category 
+
+	<!-- Year Category -->
 	<permission>
-		<id>ASSIGN_USER_DISCIPLINE_C</id>
-		<name>ASSIGN_USER_DISCIPLINE_C</name>
-		<category>ASSIGN USER DISCIPLINE</category>
+		<id>YEAR_C</id>
+		<name>YEAR_C</name>
+		<category>YEAR</category>
 	</permission>
 
 	<permission>
-		<id>ASSIGN_USER_DISCIPLINE_R</id>
-		<name>ASSIGN_USER_DISCIPLINE_R</name>
-		<category>ASSIGN USER DISCIPLINE</category>
+		<id>YEAR_R</id>
+		<name>YEAR_R</name>
+		<category>YEAR</category>
 	</permission>
 
 	<permission>
-		<id>ASSIGN_USER_DISCIPLINE_U</id>
-		<name>ASSIGN_USER_DISCIPLINE_U</name>
-		<category>ASSIGN USER DISCIPLINE</category>
+		<id>YEAR_U</id>
+		<name>YEAR_U</name>
+		<category>YEAR</category>
 	</permission>
 
 	<permission>
-		<id>ASSIGN_USER_DISCIPLINE_D</id>
-		<name>ASSIGN_USER_DISCIPLINE_D</name>
-		<category>ASSIGN USER DISCIPLINE</category>
-	</permission> -->
+		<id>YEAR_D</id>
+		<name>YEAR_D</name>
+		<category>YEAR</category>
+	</permission>	
+
+	<!-- SESSION Category -->
+	<permission>
+		<id>SESSION_C</id>
+		<name>SESSION_C</name>
+		<category>SESSION</category>
+	</permission>
+
+	<permission>
+		<id>SESSION_R</id>
+		<name>SESSION_R</name>
+		<category>SESSION</category>
+	</permission>
+
+	<permission>
+		<id>SESSION_U</id>
+		<name>SESSION_U</name>
+		<category>SESSION</category>
+	</permission>
+
+	<permission>
+		<id>SESSION_D</id>
+		<name>SESSION_D</name>
+		<category>SESSION</category>
+	</permission>
+
+	<!-- COURSE Category -->
+	<permission>
+		<id>COURSE_C</id>
+		<name>COURSE_C</name>
+		<category>COURSE</category>
+	</permission>
+
+	<permission>
+		<id>COURSE_R</id>
+		<name>COURSE_R</name>
+		<category>COURSE</category>
+	</permission>
+
+	<permission>
+		<id>COURSE_U</id>
+		<name>COURSE_U</name>
+		<category>COURSE</category>
+	</permission>
+
+	<permission>
+		<id>COURSE_D</id>
+		<name>COURSE_D</name>
+		<category>COURSE</category>
+	</permission>
+
+
+	<!-- FILE Category -->
+	<permission>
+		<id>FILE_C</id>
+		<name>FILE_C</name>
+		<category>FILE</category>
+	</permission>
+
+	<permission>
+		<id>FILE_R</id>
+		<name>FILE_R</name>
+		<category>FILE</category>
+	</permission>
+
+	<permission>
+		<id>FILE_U</id>
+		<name>FILE_U</name>
+		<category>FILE</category>
+	</permission>
+
+	<permission>
+		<id>FILE_D</id>
+		<name>FILE_D</name>
+		<category>FILE</category>
+	</permission>
+
+
+	<!-- Project Category -->
+	<permission>
+		<id>PROJECT_C</id>
+		<name>PROJECT_C</name>
+		<category>PROJECT</category>
+	</permission>
+
+	<permission>
+		<id>PROJECT_R</id>
+		<name>PROJECT_R</name>
+		<category>PROJECT</category>
+	</permission>
+
+	<permission>
+		<id>PROJECT_U</id>
+		<name>PROJECT_U</name>
+		<category>PROJECT</category>
+	</permission>
+
+	<permission>
+		<id>PROJECT_D</id>
+		<name>PROJECT_D</name>
+		<category>PROJECT</category>
+	</permission>
+
+	<!-- SURVEY Category -->
+	<permission>
+		<id>SURVEY_C</id>
+		<name>SURVEY_C</name>
+		<category>SURVEY</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_R</id>
+		<name>SURVEY_R</name>
+		<category>SURVEY</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_U</id>
+		<name>SURVEY_U</name>
+		<category>SURVEY</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_D</id>
+		<name>SURVEY_D</name>
+		<category>SURVEY</category>
+	</permission>
+
+	<!-- CLUB Category -->
+	<permission>
+		<id>CLUB_C</id>
+		<name>CLUB_C</name>
+		<category>CLUB</category>
+	</permission>
+
+	<permission>
+		<id>CLUB_R</id>
+		<name>CLUB_R</name>
+		<category>CLUB</category>
+	</permission>
+
+	<permission>
+		<id>CLUB_U</id>
+		<name>CLUB_U</name>
+		<category>CLUB</category>
+	</permission>
+
+	<permission>
+		<id>CLUB_D</id>
+		<name>CLUB_D</name>
+		<category>CLUB</category>
+	</permission>
 
 </permissions>

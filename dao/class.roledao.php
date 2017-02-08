@@ -7,11 +7,13 @@ Class RoleDAO{
 
 	private $_DB;
 	private $_Role;
+	private $_Permission;
 
 	function RoleDAO(){
 
 		$this->_DB = DBUtil::getInstance();
 		$this->_Role = new Role();
+		$this->_Permission = new Permission();
 
 	}
 
@@ -46,6 +48,38 @@ Class RoleDAO{
 		return $Result;
 	}
 
+
+	// get all the Permissions from the database using the database query
+	public function getAllPermissions(){
+
+		$PermissionList = array();
+
+		$this->_DB->doQuery("SELECT * FROM tbl_Permission");
+
+		$rows = $this->_DB->getAllRows();
+
+		for($i = 0; $i < sizeof($rows); $i++) {
+			$row = $rows[$i];
+			$this->_Permission = new Permission();
+
+		    $this->_Permission->setID ( $row['ID']);
+		    $this->_Permission->setName( $row['Name'] );
+		    $this->_Permission->setCategory( $row['Category'] );
+
+		    $PermissionList[]=$this->_Permission;
+   
+		}
+
+	
+		$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($PermissionList);
+
+		return $Result;
+	}
+
+
+
 	//create Role funtion with the Role object
 	public function createRole($Role){
 
@@ -57,6 +91,36 @@ Class RoleDAO{
 
 		$SQL = $this->_DB->doQuery($SQL);		
 		
+	 	$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($SQL);
+
+		return $Result;
+	}
+
+	//assign permissions to a role 
+	public function assignPermissionsToRole($Role,$Permissions){
+
+		//beginning a transaction 	
+		$this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
+
+		//deleting previously assigned all the permissions from this role
+		$SQL_delete = "DELETE from tbl_Role_Permission where RoleID ='".$Role->getID()."'";
+		$SQL_delete = $this->_DB->doQuery($SQL_delete);
+
+		//now assigning new permissions to this role
+		foreach ($Permissions as $Permission) {
+	
+			//assigning a permission to a role
+			$SQL = "INSERT INTO tbl_Role_Permission(RoleID,PermissionID) 
+											VALUES('".$Role->getID()."','".$Permission->getID()."')";							
+
+			$SQL = $this->_DB->doQuery($SQL);		
+		}
+
+		//closing the transaction
+		$this->_DB->getConnection()->commit();
+
 	 	$Result = new Result();
 		$Result->setIsSuccess(1);
 		$Result->setResultObject($SQL);
@@ -88,6 +152,62 @@ Class RoleDAO{
 
 		return $Result;
 	}
+
+	//read a role object based on its id with the assigned permissions
+	
+	public function readRolePermissions($Role){
+		
+		//getting the role information
+		$Result = $this->readRole($Role);
+
+		if($Result->getIsSuccess()){
+
+
+			$this->_Role = $Result->getResultObject();
+
+					
+			$SQL = "SELECT p.ID, p.Name,p.Category  FROM tbl_Role_Permission rp, tbl_Permission p 
+					WHERE  rp.PermissionID=p.ID and rp.RoleID='".$Role->getID()."'";
+			
+			$this->_DB->doQuery($SQL);
+
+			//reading all the rows 
+			$rows = $this->_DB->getAllRows();
+
+			//setting Permissions list object
+			$Permissions = array();
+
+			for($i = 0; $i < sizeof($rows); $i++) {
+
+				$row = $rows[$i];
+		
+				$Permission = new Permission();
+
+			    //filling up Permission information
+			    $Permission->setID ( $row['ID']);
+			    $Permission->setName ( $row['Name']);
+			    $Permission->setCategory ( $row['Category']);
+
+			    //adding new Permissions with every iteration belong to this role	
+			    $Permissions[]=$Permission;
+	   
+			}
+	
+			//assigning Permission list to the role object
+			$this->_Role->setPermissions($Permissions);
+
+		}
+
+		//todo: LOG util with level of log
+
+		$Result = new Result();
+		$Result->setIsSuccess(1);
+		$Result->setResultObject($this->_Role);
+
+		return $Result;
+	}
+
+
 
 	//update an Role object based on its 
 	public function updateRole($Role){

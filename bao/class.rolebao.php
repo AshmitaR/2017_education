@@ -30,6 +30,19 @@ Class RoleBAO{
 		return $Result;
 	}
 
+	//get all Permissions value
+	public function getAllPermissions(){
+
+		$Result = new Result();	
+		$Result = $this->_RoleDAO->getAllPermissions();
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in RoleDAO.getAllPermissions()");		
+
+		return $Result;
+	}
+
+
 	//create Role funtion with the Role object
 	public function createRole($Role){
 
@@ -38,6 +51,20 @@ Class RoleBAO{
 		
 		if(!$Result->getIsSuccess())
 			$Result->setResultObject("Database failure in RoleDAO.createRole()");		
+
+		return $Result;
+
+	
+	}
+
+	//assigning a list of permissions to a role
+	public function assignPermissionsToRole($Role,$Permissions){
+
+		$Result = new Result();	
+		$Result = $this->_RoleDAO->assignPermissionsToRole($Role,$Permissions);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in RoleDAO.assignPermissionsToRole()");		
 
 		return $Result;
 
@@ -53,6 +80,20 @@ Class RoleBAO{
 		
 		if(!$Result->getIsSuccess())
 			$Result->setResultObject("Database failure in RoleDAO.readRole()");		
+
+		return $Result;
+
+
+	}
+
+	//read an Role object along with the list of permissions
+	public function readRolePermissions($Role){
+
+		$Result = new Result();	
+		$Result = $this->_RoleDAO->readRolePermissions($Role);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in RoleDAO.readRolePermissions()");		
 
 		return $Result;
 
