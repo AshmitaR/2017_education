@@ -105,8 +105,8 @@ Class RoleDAO{
 		$this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
 
 		//deleting previously assigned all the permissions from this role
-		$SQL_delete = "DELETE from tbl_Role_Permission where RoleID ='".$Role->getID()."'";
-		$SQL_delete = $this->_DB->doQuery($SQL_delete);
+		$SQL = "DELETE from tbl_Role_Permission where RoleID ='".$Role->getID()."'";
+		$SQL = $this->_DB->doQuery($SQL);
 
 		//now assigning new permissions to this role
 		foreach ($Permissions as $Permission) {

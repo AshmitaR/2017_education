@@ -6,6 +6,7 @@ include_once '/../../../bao/class.rolebao.php';
 
 $_RoleBAO = new RoleBAO();
 $_DB = DBUtil::getInstance();
+$_Log = LogUtil::getInstance();
 
 /* saving a new Role account*/
 if(isset($_POST['save']))
@@ -25,10 +26,9 @@ if(isset($_POST['save']))
 			$Permission->setID($select);
 			$Permissions[]=$Permission;
 		}
-		
-		$_RoleBAO->assignPermissionsToRole($Role,$Permissions);
+
 	}     
-	 
+$_RoleBAO->assignPermissionsToRole($Role,$Permissions);	 
 }
 
 
