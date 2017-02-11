@@ -74,6 +74,23 @@ Class UserBAO{
 
 	}
 
+	//read an user with role and permission information object based on the user email address
+	public function readUserRolesPermissions($User){
+
+
+		$Result = new Result();	
+		$Result = $this->_UserDAO->readUserRolesPermissions($User);
+		
+		if(!$Result->getIsSuccess())
+			$Result->setResultObject("Database failure in UserDAO.readUserRolesPermissions()");		
+
+		return $Result;
+
+
+	}
+
+
+
 	//update an user object based on its current information
 	public function updateUser($User){
 

@@ -2,17 +2,20 @@
 // write dao object for each class
 include_once '/../common/class.common.php';
 include_once '/../util/class.util.php';
+include_once 'class.roledao.php';
 
 Class UserDAO{
 
 	private $_DB;
 	private $_User;
+	private $_RoleDAO;
 
 
 	function UserDAO(){
 
 		$this->_DB = DBUtil::getInstance();
 		$this->_User = new User();
+		$this->_RoleDAO = new RoleDAO();
 
 	}
 
@@ -241,6 +244,87 @@ Class UserDAO{
 		$Result = new Result();
 		$Result->setIsSuccess(1);
 		$Result->setResultObject($this->_User);
+
+		return $Result;
+	}
+
+
+
+	//read an user object based on its email form user object with all the roles and related permissions
+	public function readUserRolesPermissions($User){
+	
+		$Result = new Result();
+		
+		//start::user reading information
+		$SQL = "SELECT * FROM tbl_User WHERE Email='".$User->getEmail()."' and Password='".$User->getPassword()."'";
+	
+		$this->_DB->doQuery($SQL);
+		//reading the top row for this user from the database
+		$row = $this->_DB->getTopRow();
+
+		if(isset($row)){
+
+			$this->_User = new User();
+
+			//preparing the user object
+		    $this->_User->setID ( $row['ID']);
+		    $this->_User->setUniversityID ( $row['UniversityID'] );   
+		    $this->_User->setEmail ( $row['Email'] );
+		    $this->_User->setPassword ( $row['Password'] );
+		    $this->_User->setFirstName( $row['FirstName'] );
+		    $this->_User->setLastName( $row['LastName'] );
+		    $this->_User->setIsArchived( $row['IsArchived'] );
+		    $this->_User->setIsDeleted( $row['IsDeleted'] );
+			//end::user reading information
+
+		
+			//start::getting all the roles of the user
+			$SQL = "SELECT r.ID, r.Name  FROM tbl_user u,tbl_user_role ur, tbl_role r  
+						WHERE u.ID=ur.UserID and ur.RoleID=r.ID and  u.IsDeleted = false and u.ID='".$this->_User->getID()."'";
+				
+			$this->_DB->doQuery($SQL);
+
+			//reading all the rows 
+			$rows = $this->_DB->getAllRows();
+
+			//setting roles list object
+			$Roles = array();
+
+			for($i = 0; $i < sizeof($rows); $i++) {
+
+				$row = $rows[$i];
+		
+				$Role = new Role();
+
+			    //filling up role information
+			    $Role->setID ( $row['ID']);
+			    $Role->setName ( $row['Name']);
+
+			    //reading related permissions of the role
+			   	$ResultRole = $this->_RoleDAO->readRolePermissions($Role);
+
+			   	//if role permission reading is succesful
+			   	if($ResultRole->getIsSuccess()){
+			   		//assigning the role information to current role object
+			   		$Role = $ResultRole->getResultObject();	
+
+			   	}
+
+			    //adding new roles with every iteration belong to this user	
+			    $Roles[]=$Role;
+	   
+			}
+
+				//assigning role list to the user object
+			$this->_User->setRoles($Roles);
+
+			//end::getting all the roles of the user
+		
+
+			$Result->setIsSuccess(1);
+			$Result->setResultObject($this->_User);
+
+		}
 
 		return $Result;
 	}
