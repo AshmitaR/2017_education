@@ -424,15 +424,127 @@ class Term{
 
 }
 
+class Club{
 
-class DisciplineSchool{
+    private $_ID;
+    private $_Name;
+    private $_CoverPhoto;
+    private $_Description;
+    private $_CreationDate;
 
+    public function setID( $ID ) {
+        $this->_ID = $ID;
+    }
+
+    public function getID() {
+        return $this->_ID;
+    }
+
+    public function setName( $Name ) {
+        $this->_Name = $Name;
+    }
+
+    public function getName() {
+        return $this->_Name;
+    }
+
+    public function setCoverPhoto( $CoverPhoto ) {
+        $this->_CoverPhoto = $CoverPhoto;
+    }
+
+    public function getCoverPhoto() {
+        return $this->_CoverPhoto;
+    }
+
+    public function setDescription( $Description ) {
+        $this->_Description = $Description;
+    }
+
+    public function getDescription() {
+        return $this->_Description;
+    }
+
+    public function setCreationDate( $CreationDate ) {
+        $this->_CreationDate = $CreationDate;
+    }
+
+    public function getCreationDate() {
+        return $this->_CreationDate;
+    }
+
+} 
+
+
+
+
+class PermissionUtil{
+
+    public static $USER_C='USER_C';
+    public static $USER_R='USER_R';
+    public static $USER_U='USER_U';
+    public static $USER_D='USER_D';
+
+    public static $POSITION_C='POSITION_C';
+    public static $POSITION_R='POSITION_R';
+    public static $POSITION_U='POSITION_U';
+    public static $POSITION_D='POSITION_D';
+
+    public static $ROLE_C='ROLE_C';
+    public static $ROLE_R='ROLE_R';
+    public static $ROLE_U='ROLE_U';
+    public static $ROLE_D='ROLE_D';
+
+    public static $SCHOOL_C='SCHOOL_C';
+    public static $SCHOOL_R='SCHOOL_R';
+    public static $SCHOOL_U='SCHOOL_U';
+    public static $SCHOOL_D='SCHOOL_D';
+
+    public static $DISCIPLINE_C='DISCIPLINE_C';
+    public static $DISCIPLINE_R='DISCIPLINE_R';
+    public static $DISCIPLINE_U='DISCIPLINE_U';
+    public static $DISCIPLINE_D='DISCIPLINE_D';
+
+    public static $TERM_C='TERM_C';
+    public static $TERM_R='TERM_R';
+    public static $TERM_U='TERM_U';
+    public static $TERM_D='TERM_D';
+
+    public static $YEAR_C='YEAR_C';
+    public static $YEAR_R='YEAR_R';
+    public static $YEAR_U='YEAR_U';
+    public static $YEAR_D='YEAR_D';
+
+    public static $SESSION_C='SESSION_C';
+    public static $SESSION_R='SESSION_R';
+    public static $SESSION_U='SESSION_U';
+    public static $SESSION_D='SESSION_D'; 
+
+    public static $COURSE_C='COURSE_C';
+    public static $COURSE_R='COURSE_R';
+    public static $COURSE_U='COURSE_U';
+    public static $COURSE_D='COURSE_D';
+
+    public static $FILE_C='FILE_C';
+    public static $FILE_R='FILE_R';
+    public static $FILE_U='FILE_U';
+    public static $FILE_D='FILE_D';
+  
+    public static $PROJECT_C='PROJECT_C';
+    public static $PROJECT_R='PROJECT_R';
+    public static $PROJECT_U='PROJECT_U';
+    public static $PROJECT_D='PROJECT_D';
+
+    public static $SURVEY_C='SURVEY_C';
+    public static $SURVEY_R='SURVEY_R';
+    public static $SURVEY_U='SURVEY_U';
+    public static $SURVEY_D='SURVEY_D';
+
+    public static $CLUB_C='CLUB_C';
+    public static $CLUB_R='CLUB_R';
+    public static $CLUB_U='CLUB_U';
+    public static $CLUB_D='CLUB_D';
 
 }
 
-class UserDiscipline{
-
-
-}
 
 ?>

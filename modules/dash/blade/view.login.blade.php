@@ -23,8 +23,12 @@ if(isset($_POST['login']))
 
 		//storing the user object with all the roles and related permissions available in the complete system
 		$globalUser = $Result->getResultObject();
+		
+		//required to access session variables;		
 		session_start();
-		$_SESSION["loggedUser"]=$globalUser;
+
+		$_SESSION["globalUser"]=$globalUser;
+
 		header("Location:view.home.php");		
 
 	}
