@@ -1,6 +1,6 @@
 <?php
 
-require '/../../common/class.common.php'; //very important include in every new page
+require '/../../common/class.common.php'; //very important include in every new page before using session globaluser
 
 require 'header.php';
 require 'menu.php';

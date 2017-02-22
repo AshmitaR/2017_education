@@ -1,28 +1,107 @@
 <permissions>
 
-	<!-- USER Category -->
+	<!-- COURSE Category -->
 	<permission>
-		<id>USER_C</id>
-		<name>USER_C</name>
-		<category>USER</category>
+		<id>COURSE_C</id>
+		<name>COURSE_C</name>
+		<category>COURSE</category>
 	</permission>
 
 	<permission>
-		<id>USER_R</id>
-		<name>USER_R</name>
-		<category>USER</category>
+		<id>COURSE_R</id>
+		<name>COURSE_R</name>
+		<category>COURSE</category>
 	</permission>
 
 	<permission>
-		<id>USER_U</id>
-		<name>USER_U</name>
-		<category>USER</category>
+		<id>COURSE_U</id>
+		<name>COURSE_U</name>
+		<category>COURSE</category>
 	</permission>
 
 	<permission>
-		<id>USER_D</id>
-		<name>USER_D</name>
-		<category>USER</category>
+		<id>COURSE_D</id>
+		<name>COURSE_D</name>
+		<category>COURSE</category>
+	</permission>
+
+
+	<!-- CLUB Category -->
+	<permission>
+		<id>CLUB_C</id>
+		<name>CLUB_C</name>
+		<category>CLUB</category>
+	</permission>
+
+	<permission>
+		<id>CLUB_R</id>
+		<name>CLUB_R</name>
+		<category>CLUB</category>
+	</permission>
+
+	<permission>
+		<id>CLUB_U</id>
+		<name>CLUB_U</name>
+		<category>CLUB</category>
+	</permission>
+
+	<permission>
+		<id>CLUB_D</id>
+		<name>CLUB_D</name>
+		<category>CLUB</category>
+	</permission>
+
+
+	<!-- DISCIPLINE Category -->
+	<permission>
+		<id>DISCIPLINE_C</id>
+		<name>DISCIPLINE_C</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_R</id>
+		<name>DISCIPLINE_R</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_U</id>
+		<name>DISCIPLINE_U</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+	<permission>
+		<id>DISCIPLINE_D</id>
+		<name>DISCIPLINE_D</name>
+		<category>DISCIPLINE</category>
+	</permission>
+
+
+
+	<!-- FILE Category -->
+	<permission>
+		<id>FILE_C</id>
+		<name>FILE_C</name>
+		<category>FILE</category>
+	</permission>
+
+	<permission>
+		<id>FILE_R</id>
+		<name>FILE_R</name>
+		<category>FILE</category>
+	</permission>
+
+	<permission>
+		<id>FILE_U</id>
+		<name>FILE_U</name>
+		<category>FILE</category>
+	</permission>
+
+	<permission>
+		<id>FILE_D</id>
+		<name>FILE_D</name>
+		<category>FILE</category>
 	</permission>
 
 
@@ -49,6 +128,31 @@
 		<id>POSITION_D</id>
 		<name>POSITION_D</name>
 		<category>POSITION</category>
+	</permission>
+
+<!-- Project Category -->
+	<permission>
+		<id>PROJECT_C</id>
+		<name>PROJECT_C</name>
+		<category>PROJECT</category>
+	</permission>
+
+	<permission>
+		<id>PROJECT_R</id>
+		<name>PROJECT_R</name>
+		<category>PROJECT</category>
+	</permission>
+
+	<permission>
+		<id>PROJECT_U</id>
+		<name>PROJECT_U</name>
+		<category>PROJECT</category>
+	</permission>
+
+	<permission>
+		<id>PROJECT_D</id>
+		<name>PROJECT_D</name>
+		<category>PROJECT</category>
 	</permission>
 
 
@@ -104,30 +208,54 @@
 		<category>SCHOOL</category>
 	</permission>
 
-
-	<!-- DISCIPLINE Category -->
+	<!-- SESSION Category -->
 	<permission>
-		<id>DISCIPLINE_C</id>
-		<name>DISCIPLINE_C</name>
-		<category>DISCIPLINE</category>
+		<id>SESSION_C</id>
+		<name>SESSION_C</name>
+		<category>SESSION</category>
 	</permission>
 
 	<permission>
-		<id>DISCIPLINE_R</id>
-		<name>DISCIPLINE_R</name>
-		<category>DISCIPLINE</category>
+		<id>SESSION_R</id>
+		<name>SESSION_R</name>
+		<category>SESSION</category>
 	</permission>
 
 	<permission>
-		<id>DISCIPLINE_U</id>
-		<name>DISCIPLINE_U</name>
-		<category>DISCIPLINE</category>
+		<id>SESSION_U</id>
+		<name>SESSION_U</name>
+		<category>SESSION</category>
 	</permission>
 
 	<permission>
-		<id>DISCIPLINE_D</id>
-		<name>DISCIPLINE_D</name>
-		<category>DISCIPLINE</category>
+		<id>SESSION_D</id>
+		<name>SESSION_D</name>
+		<category>SESSION</category>
+	</permission>
+
+	<!-- SURVEY Category -->
+	<permission>
+		<id>SURVEY_C</id>
+		<name>SURVEY_C</name>
+		<category>SURVEY</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_R</id>
+		<name>SURVEY_R</name>
+		<category>SURVEY</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_U</id>
+		<name>SURVEY_U</name>
+		<category>SURVEY</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_D</id>
+		<name>SURVEY_D</name>
+		<category>SURVEY</category>
 	</permission>
 
 	
@@ -157,6 +285,31 @@
 	</permission>
 
 
+	<!-- USER Category -->
+	<permission>
+		<id>USER_C</id>
+		<name>USER_C</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_R</id>
+		<name>USER_R</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_U</id>
+		<name>USER_U</name>
+		<category>USER</category>
+	</permission>
+
+	<permission>
+		<id>USER_D</id>
+		<name>USER_D</name>
+		<category>USER</category>
+	</permission>
+
 	<!-- Year Category -->
 	<permission>
 		<id>YEAR_C</id>
@@ -182,156 +335,5 @@
 		<category>YEAR</category>
 	</permission>	
 
-	<!-- SESSION Category -->
-	<permission>
-		<id>SESSION_C</id>
-		<name>SESSION_C</name>
-		<category>SESSION</category>
-	</permission>
-
-	<permission>
-		<id>SESSION_R</id>
-		<name>SESSION_R</name>
-		<category>SESSION</category>
-	</permission>
-
-	<permission>
-		<id>SESSION_U</id>
-		<name>SESSION_U</name>
-		<category>SESSION</category>
-	</permission>
-
-	<permission>
-		<id>SESSION_D</id>
-		<name>SESSION_D</name>
-		<category>SESSION</category>
-	</permission>
-
-	<!-- COURSE Category -->
-	<permission>
-		<id>COURSE_C</id>
-		<name>COURSE_C</name>
-		<category>COURSE</category>
-	</permission>
-
-	<permission>
-		<id>COURSE_R</id>
-		<name>COURSE_R</name>
-		<category>COURSE</category>
-	</permission>
-
-	<permission>
-		<id>COURSE_U</id>
-		<name>COURSE_U</name>
-		<category>COURSE</category>
-	</permission>
-
-	<permission>
-		<id>COURSE_D</id>
-		<name>COURSE_D</name>
-		<category>COURSE</category>
-	</permission>
-
-
-	<!-- FILE Category -->
-	<permission>
-		<id>FILE_C</id>
-		<name>FILE_C</name>
-		<category>FILE</category>
-	</permission>
-
-	<permission>
-		<id>FILE_R</id>
-		<name>FILE_R</name>
-		<category>FILE</category>
-	</permission>
-
-	<permission>
-		<id>FILE_U</id>
-		<name>FILE_U</name>
-		<category>FILE</category>
-	</permission>
-
-	<permission>
-		<id>FILE_D</id>
-		<name>FILE_D</name>
-		<category>FILE</category>
-	</permission>
-
-
-	<!-- Project Category -->
-	<permission>
-		<id>PROJECT_C</id>
-		<name>PROJECT_C</name>
-		<category>PROJECT</category>
-	</permission>
-
-	<permission>
-		<id>PROJECT_R</id>
-		<name>PROJECT_R</name>
-		<category>PROJECT</category>
-	</permission>
-
-	<permission>
-		<id>PROJECT_U</id>
-		<name>PROJECT_U</name>
-		<category>PROJECT</category>
-	</permission>
-
-	<permission>
-		<id>PROJECT_D</id>
-		<name>PROJECT_D</name>
-		<category>PROJECT</category>
-	</permission>
-
-	<!-- SURVEY Category -->
-	<permission>
-		<id>SURVEY_C</id>
-		<name>SURVEY_C</name>
-		<category>SURVEY</category>
-	</permission>
-
-	<permission>
-		<id>SURVEY_R</id>
-		<name>SURVEY_R</name>
-		<category>SURVEY</category>
-	</permission>
-
-	<permission>
-		<id>SURVEY_U</id>
-		<name>SURVEY_U</name>
-		<category>SURVEY</category>
-	</permission>
-
-	<permission>
-		<id>SURVEY_D</id>
-		<name>SURVEY_D</name>
-		<category>SURVEY</category>
-	</permission>
-
-	<!-- CLUB Category -->
-	<permission>
-		<id>CLUB_C</id>
-		<name>CLUB_C</name>
-		<category>CLUB</category>
-	</permission>
-
-	<permission>
-		<id>CLUB_R</id>
-		<name>CLUB_R</name>
-		<category>CLUB</category>
-	</permission>
-
-	<permission>
-		<id>CLUB_U</id>
-		<name>CLUB_U</name>
-		<category>CLUB</category>
-	</permission>
-
-	<permission>
-		<id>CLUB_D</id>
-		<name>CLUB_D</name>
-		<category>CLUB</category>
-	</permission>
 
 </permissions>
