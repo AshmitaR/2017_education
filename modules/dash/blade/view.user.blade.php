@@ -57,7 +57,7 @@ if(isset($_GET['del']))
 	$User->setID($_GET['del']);	
 	$_UserBAO->deleteUser($User); //reading the user object from the result object
 
-	header("Location: view.user.php");
+	header("Location:".PageUtil::$USER);
 }
 
 
@@ -106,7 +106,7 @@ if(isset($_POST['update']))
 
 	$_UserBAO->updateUser($User);
 
-	header("Location: view.user.php");
+	header("Location:".PageUtil::$USER);
 }
 
 

@@ -556,10 +556,14 @@ class PageUtil{
     public static $DISCIPLINE='discipline.php';
     public static $DISCUSSION='discussion.php';
 
+    public static $ERROR='error.php';
+
     public static $FILE='file.php';
+    public static $HOME='home.php';
 
     public static $QUESTION='question.php';
 
+    public static $LOGIN='login.php';
 
     public static $PROJECT='project.php';
     public static $POSITION='position.php';
@@ -585,41 +589,56 @@ class PageUtil{
 
 class RouteUtil{
 
-    private static $_Routes; //The single instance
+    private static $s_Routes; //The single instance
+    private static $s_instance; //The single instance
+
 
     private function RouteUtil(){
         
-        $_Routes = array();
+         self::$s_Routes = array();
 
         //add new page and routing address here always
-        $_Routes['user.php']             =   "/modules/dash/view.user.php";
-        $_Routes['school.php']           =   "/modules/dash/view.school.php";
-        $_Routes['role.php']             =   "/modules/dash/view.user.php";
-        $_Routes['discipline.php']       =   "/modules/dash/view.user.php";
-        $_Routes['permission.php']       =   "/modules/dash/view.user.php";
-        $_Routes['position.php']         =   "/modules/dash/view.user.php";
-        $_Routes['home.php']             =   "/modules/dash/view.home.php";
-        $_Routes['login.php']            =   "/modules/dash/view.login.php";
-        $_Routes['term.php']             =   "/modules/regs/view.user.php";
+         self::$s_Routes[PageUtil::$DISCIPLINE]       =   "/modules/dash/view.discipline.php";
+
+         self::$s_Routes[PageUtil::$HOME]             =   "/modules/dash/view.home.php";
+
+         self::$s_Routes[PageUtil::$LOGIN]            =   "/modules/dash/view.login.php";
+
+         self::$s_Routes[PageUtil::$PERMISSION]       =   "/modules/dash/view.permission.php";
+         self::$s_Routes[PageUtil::$POSITION]         =   "/modules/dash/view.position.php";
+
+         self::$s_Routes[PageUtil::$ROLE]             =   "/modules/dash/view.role.php";
+
+         self::$s_Routes[PageUtil::$SCHOOL]           =   "/modules/dash/view.school.php";
+
+         self::$s_Routes[PageUtil::$TERM]             =   "/modules/regs/view.term.php";
+
+         self::$s_Routes[PageUtil::$USER]             =   "/modules/dash/view.user.php";
 
         //the page not found will redirect to error page
-        $_Routes['error.php']            =   "/modules/dash/view.error.php";
+         self::$s_Routes[PageUtil::$ERROR]            =   "/modules/dash/view.error.php";
 
     }
 
     public static function getInstance() {
-        if(!self::$_Routes) { // If no instance then make one
-            self::$_Routes = new self();
+        if(!self::$s_instance) { // If no instance then make one
+            self::$s_instance = new self();
         }
-        return self::$_Routes;
+        return self::$s_instance;
     }
 
     public static function get($Page){
 
-        if(in_array($Page, $_Routes))
-            return $_Routes[$Page];
-        else
-            return $_Routes['error.php']; 
+        $Page = strtolower(trim($Page)); 
+
+        if(array_key_exists($Page, self::$s_Routes)){
+        
+            return self::$s_Routes[$Page];
+        }
+        else{
+        
+            return self::$s_Routes[PageUtil::$ERROR]; 
+        }
     }
 
 }
