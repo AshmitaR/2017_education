@@ -3,6 +3,41 @@
 /*All the common Model classes are listed here*/
 
 
+class CourseType{
+
+    private $_ID;
+    private $_Name;
+    private $_SessionalType;
+
+
+    public function setID ( $ID ) {
+        $this->_ID = $ID;
+    }
+
+    public function getID () {
+        return $this->_ID;
+    }
+
+
+    public function setName( $Name ) {
+        $this->_Name = $Name;
+    }
+
+    public function getName() {
+        return $this->_Name;
+    }
+
+    public function setSessionalType ( $SessionalType ) {
+        $this->_SessionalType = $SessionalType;
+    }
+
+    public function getSessionalType () {
+        return $this->_SessionalType;
+    }
+
+
+}
+
 class Result{
 
     private $_IsSuccess=0;
@@ -474,6 +509,115 @@ class Club{
 
 } 
 
+class ClubExecutive{
+
+    private $_Club;
+    private $_Executive;
+    private $_Designation;
+
+    public function setClub( $Club ) {
+        $this->_Club = $Club;
+    }
+
+    public function getClub() {
+        return $this->_Club;
+    }
+
+    public function setExecutive( $Executive ) {
+        $this->_Executive = $Executive;
+    }
+
+    public function getExecutive() {
+        return $this->_Executive;
+    }
+
+    public function setDesignation( $Designation ) {
+        $this->_Designation = $Designation;
+    }
+
+    public function getDesignation() {
+        return $this->_Designation;
+    }
+
+}
+
+class ClubModule{
+
+    private $_Club;
+    private $_ModuleID;
+    private $_ModuleName;
+    private $_IsVisible;
+    private $_PositionX;
+    private $_PositionY;
+    private $_SizeX;
+    private $_SizeY;
+
+    public function setClub( $Club ) {
+        $this->_Club = $Club;
+    }
+
+    public function getClub() {
+        return $this->_Club;
+    }
+
+
+    public function setModuleID( $ModuleID ) {
+        $this->_ModuleID = $ModuleID;
+    }
+
+    public function getModuleID() {
+        return $this->_ModuleID;
+    }
+
+    public function setModuleName( $ModuleName ) {
+        $this->_ModuleName = $ModuleName;
+    }
+
+    public function getModuleName() {
+        return $this->_ModuleName;
+    }
+
+    public function setIsVisible( $IsVisible ) {
+        $this->_IsVisible = $IsVisible;
+    }
+
+    public function getIsVisible() {
+        return $this->_IsVisible;
+    }
+
+    public function setPositionX( $PositionX ) {
+        $this->_PositionX = $PositionX;
+    }
+
+    public function getPositionX() {
+        return $this->_PositionX;
+    }
+
+    public function setPositionY( $PositionY ) {
+        $this->_PositionY = $PositionY;
+    }
+
+    public function getPositionY() {
+        return $this->_PositionY;
+    }
+
+    public function setSizeX( $SizeX ) {
+        $this->_SizeX = $SizeX;
+    }
+
+    public function getSizeX() {
+        return $this->_SizeX;
+    }
+
+    public function setSizeY( $SizeY ) {
+        $this->_SizeY = $SizeY;
+    }
+
+    public function getSizeY() {
+        return $this->_SizeY;
+    }
+
+}
 
 
 
@@ -551,6 +695,9 @@ class PermissionUtil{
 class PageUtil{
 
     public static $CLUB='club.php';
+    public static $CLUB_EXECUTIVE='club_executive.php';
+    public static $CLUB_MODULE='club_module.php';
+
     public static $COURSE='course.php';
 
     public static $DISCIPLINE='discipline.php';
@@ -559,9 +706,12 @@ class PageUtil{
     public static $ERROR='error.php';
 
     public static $FILE='file.php';
+    public static $FEEDBACK='feedback.php';
+
     public static $HOME='home.php';
 
     public static $QUESTION='question.php';
+
 
     public static $LOGIN='login.php';
 
@@ -598,6 +748,11 @@ class RouteUtil{
          self::$s_Routes = array();
 
         //add new page and routing address here always
+
+         self::$s_Routes[PageUtil::$CLUB]       =   "/modules/club/view.club.php";
+         self::$s_Routes[PageUtil::$CLUB_EXECUTIVE]       =   "/modules/club/view.club_executive.php";
+         self::$s_Routes[PageUtil::$CLUB_MODULE]       =   "/modules/club/view.club_module.php";
+
          self::$s_Routes[PageUtil::$DISCIPLINE]       =   "/modules/dash/view.discipline.php";
 
          self::$s_Routes[PageUtil::$HOME]             =   "/modules/dash/view.home.php";
@@ -617,6 +772,8 @@ class RouteUtil{
 
         //the page not found will redirect to error page
          self::$s_Routes[PageUtil::$ERROR]            =   "/modules/dash/view.error.php";
+
+         self::$s_Routes[PageUtil::$FEEDBACK]            =   "/modules/feed/view.feedback.php";
 
     }
 

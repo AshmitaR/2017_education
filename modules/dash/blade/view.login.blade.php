@@ -1,5 +1,6 @@
 <?php
 
+
 include_once '/../../../util/class.util.php';
 include_once '/../../../bao/class.userbao.php';
 
@@ -7,6 +8,7 @@ include_once '/../../../bao/class.userbao.php';
 $_UserBAO = new UserBAO();
 $_DB = DBUtil::getInstance();
 $_Log= LogUtil::getInstance();
+
 
 $globalUser = '';
 
@@ -29,7 +31,7 @@ if(isset($_POST['login']))
 
 		$_SESSION["globalUser"]=$globalUser;
 
-		header("Location:view.home.php");		
+		header("Location:home.php");		
 
 	}
 	else{

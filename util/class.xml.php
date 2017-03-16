@@ -1,6 +1,6 @@
 <?php
 
-include_once '../common/class.common.php';
+include_once '/../common/class.common.php';
 
 class PermissionXML{
     var $id;  // id of permission
@@ -116,6 +116,275 @@ class XMLtoPermission{
 
 
 }
+
+class MenuXML{
+    private $_ParentTitle;
+    public $_Child;
+    private $_Title;
+    private $_Permissions;
+    private $_Link;
+    private $_Visible=0; // by default every menu is in visible
+
+    public function getTitle(){
+        return $this->_Title;
+    }
+
+    public function setTitle($Title){
+        $this->_Title = $Title;
+    }
+
+
+    public function getParentTitle(){
+        return $this->_ParentTitle;
+    }
+
+    public function setParentTitle($ParentTitle){
+        $this->_ParentTitle = $ParentTitle; 
+    }
+
+    public function getPermissions(){
+        return $this->_Permissions;
+    }
+
+    public function setPermissions($Permissions){
+        $this->_Permissions = $Permissions;
+    }
+
+    public function getLink(){
+        return $this->_Link;
+    }
+
+    public function setLink($Link){
+        $this->_Link = $Link;
+    }
+
+    public function setVisible($Visible){
+        $this->_Visible = $Visible;
+    }
+
+    public function isVisible(){
+
+        return $this->_Visible;
+    }
+
+}
+
+/*
+    From XML Menu to Menu Object with submenus
+*/
+class XMLtoMenuUtil{
+
+    public static $s_instance;
+    
+    private $_FileName;
+    private $_Menus;
+    private $_OrganizedMenus;
+  
+    private function __construct($fileToRead='c:/wamp64/www/2017_education/config/xml/menu.xml'){
+        
+        $this->_FileName = $fileToRead;       
+    }
+
+    /*
+    Get an instance of the Database
+    @return Instance
+    */
+    public static function getInstance() {
+        if(!self::$s_instance) { // If no instance then make one
+            self::$s_instance = new self();
+        }
+        return self::$s_instance;
+    }
+
+    // Magic method clone is empty to prevent duplication of connection
+    private function __clone() { }
+
+    /*
+    Read XML file as XML parsing and map the value with Permission object
+    */
+
+    private function readXML() {
+
+        // read the menu xml file
+        $data = implode('', file($this->_FileName));
+        // use simplexml to read the file
+        $xml = simplexml_load_string($data);
+        return $xml;
+    }
+
+   
+    // loads the xml and initiate the loop through
+    public function load(){
+   
+        $xml = $this->readXML();
+        $this->_Menus = $this->loop_through($xml);
+        
+    }
+
+    /*loop through the menu xml*/
+    private function loop_through($xml){
+      
+        foreach ($xml as $key => $value) {
+
+            if(strcasecmp($key,'menu')==0){
+                //echo ''.$key.'<br>';
+                $Menus[] = $this->process_menu($value);
+            }
+
+        }
+
+        return $Menus;
+    }
+    /*process menu items iteratively*/
+    private function process_menu($value1){
+
+        $MenuXML = new MenuXML();  
+        foreach ($value1 as $key => $value) {
+            if(strcasecmp($key,'parentmenu')==0){
+                $MenuXML->setParentTitle((string)$value);
+                //echo '-p-'.$MenuXML->getParentTitle().'<br>';               
+            }
+            else if(strcasecmp($key,'title')==0){
+                $MenuXML->setTitle((string)$value);
+                //echo '..'.$MenuXML->getTitle().'<br>';
+            }
+            else if(strcasecmp($key,'link')==0){
+                $MenuXML->setLink((string)$value);
+                //echo '..'.$MenuXML->getTitle().'<br>';
+            }
+            else if(strcasecmp($key,'permissions')==0){
+                $Permissions = $this->process_permission($value);                
+                $MenuXML->setPermissions($Permissions);
+            }
+        }
+
+        return $MenuXML;
+    }
+
+    /*process permission items iteratively*/
+    private function process_permission($value1){
+        
+ 
+        foreach ($value1 as $key => $value) {
+            if(strcasecmp($key,'permission')==0){
+                
+                $Permission = new Permission();
+                $Permission->setID((string)$value);
+                $Permission->setName((string)$value);
+
+                $Permissions[]=$Permission;
+
+            }
+        }
+        
+        return $Permissions;
+
+    }
+
+    /*re organize the menus according to their parent child relationship by maching
+      parent menu names */
+    public function reorganize_menu(){
+
+        //TODO:: take menus to new array and do array_splice of $this->_Menus
+
+         //looking for the first row menus that are the top ones
+         for ($i=0; $i<sizeof($this->_Menus); $i++) {
+
+            //building the first row
+            if(empty($this->_Menus[$i]->getParentTitle()))
+                $this->_OrganizedMenus[]= $this->_Menus[$i];
+         
+         }
+
+
+         //going throug the first layer of menus
+         for ($i=0; $i<sizeof($this->_OrganizedMenus); $i++) {
+
+             //looking for the second row menus to whom top row menus are parents
+             for ($j=0; $j<sizeof($this->_Menus); $j++) {
+
+                //building the second row
+                 if(!strcasecmp($this->_OrganizedMenus[$i]->getTitle(),$this->_Menus[$j]->getParentTitle())){
+
+                      $this->_OrganizedMenus[$i]->_Child[]=$this->_Menus[$j];
+                                     
+                }
+
+             }
+        
+         }
+
+            
+         //going through the first layer
+         for ($i=0; $i<sizeof($this->_OrganizedMenus); $i++) {
+
+             //going through the second layer
+
+             for ($j=0; $j<sizeof($this->_OrganizedMenus[$i]->_Child); $j++) {
+
+                //building the third layer of menus    
+                for($k=0;$k<sizeof($this->_Menus); $k++){
+                    
+                     if(!strcasecmp($this->_OrganizedMenus[$i]->_Child[$j]->getTitle(),
+                        $this->_Menus[$k]->getParentTitle())
+                        ){                    
+
+                          $this->_OrganizedMenus[$i]->_Child[$j]->_Child[]=$this->_Menus[$k];
+                    
+                    }
+
+                }
+             
+             }
+            
+         
+         }
+
+
+         return $this->_OrganizedMenus;       
+
+    }
+
+    /*
+        UserPermission is an array of permission that is available to a logged user 
+        to the system
+    */
+    public function viewable_menu($UserPermissions){
+
+        //taking each menu from the menu xml file
+        for ($i=0; $i<sizeof($this->_Menus); $i++) {
+            
+            //going through each permission
+            foreach ($this->_Menus[$i]->getPermissions() as $Permission) {
+                   
+                //if any permission is available in the permission list    
+                if(in_array($Permission->getID(), $UserPermissions)){
+                    //this menu should be viewable   
+                    $this->_Menus[$i]->setVisible(1);
+                    break;
+                 }
+
+            }  
+
+        }
+
+    }
+
+    /* return back all the menus*/
+    public function get_Menus(){
+        return $this->_Menus;
+    }
+
+  
+
+}
+
+    
+//$menu = new XMLtoMenu("c:/wamp64/www/2017_education/config/xml/menu.xml");
+//$menu->load();
+//$menu->viewable_menu(['COURSE_C','ROLE_C']);
+//print_r($menu->reorganize_menu());
+
 
 
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-include_once 'blade/view.school.blade.php';
+include_once 'blade/view.role.blade.php';
 include_once '/../../common/class.common.php';
 
 ?>
@@ -8,8 +8,8 @@ include_once '/../../common/class.common.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>School CRUD Operations</title>
-		<link rel="stylesheet" href="resouces/css/style.css" type="text/css" />
+		<title>ROLE CRUD Operations</title>
+		<link rel="stylesheet" href="style.css" type="text/css" />
 	</head>
 
 <body>
@@ -22,7 +22,7 @@ include_once '/../../common/class.common.php';
 		<form method="post">
 			<table width="100%" border="1" cellpadding="15">
 				<tr>
-					<td><input type="text" name="txtName" placeholder="School Name" value="<?php 
+					<td><input type="text" name="txtName" placeholder="Role Name" value="<?php 
 					if(isset($_GET['edit'])) echo $getROW->getName();  ?>" /></td>
 				</tr>
 				<tr>
@@ -52,24 +52,24 @@ include_once '/../../common/class.common.php';
 	<?php
 	
 	
-	$Result = $_SchoolBAO->getAllSchools();
+	$Result = $_RoleBAO->getAllRoles();
 
-	//if DAO access is successful to load all the Schools then show them one by one
+	//if DAO access is successful to load all the Roles then show them one by one
 	if($Result->getIsSuccess()){
 
-		$SchoolList = $Result->getResultObject();
+		$RoleList = $Result->getResultObject();
 	?>
 		<tr>
-			<td>School Name</td>
+			<td>Role Name</td>
 		</tr>
 		<?php
-		for($i = 0; $i < sizeof($SchoolList); $i++) {
-			$School = $SchoolList[$i];
+		for($i = 0; $i < sizeof($RoleList); $i++) {
+			$Role = $RoleList[$i];
 			?>
 		    <tr>
-			    <td><?php echo $School->getName(); ?></td>
-			    <td><a href="?edit=<?php echo $School->getID(); ?>" onclick="return confirm('sure to edit !'); " >edit</a></td>
-			    <td><a href="?del=<?php echo $School->getID(); ?>" onclick="return confirm('sure to delete !'); " >delete</a></td>
+			    <td><?php echo $Role->getName(); ?></td>
+			    <td><a href="?edit=<?php echo $Role->getID(); ?>" onclick="return confirm('sure to edit !'); " >edit</a></td>
+			    <td><a href="?del=<?php echo $Role->getID(); ?>" onclick="return confirm('sure to delete !'); " >delete</a></td>
 		    </tr>
 	    <?php
 

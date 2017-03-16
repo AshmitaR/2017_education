@@ -1,5 +1,6 @@
 <?php
 
+
 include_once '/../../../util/class.util.php';
 include_once '/../../../bao/class.userbao.php';
 include_once '/../../../bao/class.rolebao.php';
@@ -10,6 +11,7 @@ $_RoleBAO = new RoleBAO();
 $_PositionBAO = new PositionBAO();
 $_DB = DBUtil::getInstance();
 $_Log= LogUtil::getInstance();
+
 
 $globalUser = '';
 
@@ -117,7 +119,7 @@ function isRoleAvailable($Role, $Roles)
 
 	for ($i=0; $i < sizeof($Roles); $i++) { 
 		# code...
-		if(!strcmp($Role->getID(),$Roles[$i]->getID())){
+		if(!strcasecmp($Role->getID(),$Roles[$i]->getID())){
 			return true;
 		}
 	}
@@ -132,7 +134,7 @@ function isPositionAvailable($Position, $Positions)
 
 	for ($i=0; $i < sizeof($Positions); $i++) { 
 		# code...
-		if(!strcmp($Position->getID(),$Positions[$i]->getID())){
+		if(!strcasecmp($Position->getID(),$Positions[$i]->getID())){
 			return true;
 		}
 	}

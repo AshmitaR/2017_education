@@ -1,0 +1,82 @@
+<Menus>
+
+		<Menu>
+			<ParentMenu></ParentMenu>
+			<Title>Registration</Title>
+			<Permissions>
+				<Permission>COURSE_C</Permission>
+				<Permission>COURSE_R</Permission>
+				<Permission>COURSE_U</Permission>
+				<Permission>COURSE_D</Permission>												
+			</Permissions>			
+		</Menu>
+
+		<Menu>
+			<ParentMenu></ParentMenu>
+			<Title>Administration</Title>
+			<Permissions>
+				<Permission>ROLE_C</Permission>
+				<Permission>PERMISSION_C</Permission>										
+			</Permissions>			
+		</Menu>
+
+		<Menu>
+			<ParentMenu>Registration</ParentMenu>
+			<Title>Course Related</Title>
+			<Permissions>
+				<Permission>COURSE_C</Permission>
+				<Permission>COURSE_R</Permission>
+				<Permission>COURSE_U</Permission>
+				<Permission>COURSE_D</Permission>												
+			</Permissions>
+		</Menu>		
+
+		<Menu>
+			<ParentMenu>Administration</ParentMenu>
+			<Title>Role Related</Title>
+			<Permissions>
+				<Permission>ROLE_C</Permission>
+				<Permission>ROLE_R</Permission>
+				<Permission>ROLE_U</Permission>
+				<Permission>ROLE_D</Permission>												
+			</Permissions>
+		</Menu>	
+
+		<Menu>
+			<ParentMenu>Course Related</ParentMenu>
+			<Title>Create Course</Title>
+			<Link>/view.course.php</Link>
+			<Permissions>
+				<Permission>COURSE_C</Permission>
+			</Permissions>
+		</Menu>
+
+		<Menu>
+			<ParentMenu>Course Related</ParentMenu>
+			<Title>Create Student</Title>
+			<Link>/view.user.php</Link>
+			<Permissions>
+				<Permission>USER_C</Permission>
+			</Permissions>
+		</Menu>
+
+		<Menu>
+			<ParentMenu>Role Related</ParentMenu>
+			<Title>Create Role</Title>
+			<Link>/view.role.php</Link>
+			<Permissions>
+				<Permission>ROLE_C</Permission>
+			</Permissions>
+		</Menu>
+
+		<Menu>
+			<ParentMenu>Role Related</ParentMenu>
+			<Title>Create Permission</Title>
+			<Link>/view.permission.php</Link>
+			<Permissions>
+				<Permission>ROLE_C</Permission>				
+				<Permission>PERMISSION_C</Permission>
+			</Permissions>
+		</Menu>
+
+</Menus>

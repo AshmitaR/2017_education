@@ -10,7 +10,7 @@ include_once '/../../common/class.common.php';
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>USER Login Operation</title>
-        <link rel="stylesheet" href="style.css" type="text/css" />
+        <link rel="stylesheet" href="resouces/css/style.css" type="text/css" />
     </head>
 
 <body>
