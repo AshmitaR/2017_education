@@ -28,11 +28,15 @@ function unparse_url($parsed_url) {
  	//extracting the page name such as user.php from the url
  	$page = substr($path, strrpos($path,'/')+1,strrpos($path,'.php')-strrpos($path,'/')+strlen('.php'));
 
- 	//looking for the extracted page in the route list
+	// checking whtether there is any middleware
+	 
+	$page=MiddlewareUtil::get($page); 	
+
+	//looking for the extracted page in the route list
 
  	$new_page=RouteUtil::get($page);
 
- 	//rebuilding the page
+
  	//$path=str_replace('/'.$page, $new_page, $path);
 
  	return $new_page;

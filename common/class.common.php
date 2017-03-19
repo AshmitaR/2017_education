@@ -800,6 +800,67 @@ class RouteUtil{
 
 }
 
+class MiddlewareUtil{
+
+    private static $s_Routes; //The single instance
+    private static $s_instance; //The single instance
+
+
+    private function MiddlewareUtil(){
+        
+         self::$s_Routes = array();
+
+        //add which page should be successfully logged before getting to this page
+        //example: login.php should be successfully logged in to get to home.php
+         self::$s_Routes[PageUtil::$HOME]   =  PageUtil::$LOGIN ;
+         self::$s_Routes[PageUtil::$USER]   =  PageUtil::$LOGIN ;
+   
+    }
+
+    public static function getInstance() {
+        if(!self::$s_instance) { // If no instance then make one
+            self::$s_instance = new self();
+        }
+        return self::$s_instance;
+    }
+
+    private static function isAvailable($Page){
+
+        $Page = strtolower(trim($Page)); 
+
+        //if the page is refereneced in the middleware
+        if(array_key_exists($Page, self::$s_Routes)){
+            
+            return true;
+        }
+        else{
+        
+            return false; 
+        }
+    }
+
+    public static function get($Page){
+
+
+        //if page is referenced
+        if(self::isAvailable($Page)){
+            //start session and check whether the middleware is successfully crossed
+
+            if (session_status() == PHP_SESSION_NONE) {
+                session_start();
+            }
+
+            // other send initial page: example if logged out then go to login.php page
+            return isset($_SESSION[self::$s_Routes[$Page]])? $Page: self::$s_Routes[$Page]; 
+
+        }else{
+            // if no middleware then just go on with the current request
+            return $Page;
+        }
+    }
+
+}
+MiddlewareUtil::getInstance();
 RouteUtil::getInstance();
 
 ?>

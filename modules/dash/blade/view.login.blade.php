@@ -31,7 +31,9 @@ if(isset($_POST['login']))
 
 		$_SESSION["globalUser"]=$globalUser;
 
-		header("Location:home.php");		
+		$_SESSION[PageUtil::$LOGIN]='true';
+
+		header("Location:".PageUtil::$HOME);		
 
 	}
 	else{

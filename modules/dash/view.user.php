@@ -9,7 +9,7 @@ include_once '/../../common/class.common.php';
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>USER CRUD Operations</title>
-		<link rel="stylesheet" href="resouces/css/style.css" type="text/css" />
+		<link rel="stylesheet" href="resources/css/style.css" type="text/css" />
 	</head>
 
 <body>
