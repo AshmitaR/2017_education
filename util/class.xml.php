@@ -2,23 +2,7 @@
 
 include_once '/../common/class.common.php';
 
-class PermissionXML{
-    var $id;  // id of permission
-    var $name;    // name of permission
-    var $category;  // category of permission
-    
-    //map the tag, value pair with the members serially
-    //used in xml to permission mapping
-    function PermissionXML ($row) {
 
-        //todo: check for the exception situation
-
-        foreach ($row as $k=>$v)
-            $this->$k = $row[$k];
-
-    }
-
-}
 
 /*
  Read XML formatted permission items from the file and 
@@ -117,57 +101,6 @@ class XMLtoPermission{
 
 }
 
-class MenuXML{
-    private $_ParentTitle;
-    public $_Child;
-    private $_Title;
-    private $_Permissions;
-    private $_Link;
-    private $_Visible=0; // by default every menu is in visible
-
-    public function getTitle(){
-        return $this->_Title;
-    }
-
-    public function setTitle($Title){
-        $this->_Title = $Title;
-    }
-
-
-    public function getParentTitle(){
-        return $this->_ParentTitle;
-    }
-
-    public function setParentTitle($ParentTitle){
-        $this->_ParentTitle = $ParentTitle; 
-    }
-
-    public function getPermissions(){
-        return $this->_Permissions;
-    }
-
-    public function setPermissions($Permissions){
-        $this->_Permissions = $Permissions;
-    }
-
-    public function getLink(){
-        return $this->_Link;
-    }
-
-    public function setLink($Link){
-        $this->_Link = $Link;
-    }
-
-    public function setVisible($Visible){
-        $this->_Visible = $Visible;
-    }
-
-    public function isVisible(){
-
-        return $this->_Visible;
-    }
-
-}
 
 /*
     From XML Menu to Menu Object with submenus

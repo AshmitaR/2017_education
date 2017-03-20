@@ -1,15 +1,12 @@
 <?php
 
-include_once '/../../../util/class.xml.php';
 include_once '/../../../common/class.common.php'; //very important include in every new page before using session globaluser
 
 
 
-$_Menu = XMLtoMenuUtil::getInstance();
 $globalUser='';
 $globalPermission='';
 $globalMenu ='';
-$superLayer = '';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -17,24 +14,19 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
 if (isset($_SESSION["globalUser"])){
-
 	//retreving the logged user from the session 
 	$globalUser = $_SESSION["globalUser"];
+}
 
-	//finding the complete permission list
-	$globalPermission = getAllPermissions($globalUser);
+if (isset($_SESSION["globalPermission"])){	
+	//retreiveing the permission from the session
+	$globalPermission = $_SESSION["globalPermission"]; 
+}
+
+if (isset($_SESSION["globalMenu"])){	
+	//retreving the menu setup	
+	$globalMenu =  $_SESSION["globalMenu"];
   	
-  	//storing permission in the session
-  	$_SESSION["globalPermission"] = $globalPermission;
-
-	$_Menu->load();
-	$_Menu->viewable_menu($globalPermission);
-	
-	$globalMenu =  $_Menu->reorganize_menu();
-  	
-  	//storing in the session
-  	$_SESSION["globalMenu"] = $globalMenu;
-
 }
 
 
@@ -109,34 +101,6 @@ function console_log( $data ){
 }
 
 
-//return only the unique permissions a user has on the system
-function getAllPermissions($User){
 
-	//get all roles from user
-	$Roles = $User->getRoles();
-	
-	$AllPermissions=array();
-	
-	foreach ($Roles as $Role) {
-		
-		//get all the permissions available in a role
-		$Permissions = $Role->getPermissions();
-
-		//iterate over the permission list
-		foreach ($Permissions as $Permission) {
-			
-			//if a permission not available in the global list then add it
-			if(!in_array($Permission->getID(), $AllPermissions)){
-
-				//adding the permission to the global permission list
-				$AllPermissions[]=$Permission->getID();
-
-			}
-		}
-
-	}
-
-	return $AllPermissions;
-}
 
 ?>

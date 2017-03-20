@@ -1,0 +1,5 @@
+<table>
+	<tr>
+			<td> Footer </td>
+	</tr>
+</table>

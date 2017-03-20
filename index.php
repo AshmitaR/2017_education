@@ -2,45 +2,49 @@
 
 include_once '/common/class.common.php';
 
-$_URI = $_SERVER['REQUEST_URI'];
-
-$new_url = unparse_url(parse_url($_URI));
-
-
-if(isset($new_url)){
-
-	// including all the content of the component page in this index page
-	include $new_url;
-}
-
-//finding different partse of an url
-function unparse_url($parsed_url) { 
-	$scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : ''; 
-	$host     = isset($parsed_url['host']) ? $parsed_url['host'] : ''; 
- 	$port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : ''; 
- 	$user     = isset($parsed_url['user']) ? $parsed_url['user'] : ''; 
- 	$pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : ''; 
- 	$pass     = ($user || $pass) ? "$pass@" : ''; 
- 	$path     = isset($parsed_url['path']) ? $parsed_url['path'] : ''; 
- 	$query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : ''; 
- 	$fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : ''; 
-
- 	//extracting the page name such as user.php from the url
- 	$page = substr($path, strrpos($path,'/')+1,strrpos($path,'.php')-strrpos($path,'/')+strlen('.php'));
-
-	// checking whtether there is any middleware
-	 
-	$page=MiddlewareUtil::get($page); 	
-
-	//looking for the extracted page in the route list
-
- 	$new_page=RouteUtil::get($page);
-
-
- 	//$path=str_replace('/'.$page, $new_page, $path);
-
- 	return $new_page;
-	//return "$scheme$user$pass$host$port$path$query$fragment"; 
-} 
-
 ?>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Home Page</title>
+        <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
+    </head>
+
+<body>
+    <div id="header">
+        <?php 
+        	require 'header.php'; 
+        	
+        ?>
+    </div>
+    <div id="menu">
+    	<?php 
+    		require 'menu.php'; 
+    		
+    	?>
+    </div>
+    <div id="content">
+			<?php 
+
+				$_URI = $_SERVER['REQUEST_URI'];
+
+				$new_url = unparse_url(parse_url($_URI));
+
+				if(isset($new_url)){
+
+					// including all the content of the component page in this index page
+					include $new_url;
+				}
+			?>	        
+   </div>   
+   <div id="footer">
+    	<?php 
+    		require 'footer.php'; 
+
+    	?>
+    </div> 
+</body>
+</html>

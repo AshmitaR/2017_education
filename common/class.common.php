@@ -1,6 +1,75 @@
 <?php
 
 /*All the common Model classes are listed here*/
+class PermissionXML{
+    var $id;  // id of permission
+    var $name;    // name of permission
+    var $category;  // category of permission
+    
+    //map the tag, value pair with the members serially
+    //used in xml to permission mapping
+    function PermissionXML ($row) {
+
+        //todo: check for the exception situation
+
+        foreach ($row as $k=>$v)
+            $this->$k = $row[$k];
+
+    }
+
+}
+
+class MenuXML{
+    private $_ParentTitle;
+    public $_Child;
+    private $_Title;
+    private $_Permissions;
+    private $_Link;
+    private $_Visible=0; // by default every menu is in visible
+
+    public function getTitle(){
+        return $this->_Title;
+    }
+
+    public function setTitle($Title){
+        $this->_Title = $Title;
+    }
+
+
+    public function getParentTitle(){
+        return $this->_ParentTitle;
+    }
+
+    public function setParentTitle($ParentTitle){
+        $this->_ParentTitle = $ParentTitle; 
+    }
+
+    public function getPermissions(){
+        return $this->_Permissions;
+    }
+
+    public function setPermissions($Permissions){
+        $this->_Permissions = $Permissions;
+    }
+
+    public function getLink(){
+        return $this->_Link;
+    }
+
+    public function setLink($Link){
+        $this->_Link = $Link;
+    }
+
+    public function setVisible($Visible){
+        $this->_Visible = $Visible;
+    }
+
+    public function isVisible(){
+
+        return $this->_Visible;
+    }
+
+}
 
 
 class CourseType{
@@ -860,6 +929,35 @@ class MiddlewareUtil{
     }
 
 }
+
+//finding different partse of an url
+    function unparse_url($parsed_url) { 
+        $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : ''; 
+        $host     = isset($parsed_url['host']) ? $parsed_url['host'] : ''; 
+        $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : ''; 
+        $user     = isset($parsed_url['user']) ? $parsed_url['user'] : ''; 
+        $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : ''; 
+        $pass     = ($user || $pass) ? "$pass@" : ''; 
+        $path     = isset($parsed_url['path']) ? $parsed_url['path'] : ''; 
+        $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : ''; 
+        $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : ''; 
+
+        //extracting the page name such as user.php from the url
+        $page = substr($path, strrpos($path,'/')+1,strrpos($path,'.php')-strrpos($path,'/')+strlen('.php'));
+
+        // checking whtether there is any middleware     
+        $page=MiddlewareUtil::get($page);   
+
+        //looking for the extracted page in the route list
+        $new_page=RouteUtil::get($page);
+
+
+        //$path=str_replace('/'.$page, $new_page, $path);
+        return $new_page;
+        //return "$scheme$user$pass$host$port$path$query$fragment"; 
+    } 
+
+
 MiddlewareUtil::getInstance();
 RouteUtil::getInstance();
 

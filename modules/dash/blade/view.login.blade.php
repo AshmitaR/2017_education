@@ -1,6 +1,6 @@
 <?php
 
-
+include_once '/../../../util/class.xml.php';
 include_once '/../../../util/class.util.php';
 include_once '/../../../bao/class.userbao.php';
 
@@ -8,9 +8,10 @@ include_once '/../../../bao/class.userbao.php';
 $_UserBAO = new UserBAO();
 $_DB = DBUtil::getInstance();
 $_Log= LogUtil::getInstance();
-
-
-$globalUser = '';
+$_Menu = XMLtoMenuUtil::getInstance();
+$globalUser='';
+$globalPermission='';
+$globalMenu ='';
 
 /* loading the user account*/
 if(isset($_POST['login']))
@@ -31,16 +32,62 @@ if(isset($_POST['login']))
 
 		$_SESSION["globalUser"]=$globalUser;
 
+		//finding the complete permission list
+		$globalPermission = getAllPermissions($globalUser);
+			
+		//storing permission in the session
+		$_SESSION["globalPermission"] = $globalPermission;
+
+		$_Menu->load();
+
+		$_Menu->viewable_menu($globalPermission);
+		
+		$globalMenu =  $_Menu->reorganize_menu();
+	  	
+	  	//storing in the session
+	  	$_SESSION["globalMenu"] = $globalMenu;
+
+
 		$_SESSION[PageUtil::$LOGIN]='true';
 
 		header("Location:".PageUtil::$HOME);		
 
 	}
 	else{
-		echo '<br>Wrong user name or password';
-		//header("Location:view.login.php");	
+		echo '<strong>Wrong user name or password</strong>';	
 	}
 	
+}
+
+
+//return only the unique permissions a user has on the system
+function getAllPermissions($User){
+
+	//get all roles from user
+	$Roles = $User->getRoles();
+	
+	$AllPermissions=array();
+	
+	foreach ($Roles as $Role) {
+		
+		//get all the permissions available in a role
+		$Permissions = $Role->getPermissions();
+
+		//iterate over the permission list
+		foreach ($Permissions as $Permission) {
+			
+			//if a permission not available in the global list then add it
+			if(!in_array($Permission->getID(), $AllPermissions)){
+
+				//adding the permission to the global permission list
+				$AllPermissions[]=$Permission->getID();
+
+			}
+		}
+
+	}
+
+	return $AllPermissions;
 }
 
 echo '<br> log:: exit blade.login.php';
