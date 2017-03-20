@@ -16,5 +16,3 @@ include_once 'blade/view.home.blade.php';
 </center>
 
 
-</body>
-</html>

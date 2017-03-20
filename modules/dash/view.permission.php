@@ -4,12 +4,8 @@ include_once 'blade/view.permission.blade.php';
 include_once '/../../common/class.common.php';
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Permission Assignment Operations</title>
-		<link rel="stylesheet" href="resources/css/style.css" type="text/css" />
+
+	
 		<script type="text/javascript">
 			
 			function SetAllCheckBoxes(FormName, FieldName, CheckValue)
@@ -41,9 +37,7 @@ include_once '/../../common/class.common.php';
 			}
 
 		</script>
-	</head>
 
-<body>
 <center>
 	<div id="header">
 		<label>By : Kazi Masudul Alam</a></label>
@@ -180,5 +174,3 @@ include_once '/../../common/class.common.php';
 	</table>
 	</div>
 </center>
-</body>
-</html>
