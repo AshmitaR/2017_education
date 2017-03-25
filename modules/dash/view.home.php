@@ -4,15 +4,22 @@ include_once 'blade/view.home.blade.php';
 
 ?>
 
-<center>
- 
-		<?php 
-             
-		if(isset($globalMenu))
-			echo print_menu_vertical($globalMenu);
 
-		?>	        
 
-</center>
+<div class="col-sm-12">
+
+<?php
+			if(isset($globalMenu)){
+				echo print_dashboard_body_collapse($globalMenu);
+			}
+
+
+?>	        
+
+</div>
+
+
+
+
 
 

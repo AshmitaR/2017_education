@@ -11,40 +11,44 @@ include_once '/common/class.common.php';
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>Home Page</title>
         <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
+        <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <script src="resources/js/jquery.min.js"></script>
+        <script src="resources/js/bootstrap.min.js"></script>        
     </head>
 
 <body>
-    <div id="header">
-        <?php 
-        	require 'header.php'; 
-        	
-        ?>
+
+<div class="container-fluid">
+    <div id="header" class="row">
+        <div class="col-sm-12">
+            <?php 
+            	require 'header.php'; 
+            	
+            ?>
+        </div>    
     </div>
-    <div id="menu">
-    	<?php 
-    		require 'menu.php'; 
-    		
-    	?>
+    <div id="menu" class="row">
+        <div class="col-sm-12">
+        	<?php 
+        		require 'menu.php'; 
+        		
+        	?>
+        </div>
     </div>
-    <div id="content">
-			<?php 
+    <div id="content" class="row">   
+            <?php 
+                require 'body.php'; 
 
-				$_URI = $_SERVER['REQUEST_URI'];
-
-				$new_url = unparse_url(parse_url($_URI));
-
-				if(isset($new_url)){
-
-					// including all the content of the component page in this index page
-					include $new_url;
-				}
-			?>	        
+            ?>	                    
    </div>   
-   <div id="footer">
-    	<?php 
-    		require 'footer.php'; 
+   <div id="footer" class="row">
+        <div class="col-sm-12">   
+        	<?php 
+        		require 'footer.php'; 
 
-    	?>
+        	?>
+        </div>
     </div> 
+</div>    
 </body>
 </html>

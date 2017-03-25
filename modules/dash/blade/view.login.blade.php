@@ -13,6 +13,12 @@ $globalUser='';
 $globalPermission='';
 $globalMenu ='';
 
+//TODO: remove all session variables (check whether it works)
+session_unset(); 
+//TODO: destroy the session (check whether it works)
+session_destroy();
+
+
 /* loading the user account*/
 if(isset($_POST['login']))
 {
@@ -28,7 +34,9 @@ if(isset($_POST['login']))
 		$globalUser = $Result->getResultObject();
 		
 		//required to access session variables;		
-		session_start();
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
 
 		$_SESSION["globalUser"]=$globalUser;
 

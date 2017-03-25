@@ -32,6 +32,7 @@ if (isset($_SESSION["globalMenu"])){
 
 function print_menu_vertical($globalMenu){
 
+
 	$superLayer ='<table><tr><td>Options</td></tr>';
 	//going through first layer of menus
 	
@@ -93,6 +94,96 @@ function print_menu_vertical($globalMenu){
 	
 	return $superLayer;
 }
+
+function print_dashboard_body_collapse($globalMenu){
+
+
+	$superLayer = '<ul class="nav nav-tabs">';
+
+	//printing the tabs
+	for ($i=0; $i < sizeof($globalMenu) ; $i++) {
+
+		// if the first layer is visible then go inside -- build table row by row for the category
+		if($globalMenu[$i]->isVisible()){ 
+			
+			//make the first one active		
+			if($i==0){
+			$superLayer = $superLayer.'<li class="active"><a data-toggle="tab" href="#'.
+						$globalMenu[$i]->getTitle().'">'.$globalMenu[$i]->getTitle().'</a></li>';
+			}
+			else{
+			$superLayer = $superLayer.'<li><a data-toggle="tab" href="#'.
+						$globalMenu[$i]->getTitle().'">'.$globalMenu[$i]->getTitle().'</a></li>';
+			}
+		}				
+	}
+
+	$superLayer = $superLayer. '</ul>';
+
+	$superLayer = $superLayer. '<div class="tab-content">';
+
+	//printing tab contents
+
+
+
+	for ($i=0; $i < sizeof($globalMenu) ; $i++) {
+
+		// if the first layer is visible then go inside -- build table row by row for the category
+		if($globalMenu[$i]->isVisible()){ 
+		
+			if($i==0){
+			$firstLayer  = '<div id="'.$globalMenu[$i]->getTitle().'" class="tab-pane fade in active">';
+			}
+			else{
+			$firstLayer  = '<div id="'.$globalMenu[$i]->getTitle().'" class="tab-pane fade">';
+			}
+			
+		
+
+			for ($j=0; $j <sizeof($globalMenu[$i]->_Child) ; $j++) {	
+
+				//if the second layer is visible go inside -- build table row by row
+				if($globalMenu[$i]->_Child[$j]->isVisible()){
+
+				$secondLayer  = '<div class="col-sm-3"><h4>'.$globalMenu[$i]->_Child[$j]->getTitle().'</h4>';
+
+				$secondLayer = $secondLayer . '<div class="panel panel-default">';
+
+				$secondLayer = $secondLayer . '<div class="panel-body">';				
+				
+				for ($k=0; $k <sizeof($globalMenu[$i]->_Child[$j]->_Child) ; $k++) {
+
+					//if the third layer is visible -- build table column by column
+					if($globalMenu[$i]->_Child[$j]->_Child[$k]->isVisible()){
+
+					$thirdLayer  = '<div>' ;
+
+					$thirdLayer = $thirdLayer.$globalMenu[$i]->_Child[$j]->_Child[$k]->getTitle();
+															
+					$thirdLayer = $thirdLayer .'</div>';
+					$secondLayer  = $secondLayer  . $thirdLayer;
+					
+					}
+				}
+									
+				$secondLayer = $secondLayer . '</div>';
+
+				$secondLayer = $secondLayer .'</div></div>';
+				$firstLayer  = $firstLayer  . $secondLayer;
+				}
+			}
+			
+
+		$firstLayer = $firstLayer . '</div>';
+		$superLayer = $superLayer . $firstLayer;	
+		}
+	}
+
+	$superLayer = $superLayer . '</div>';
+
+	return $superLayer;
+}
+
 
 function console_log( $data ){
   echo '<script>';

@@ -951,6 +951,12 @@ class MiddlewareUtil{
         //looking for the extracted page in the route list
         $new_page=RouteUtil::get($page);
 
+        //TODO:: just a hack, should be removed
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $_SESSION['globalPage']=$page;
 
         //$path=str_replace('/'.$page, $new_page, $path);
         return $new_page;
