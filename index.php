@@ -13,7 +13,8 @@ include_once '/common/class.common.php';
         <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
         <link rel="stylesheet" href="resources/css/bootstrap.min.css">
         <script src="resources/js/jquery.min.js"></script>
-        <script src="resources/js/bootstrap.min.js"></script>        
+        <script src="resources/js/bootstrap.min.js"></script>
+        <script src="resources/js/myscript.js"></script>                
     </head>
 
 <body>
@@ -28,14 +29,13 @@ include_once '/common/class.common.php';
         </div>    
     </div>
     <div id="menu" class="row">
-        <div class="col-sm-12">
         	<?php 
         		require 'menu.php'; 
         		
         	?>
-        </div>
     </div>
-    <div id="content" class="row">   
+    
+     <div id="content" class="row">   
             <?php 
                 require 'body.php'; 
 

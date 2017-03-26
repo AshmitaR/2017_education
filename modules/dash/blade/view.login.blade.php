@@ -14,9 +14,9 @@ $globalPermission='';
 $globalMenu ='';
 
 //TODO: remove all session variables (check whether it works)
-session_unset(); 
+//session_unset(); 
 //TODO: destroy the session (check whether it works)
-session_destroy();
+//session_destroy();
 
 
 /* loading the user account*/
