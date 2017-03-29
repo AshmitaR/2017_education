@@ -79,7 +79,10 @@ class XMLtoPermission{
 
             //beginning a transaction   
         $this->_DB->getConnection()->begin_transaction(MYSQLI_TRANS_START_READ_WRITE);
-    
+
+
+        $this->_DB->doQuery('DELETE from tbl_Permission');
+
 
         for ($i=0; $i < sizeof($Permissions); $i++) { 
             $Permission = $Permissions[$i];

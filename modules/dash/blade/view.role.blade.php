@@ -11,7 +11,7 @@ $_DB = DBUtil::getInstance();
 if(isset($_POST['save']))
 {
 	 $Role = new Role();	
-	 $Role->setID(Util::getGUID());
+	 $Role->setID(strtolower($_DB->secureInput($_POST['txtName'])));
      $Role->setName($_DB->secureInput($_POST['txtName']));
 	 $_RoleBAO->createRole($Role);		 
 }
@@ -25,7 +25,7 @@ if(isset($_GET['del']))
 	$Role->setID($_GET['del']);	
 	$_RoleBAO->deleteRole($Role); //reading the Role object from the result object
 
-	header("Location: view.role.php");
+	header("Location: role.php");
 }
 
 

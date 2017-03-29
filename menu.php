@@ -7,6 +7,7 @@ $globalUser='';
 $globalPermission='';
 $globalMenu ='';
 $globalPage ='';
+$logoutMenu='';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -29,6 +30,8 @@ if (isset($_SESSION["globalUser"])){
 	  	
 	}
 
+	$logoutMenu = print_top_logout_menu($globalUser);
+
 }
 
 if (isset($_SESSION["globalPage"])){	
@@ -38,20 +41,45 @@ if (isset($_SESSION["globalPage"])){
 }
 
 //print the top menu
-if(isset($globalMenu))
-	echo print_top_menu($globalMenu); 
+if(isset($globalMenu)){
+	
+	//buiding menu layout, first part menu, next part user logout menu
 
+	$menu_content = 	'<div class="dropdown"><div class="row">';
+	$menu_content = 	$menu_content.'<div class="col-sm-11">';
+	$menu_content = 	$menu_content.print_top_menu($globalMenu);
+	$menu_content = 	$menu_content.'</div>';
+	$menu_content = 	$menu_content.'<div class="col-sm-1">'.$logoutMenu;
+	$menu_content = 	$menu_content.'</div>';
+	$menu_content = 	$menu_content.'</div></div>';
+	
+	echo $menu_content; 
+}
+
+function print_top_logout_menu($CurrentUser){
+
+   $logout_content = '<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">'.
+   					 $CurrentUser->getFirstName().' '.$CurrentUser->getLastName().'<span class="caret"></span></button>';
+   $logout_content = $logout_content.'<ul class="dropdown-menu">'; 
+   $logout_content = $logout_content.'<li><a tabindex="-1" href="home.php">Dashboard</a></li>';
+   $logout_content = $logout_content.'<li><a tabindex="-1" href="login.php?logout=true">LOG OUT</a></li>';
+   $logout_content = $logout_content.'</ul>'; 
+
+   return $logout_content;					 
+}
 
 
 //build the the top menu using bootstrap css
 function print_top_menu($globalMenu){
-	$superLayer = '<div class="dropdown"><div class="row">';
+
+	$superLayer = '<div class="row">';
 
 	for ($i=0; $i < sizeof($globalMenu) ; $i++) {
 
 		// if the first layer is visible then go inside -- build table row by row for the category
 		if($globalMenu[$i]->isVisible()){ 
 		
+ 			//$firstLayer  = '<div class="col-sm-'.(12/sizeof($globalMenu)).'">';
  			$firstLayer  = '<div class="col-sm-1">';
     		$firstLayer  =  $firstLayer.'<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">'.$globalMenu[$i]->getTitle().'<span class="caret"></span></button>';
     		$firstLayer  =  $firstLayer.'<ul class="dropdown-menu">';
@@ -73,7 +101,8 @@ function print_top_menu($globalMenu){
 						//if the third layer is visible -- build table column by column
 							if($globalMenu[$i]->_Child[$j]->_Child[$k]->isVisible()){
 
-							$thirdLayer  = '<li><a tabindex="-1" href="#">'.
+							$thirdLayer  = '<li><a tabindex="-1" href="'.
+											$globalMenu[$i]->_Child[$j]->_Child[$k]->getLink().'">'.
 											$globalMenu[$i]->_Child[$j]->_Child[$k]->getTitle().
 											'</a></li>' ;
 
@@ -99,7 +128,7 @@ function print_top_menu($globalMenu){
 		}
 	}
 
-	$superLayer = $superLayer . '</div></div>';
+	$superLayer = $superLayer . '</div>';
 
 	return $superLayer;
 

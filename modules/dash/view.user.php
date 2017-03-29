@@ -6,9 +6,6 @@ include_once '/../../common/class.common.php';
 ?>
 
 <center>
-	<div id="header">
-		<label>By : Kazi Masudul Alam</a></label>
-	</div>
 
 	<div id="form">
 		<form method="post">

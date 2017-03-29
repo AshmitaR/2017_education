@@ -54,7 +54,7 @@ Class RoleDAO{
 
 		$PermissionList = array();
 
-		$this->_DB->doQuery("SELECT * FROM tbl_Permission");
+		$this->_DB->doQuery("SELECT * FROM tbl_Permission order by Category ASC");
 
 		$rows = $this->_DB->getAllRows();
 

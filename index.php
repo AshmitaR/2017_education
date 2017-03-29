@@ -40,7 +40,15 @@ if(isset($page)){
 <body>
 
 <div class="container-fluid" >
-    <div id="header" class="row" style="background-color:LightSteelBlue">
+    <div id="menu" style="background-color:LightSteelBlue">
+            <?php 
+                //do not show the menu for login page
+                if(strcasecmp($page, PageUtil::$LOGIN)!=0)
+                    require 'menu.php'; 
+                
+            ?>
+    </div>
+    <div id="header" >
             <?php 
 
                 //do not show the header for login page
@@ -48,23 +56,14 @@ if(isset($page)){
                 	require 'header.php'; 
             	
             ?>        
-    </div>
-    <div id="menu" class="row">
-        	<?php 
-                //do not show the menu for login page
-                if(strcasecmp($page, PageUtil::$LOGIN)!=0)
-            		require 'menu.php'; 
-        		
-        	?>
-    </div>
-    
-     <div id="content" class="row" style="background-color:AliceBlue" >   
+    </div>    
+     <div id="body" style="background-color:AliceBlue" >   
             <?php 
                 require 'body.php'; 
 
             ?>	                    
    </div>   
-   <div id="footer" class="row" style="background-color:LightSteelBlue">
+   <div id="footer" style="background-color:LightSteelBlue">
         	<?php 
         		require 'footer.php'; 
 

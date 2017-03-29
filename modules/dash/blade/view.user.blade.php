@@ -19,7 +19,7 @@ $globalUser = '';
 if(isset($_POST['save']))
 {
 	 $User = new User();	
-	 $User->setID(Util::getGUID());
+	 $User->setID(strtolower($_DB->secureInput($_POST['txtEmail'])));
      $User->setUniversityID($_DB->secureInput($_POST['txtUniversityID']));
      $User->setEmail($_DB->secureInput($_POST['txtEmail']));
      $User->setPassword($_DB->secureInput($_POST['txtPassword']));

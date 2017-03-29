@@ -13,10 +13,6 @@ $globalUser='';
 $globalPermission='';
 $globalMenu ='';
 
-//TODO: remove all session variables (check whether it works)
-//session_unset(); 
-//TODO: destroy the session (check whether it works)
-//session_destroy();
 
 
 /* loading the user account*/
@@ -65,6 +61,12 @@ if(isset($_POST['login']))
 		echo '<strong>Wrong user name or password</strong>';	
 	}
 	
+}
+
+if(isset($_GET['logout'])){
+	session_unset(); 
+	session_destroy();
+	header("Location:".PageUtil::$LOGIN);		
 }
 
 

@@ -1,24 +1,86 @@
 <Menus>
 
-		<Menu>
-			<ParentMenu></ParentMenu>
-			<Title>Registration</Title>
-			<Permissions>
-				<Permission>COURSE_C</Permission>
-				<Permission>COURSE_R</Permission>
-				<Permission>COURSE_U</Permission>
-				<Permission>COURSE_D</Permission>												
-			</Permissions>			
-		</Menu>
+
+	<Menu>
+		<ParentMenu></ParentMenu>
+		<Title>Administration</Title>
+		<Permissions>
+			<Permission>ROLE_C</Permission>
+			<Permission>ROLE_U</Permission>
+			<Permission>ROLE_D</Permission>	
+			<Permission>PERMISSION_C</Permission>
+			<Permission>PERMISSION_U</Permission>
+			<Permission>PERMISSION_D</Permission>										
+		</Permissions>			
+	</Menu>
 
 		<Menu>
-			<ParentMenu></ParentMenu>
-			<Title>Administration</Title>
+			<ParentMenu>Administration</ParentMenu>
+			<Title>Role Related</Title>
 			<Permissions>
 				<Permission>ROLE_C</Permission>
-				<Permission>PERMISSION_C</Permission>										
-			</Permissions>			
-		</Menu>
+				<Permission>ROLE_U</Permission>
+				<Permission>ROLE_D</Permission>	
+				<Permission>PERMISSION_C</Permission>
+				<Permission>PERMISSION_U</Permission>
+				<Permission>PERMISSION_D</Permission>															
+			</Permissions>
+		</Menu>	
+
+			<Menu>
+				<ParentMenu>Role Related</ParentMenu>
+				<Title>Manage Role</Title>
+				<Link>role.php</Link>
+				<Permissions>
+					<Permission>ROLE_C</Permission>
+					<Permission>ROLE_U</Permission>
+					<Permission>ROLE_D</Permission>
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Role Related</ParentMenu>
+				<Title>Manage Permission</Title>
+				<Link>permission.php</Link>
+				<Permissions>
+					<Permission>PERMISSION_C</Permission>
+					<Permission>PERMISSION_U</Permission>
+					<Permission>PERMISSION_D</Permission>
+				</Permissions>
+			</Menu>
+
+		<Menu>
+			<ParentMenu>Administration</ParentMenu>
+			<Title>User Related</Title>
+			<Permissions>
+				<Permission>USER_C</Permission>
+				<Permission>USER_U</Permission>
+				<Permission>USER_D</Permission>	
+			</Permissions>
+		</Menu>	
+
+			<Menu>
+				<ParentMenu>User Related</ParentMenu>
+				<Title>Manage User</Title>
+				<Link>user.php</Link>
+				<Permissions>
+					<Permission>USER_C</Permission>
+					<Permission>USER_U</Permission>
+					<Permission>USER_D</Permission>
+				</Permissions>
+			</Menu>
+
+	<Menu>
+		<ParentMenu></ParentMenu>
+		<Title>Registration</Title>
+		<Permissions>
+			<Permission>COURSE_C</Permission>
+			<Permission>COURSE_R</Permission>
+			<Permission>COURSE_U</Permission>
+			<Permission>COURSE_D</Permission>												
+		</Permissions>			
+	</Menu>
+
 
 		<Menu>
 			<ParentMenu>Registration</ParentMenu>
@@ -29,54 +91,29 @@
 				<Permission>COURSE_U</Permission>
 				<Permission>COURSE_D</Permission>												
 			</Permissions>
-		</Menu>		
-
-		<Menu>
-			<ParentMenu>Administration</ParentMenu>
-			<Title>Role Related</Title>
-			<Permissions>
-				<Permission>ROLE_C</Permission>
-				<Permission>ROLE_R</Permission>
-				<Permission>ROLE_U</Permission>
-				<Permission>ROLE_D</Permission>												
-			</Permissions>
 		</Menu>	
 
 		<Menu>
 			<ParentMenu>Course Related</ParentMenu>
 			<Title>Create Course</Title>
-			<Link>/view.course.php</Link>
+			<Link>#</Link>
 			<Permissions>
 				<Permission>COURSE_C</Permission>
+				<Permission>COURSE_U</Permission>
+				<Permission>COURSE_D</Permission>				
 			</Permissions>
 		</Menu>
 
 		<Menu>
 			<ParentMenu>Course Related</ParentMenu>
 			<Title>Create Student</Title>
-			<Link>/view.user.php</Link>
+			<Link>user.php</Link>
 			<Permissions>
 				<Permission>USER_C</Permission>
+				<Permission>USER_U</Permission>
+				<Permission>USER_D</Permission>								
 			</Permissions>
 		</Menu>
 
-		<Menu>
-			<ParentMenu>Role Related</ParentMenu>
-			<Title>Create Role</Title>
-			<Link>/view.role.php</Link>
-			<Permissions>
-				<Permission>ROLE_C</Permission>
-			</Permissions>
-		</Menu>
-
-		<Menu>
-			<ParentMenu>Role Related</ParentMenu>
-			<Title>Create Permission</Title>
-			<Link>/view.permission.php</Link>
-			<Permissions>
-				<Permission>ROLE_C</Permission>				
-				<Permission>PERMISSION_C</Permission>
-			</Permissions>
-		</Menu>
 
 </Menus>

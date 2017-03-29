@@ -1,6 +1,7 @@
 <?php
 
-include_once '/../../../common/class.common.php'; //very important include in every new page before using session globaluser
+include_once '/../../../common/class.common.php'; 
+//very important include in every new page before using session globaluser
 
 
 
@@ -160,7 +161,9 @@ function print_dashboard_body_tab($globalMenu){
 
 					$thirdLayer  = '<div>' ;
 
-					$thirdLayer = $thirdLayer.$globalMenu[$i]->_Child[$j]->_Child[$k]->getTitle();
+					$thirdLayer = $thirdLayer.'<a href="'.
+								  $globalMenu[$i]->_Child[$j]->_Child[$k]->getLink().'">'.
+								  $globalMenu[$i]->_Child[$j]->_Child[$k]->getTitle().'</a>';
 															
 					$thirdLayer = $thirdLayer .'</div>';
 					$secondLayer  = $secondLayer  . $thirdLayer;

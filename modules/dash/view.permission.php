@@ -39,9 +39,6 @@ include_once '/../../common/class.common.php';
 		</script>
 
 <center>
-	<div id="header">
-		<label>By : Kazi Masudul Alam</a></label>
-	</div>
 
 	<div id="form">
 		<form method="post" name="formPermissions">
@@ -60,6 +57,8 @@ include_once '/../../common/class.common.php';
 							if($Result->getIsSuccess()){
 
 								$Roles = $Result->getResultObject();
+
+								$var = $var.'<option value="select">Select</option>';
 							
 						       for ($i=0; $i < sizeof($Roles); $i++) { 
 						       		
@@ -104,16 +103,16 @@ include_once '/../../common/class.common.php';
 								
 								//building all the permission block
 						       for ($i=0; $i < sizeof($Permissions); ) { 
-
+						       		//selecting one category
 						       		$Permission = $Permissions[$i];
 						       		$var = $var.'<tr>';
 						       		$var = $var.'<td>'.$Permission->getCategory().'</td>';
 
 						       		$j=$i;
-
+						       		//printing related categories	
 						       		for ( ; $j < sizeof($Permissions)  ; $j++) { 
 
-						       			if(!strcmp($Permissions[$i]->getCategory(), $Permissions[$j]->getCategory())){
+						       			if(!strcasecmp($Permissions[$i]->getCategory(), $Permissions[$j]->getCategory())){
 
 						    				$var = $var.'<td><input type="checkbox" name="selectedPermissions[]" 
 						    					value="'.$Permissions[$j]->getID().'" 
