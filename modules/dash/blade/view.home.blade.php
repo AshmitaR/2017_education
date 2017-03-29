@@ -30,7 +30,8 @@ if (isset($_SESSION["globalMenu"])){
 }
 
 
-function print_menu_vertical($globalMenu){
+//build dashboard link access vertically
+function print_dashboard_vertical($globalMenu){
 
 
 	$superLayer ='<table><tr><td>Options</td></tr>';
@@ -95,7 +96,8 @@ function print_menu_vertical($globalMenu){
 	return $superLayer;
 }
 
-function print_dashboard_body_collapse($globalMenu){
+// build dashboard body as a tab
+function print_dashboard_body_tab($globalMenu){
 
 
 	$superLayer = '<ul class="nav nav-tabs">';

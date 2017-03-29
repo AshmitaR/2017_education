@@ -10,7 +10,7 @@ include_once 'blade/view.home.blade.php';
 
 <?php
 			if(isset($globalMenu)){
-				echo print_dashboard_body_collapse($globalMenu);
+				echo print_dashboard_body_tab($globalMenu);
 			}
 
 

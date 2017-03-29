@@ -1,5 +1,3 @@
-<table>
-	<tr>
-			<td> Footer </td>
-	</tr>
-</table>
+ <div class="col-sm-12">   
+        	Footer
+</div>

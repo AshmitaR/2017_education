@@ -2,6 +2,25 @@
 
 include_once '/common/class.common.php';
 
+// start session always
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+$_URI = $_SERVER['REQUEST_URI'];
+
+//finding the page 
+$page = unparse_url(parse_url($_URI));
+
+if(isset($page)){
+    //TODO: check whether middleware application is active
+    //apply middleware 
+    $page = apply_middleware($page);
+}
+
+//store current page in the session
+ $_SESSION['globalPage']=$page;
+
 ?>
 
 
@@ -9,9 +28,10 @@ include_once '/common/class.common.php';
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Home Page</title>
-        <link rel="stylesheet" href="resources/css/style.css" type="text/css" />
         <link rel="stylesheet" href="resources/css/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/css/style.css" type="text/css" />        
         <script src="resources/js/jquery.min.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
         <script src="resources/js/myscript.js"></script>                
@@ -19,35 +39,36 @@ include_once '/common/class.common.php';
 
 <body>
 
-<div class="container-fluid">
-    <div id="header" class="row">
-        <div class="col-sm-12">
+<div class="container-fluid" >
+    <div id="header" class="row" style="background-color:LightSteelBlue">
             <?php 
-            	require 'header.php'; 
+
+                //do not show the header for login page
+                if(strcasecmp($page, PageUtil::$LOGIN)!=0)
+                	require 'header.php'; 
             	
-            ?>
-        </div>    
+            ?>        
     </div>
     <div id="menu" class="row">
         	<?php 
-        		require 'menu.php'; 
+                //do not show the menu for login page
+                if(strcasecmp($page, PageUtil::$LOGIN)!=0)
+            		require 'menu.php'; 
         		
         	?>
     </div>
     
-     <div id="content" class="row">   
+     <div id="content" class="row" style="background-color:AliceBlue" >   
             <?php 
                 require 'body.php'; 
 
             ?>	                    
    </div>   
-   <div id="footer" class="row">
-        <div class="col-sm-12">   
+   <div id="footer" class="row" style="background-color:LightSteelBlue">
         	<?php 
         		require 'footer.php'; 
 
         	?>
-        </div>
     </div> 
 </div>    
 </body>

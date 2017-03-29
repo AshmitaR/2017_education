@@ -945,23 +945,31 @@ class MiddlewareUtil{
         //extracting the page name such as user.php from the url
         $page = substr($path, strrpos($path,'/')+1,strrpos($path,'.php')-strrpos($path,'/')+strlen('.php'));
 
+        return $page;
+        //return "$scheme$user$pass$host$port$path$query$fragment"; 
+} 
+
+
+//applying middleware such as login.php comes before home.php
+    function apply_middleware($page) { 
+     
         // checking whtether there is any middleware     
         $page=MiddlewareUtil::get($page);   
 
+        return $page;
+         
+    }
+
+//finding different partse of an url
+    function apply_routing(&$page) { 
+     
         //looking for the extracted page in the route list
-        $new_page=RouteUtil::get($page);
+        $page=RouteUtil::get($page);
 
-        //TODO:: just a hack, should be removed
-        if (session_status() == PHP_SESSION_NONE) {
-            session_start();
-        }
+        return true;
+    }
 
-        $_SESSION['globalPage']=$page;
 
-        //$path=str_replace('/'.$page, $new_page, $path);
-        return $new_page;
-        //return "$scheme$user$pass$host$port$path$query$fragment"; 
-    } 
 
 
 MiddlewareUtil::getInstance();
