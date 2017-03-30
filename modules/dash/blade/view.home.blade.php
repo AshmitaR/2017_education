@@ -109,14 +109,15 @@ function print_dashboard_body_tab($globalMenu){
 		// if the first layer is visible then go inside -- build table row by row for the category
 		if($globalMenu[$i]->isVisible()){ 
 			
+			$tabID = str_replace(" ","_",$globalMenu[$i]->getTitle());
 			//make the first one active		
 			if($i==0){
 			$superLayer = $superLayer.'<li class="active"><a data-toggle="tab" href="#'.
-						$globalMenu[$i]->getTitle().'">'.$globalMenu[$i]->getTitle().'</a></li>';
+						$tabID.'">'.$globalMenu[$i]->getTitle().'</a></li>';
 			}
 			else{
 			$superLayer = $superLayer.'<li><a data-toggle="tab" href="#'.
-						$globalMenu[$i]->getTitle().'">'.$globalMenu[$i]->getTitle().'</a></li>';
+						$tabID.'">'.$globalMenu[$i]->getTitle().'</a></li>';
 			}
 		}				
 	}
@@ -133,12 +134,14 @@ function print_dashboard_body_tab($globalMenu){
 
 		// if the first layer is visible then go inside -- build table row by row for the category
 		if($globalMenu[$i]->isVisible()){ 
-		
+			
+			$tabID = str_replace(" ","_",$globalMenu[$i]->getTitle());
+
 			if($i==0){
-			$firstLayer  = '<div id="'.$globalMenu[$i]->getTitle().'" class="tab-pane fade in active">';
+			$firstLayer  = '<div id="'.$tabID.'" class="tab-pane fade in active">';
 			}
 			else{
-			$firstLayer  = '<div id="'.$globalMenu[$i]->getTitle().'" class="tab-pane fade">';
+			$firstLayer  = '<div id="'.$tabID.'" class="tab-pane fade">';
 			}
 			
 		

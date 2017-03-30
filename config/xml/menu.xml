@@ -78,6 +78,9 @@
 			<Permission>COURSE_R</Permission>
 			<Permission>COURSE_U</Permission>
 			<Permission>COURSE_D</Permission>												
+			<Permission>USER_C</Permission>
+			<Permission>USER_U</Permission>
+			<Permission>USER_D</Permission>								
 		</Permissions>			
 	</Menu>
 
@@ -93,27 +96,72 @@
 			</Permissions>
 		</Menu>	
 
-		<Menu>
-			<ParentMenu>Course Related</ParentMenu>
-			<Title>Create Course</Title>
-			<Link>#</Link>
-			<Permissions>
-				<Permission>COURSE_C</Permission>
-				<Permission>COURSE_U</Permission>
-				<Permission>COURSE_D</Permission>				
-			</Permissions>
-		</Menu>
+			<Menu>
+				<ParentMenu>Course Related</ParentMenu>
+				<Title>Manage Course</Title>
+				<Link>#</Link>
+				<Permissions>
+					<Permission>COURSE_C</Permission>
+					<Permission>COURSE_U</Permission>
+					<Permission>COURSE_D</Permission>				
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Course Related</ParentMenu>
+				<Title>Create Student</Title>
+				<Link>user.php</Link>
+				<Permissions>
+					<Permission>USER_C</Permission>
+					<Permission>USER_U</Permission>
+					<Permission>USER_D</Permission>								
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Course Related</ParentMenu>
+				<Title>Manage Registration</Title>
+				<Link>#</Link>
+				<Permissions>
+					<Permission>REGISTRATION_C</Permission>
+					<Permission>REGISTRATION_R</Permission>
+					<Permission>REGISTRATION_U</Permission>
+					<Permission>REGISTRATION_D</Permission>												
+				</Permissions>
+			</Menu>
+
+	<Menu>
+		<ParentMenu></ParentMenu>
+		<Title>Student Center</Title>
+		<Permissions>
+			<Permission>DISCUSSION_C</Permission>
+			<Permission>DISCUSSION_R</Permission>
+			<Permission>DISCUSSION_U</Permission>
+			<Permission>DISCUSSION_D</Permission>												
+		</Permissions>			
+	</Menu>
 
 		<Menu>
-			<ParentMenu>Course Related</ParentMenu>
-			<Title>Create Student</Title>
-			<Link>user.php</Link>
+			<ParentMenu>Student Center</ParentMenu>
+			<Title>Discussion Topic</Title>
 			<Permissions>
-				<Permission>USER_C</Permission>
-				<Permission>USER_U</Permission>
-				<Permission>USER_D</Permission>								
+				<Permission>DISCUSSION_C</Permission>
+				<Permission>DISCUSSION_R</Permission>
+				<Permission>DISCUSSION_U</Permission>
+				<Permission>DISCUSSION_D</Permission>												
 			</Permissions>
 		</Menu>
+			<Menu>
+				<ParentMenu>Discussion Topic</ParentMenu>
+				<Title>Manage Discussion</Title>
+				<Link>#</Link>
+				<Permissions>
+					<Permission>DISCUSSION_C</Permission>
+					<Permission>DISCUSSION_R</Permission>
+					<Permission>DISCUSSION_U</Permission>
+					<Permission>DISCUSSION_D</Permission>
+				</Permissions>
+			</Menu>
 
 
 </Menus>
