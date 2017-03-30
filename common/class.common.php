@@ -768,6 +768,7 @@ class PageUtil{
     public static $CLUB_MODULE='club_module.php';
 
     public static $COURSE='course.php';
+    public static $COURSE_TYPE='course_type.php';
 
     public static $DISCIPLINE='discipline.php';
     public static $DISCUSSION='discussion.php';
@@ -818,31 +819,31 @@ class RouteUtil{
 
         //add new page and routing address here always
 
-         self::$s_Routes[PageUtil::$CLUB]       =   "/modules/club/view.club.php";
-         self::$s_Routes[PageUtil::$CLUB_EXECUTIVE]       =   "/modules/club/view.club_executive.php";
-         self::$s_Routes[PageUtil::$CLUB_MODULE]       =   "/modules/club/view.club_module.php";
+         self::$s_Routes[PageUtil::$CLUB]       =   "/modules/club/ui/view.club.php";
+         self::$s_Routes[PageUtil::$CLUB_EXECUTIVE]       =   "/modules/club/ui/view.club_executive.php";
+         self::$s_Routes[PageUtil::$CLUB_MODULE]       =   "/modules/club/ui/view.club_module.php";
 
-         self::$s_Routes[PageUtil::$DISCIPLINE]       =   "/modules/dash/view.discipline.php";
+         self::$s_Routes[PageUtil::$DISCIPLINE]       =   "/modules/dashboard/ui/view.discipline.php";
 
-         self::$s_Routes[PageUtil::$HOME]             =   "/modules/dash/view.home.php";
+         self::$s_Routes[PageUtil::$HOME]             =   "/modules/dashboard/ui/view.home.php";
 
-         self::$s_Routes[PageUtil::$LOGIN]            =   "/modules/dash/view.login.php";
+         self::$s_Routes[PageUtil::$LOGIN]            =   "/modules/dashboard/ui/view.login.php";
 
-         self::$s_Routes[PageUtil::$PERMISSION]       =   "/modules/dash/view.permission.php";
-         self::$s_Routes[PageUtil::$POSITION]         =   "/modules/dash/view.position.php";
+         self::$s_Routes[PageUtil::$PERMISSION]       =   "/modules/dashboard/ui/view.permission.php";
+         self::$s_Routes[PageUtil::$POSITION]         =   "/modules/dashboard/ui/view.position.php";
 
-         self::$s_Routes[PageUtil::$ROLE]             =   "/modules/dash/view.role.php";
+         self::$s_Routes[PageUtil::$ROLE]             =   "/modules/dashboard/ui/view.role.php";
 
-         self::$s_Routes[PageUtil::$SCHOOL]           =   "/modules/dash/view.school.php";
+         self::$s_Routes[PageUtil::$SCHOOL]           =   "/modules/dashboard/ui/view.school.php";
 
-         self::$s_Routes[PageUtil::$TERM]             =   "/modules/regs/view.term.php";
+         self::$s_Routes[PageUtil::$TERM]             =   "/modules/dashboard/ui/view.term.php";
 
-         self::$s_Routes[PageUtil::$USER]             =   "/modules/dash/view.user.php";
+         self::$s_Routes[PageUtil::$USER]             =   "/modules/dashboard/ui/view.user.php";
 
         //the page not found will redirect to error page
-         self::$s_Routes[PageUtil::$ERROR]            =   "/modules/dash/view.error.php";
+         self::$s_Routes[PageUtil::$ERROR]            =   "/modules/dashboard/ui/view.error.php";
 
-         self::$s_Routes[PageUtil::$FEEDBACK]            =   "/modules/feed/view.feedback.php";
+         self::$s_Routes[PageUtil::$FEEDBACK]            =   "/modules/survey/view.feedback.php";
 
     }
 
