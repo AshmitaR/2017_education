@@ -8,7 +8,7 @@ include_once './common/class.common.php';
 
 <center>
     <div id="form">
-        <table width="100%" border="1" cellpadding="15">
+        <table calss="table table-bordered">
             <tr>
                 <form method="post">
                     <td>

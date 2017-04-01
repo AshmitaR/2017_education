@@ -44,7 +44,7 @@ if(isset($page)){
             <?php 
                 //do not show the menu for login page
                 if(strcasecmp($page, PageUtil::$LOGIN)!=0)
-                    require 'menu.php'; 
+                    require 'template\basic\menu.php'; 
                 
             ?>
     </div>
@@ -53,19 +53,19 @@ if(isset($page)){
 
                 //do not show the header for login page
                 if(strcasecmp($page, PageUtil::$LOGIN)!=0)
-                	require 'header.php'; 
+                	require 'template\basic\header.php'; 
             	
             ?>        
     </div>    
      <div id="body" style="background-color:AliceBlue" >   
             <?php 
-                require 'body.php'; 
+                require 'template\basic\body.php'; 
 
             ?>	                    
    </div>   
    <div id="footer" style="background-color:LightSteelBlue">
         	<?php 
-        		require 'footer.php'; 
+        		require 'template\basic\footer.php'; 
 
         	?>
     </div> 

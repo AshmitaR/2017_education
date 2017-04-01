@@ -9,7 +9,7 @@ include_once './common/class.common.php';
 
 	<div id="form">
 		<form method="post">
-			<table width="100%" border="1" cellpadding="15">
+			<table class="table table-bordered">
 				<tr>
 					<td><input type="text" name="txtUniversityID" placeholder="University Identity" value="<?php 
 					if(isset($_GET['edit'])) echo $globalUser->getUniversityID();  ?>" /></td>
@@ -124,7 +124,7 @@ include_once './common/class.common.php';
 
 <br />
 
-	<table width="100%" border="1" cellpadding="15" align="center">
+	<table class="table table-bordered">
 	<?php
 	
 	
@@ -136,11 +136,11 @@ include_once './common/class.common.php';
 		$UserList = $Result->getResultObject();
 	?>
 		<tr>
-			<td>University ID</td>
-			<td>Email</td>
-			<td>Password</td>
-			<td>First Name</td>
-			<td>Last Name</td>
+			<th>University ID</th>
+			<th>Email</th>
+			<th>Password</th>
+			<th>First Name</th>
+			<th>Last Name</th>
 		</tr>
 		<?php
 		for($i = 0; $i < sizeof($UserList); $i++) {
