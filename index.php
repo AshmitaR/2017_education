@@ -2,6 +2,8 @@
 
 include_once '/common/class.common.php';
 
+$template_link='template/basic/';
+
 // start session always
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -16,6 +18,11 @@ if(isset($page)){
     //TODO: check whether middleware application is active
     //apply middleware 
     $page = apply_middleware($page);
+}
+
+//if does not match with the stored one then this is a new page
+if(isset($_SESSION['globalPage'])&&strcasecmp($_SESSION['globalPage'],$page)!=0){
+    $_SESSION['previousPage']=$_SESSION['globalPage'];
 }
 
 //store current page in the session
@@ -40,35 +47,35 @@ if(isset($page)){
 <body>
 
 <div class="container-fluid" >
-    <div id="menu" style="background-color:LightSteelBlue">
+    
             <?php 
                 //do not show the menu for login page
                 if(strcasecmp($page, PageUtil::$LOGIN)!=0)
-                    require 'template\basic\menu.php'; 
+                    require $template_link.'menu.php'; 
                 
             ?>
-    </div>
-    <div id="header" >
+    
+    
             <?php 
 
                 //do not show the header for login page
                 if(strcasecmp($page, PageUtil::$LOGIN)!=0)
-                	require 'template\basic\header.php'; 
+                	require $template_link.'header.php'; 
             	
             ?>        
-    </div>    
-     <div id="body" style="background-color:AliceBlue" >   
+      
+      
             <?php 
-                require 'template\basic\body.php'; 
+                require $template_link.'body.php'; 
 
             ?>	                    
-   </div>   
-   <div id="footer" style="background-color:LightSteelBlue">
+     
+  
         	<?php 
-        		require 'template\basic\footer.php'; 
+        		require $template_link.'footer.php'; 
 
         	?>
-    </div> 
+ 
 </div>    
 </body>
 </html>

@@ -5,36 +5,40 @@ include_once './common/class.common.php';
 
 ?>
 
+<div id="form">
+  
+  <div class="panel panel-default">
+    
+    <div class="panel-heading">Member Login</div>
+    
+    <div class="panel-body">
+  
+        <form method="post" class="form-horizontal">
 
-<center>
-    <div id="form">
-        <table calss="table table-bordered">
-            <tr>
-                <form method="post">
-                    <td>
-                        <table width="100%" border="0" cellpadding="3" >
-                            <tr>
-                                <td colspan="3"><strong>Member Login </strong></td>
-                            </tr>
-                            <tr>
-                                <td width="78">User Name (Email)</td>
-                                <td width="6">::</td>
-                                <td width="294"><input name="txtEmail" type="text" id="txtEmail"></td>
-                            </tr>
-                            <tr>
-                                <td>Password</td>
-                                <td>::</td>
-                                <td><input name="txtPassword" type="password" id="txtPassword"></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td><input type="submit" name="login" value="Login"></td>
-                            </tr>
-                        </table>
-                    </td>
-                </form>
-            </tr>
-        </table>
-    </div>    
-</center>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="txtEmail">Email:</label>
+              <div class="col-sm-10">
+                    <input type="email" class="form-control" name="txtEmail" id="txtEmail" placeholder="Enter Email">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="txtPassword">Password:</label>
+              <div class="col-sm-10">          
+                <input type="password" class="form-control" name="txtPassword" id="txtPassword" placeholder="Enter password">
+              </div>
+            </div>
+
+            <div class="form-group">        
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="login" value="login" class="btn btn-default">Login</button>
+              </div>
+            </div>                
+
+        </form>
+
+    </div>
+
+ </div>
+    
+</div>    

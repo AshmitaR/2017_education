@@ -40,22 +40,32 @@ if (isset($_SESSION["globalPage"])){
   	
 }
 
-//print the top menu
-if(isset($globalMenu)){
-	
-	//buiding menu layout, first part menu, next part user logout menu
+?>
 
-	$menu_content = 	'<div class="dropdown"><div class="row">';
-	$menu_content = 	$menu_content.'<div class="col-sm-11">';
-	$menu_content = 	$menu_content.print_top_menu($globalMenu);
-	$menu_content = 	$menu_content.'</div>';
-	$menu_content = 	$menu_content.'<div class="col-sm-1">'.$logoutMenu;
-	$menu_content = 	$menu_content.'</div>';
-	$menu_content = 	$menu_content.'</div></div>';
-	
-	echo $menu_content; 
-}
+	<div id="menu" style="background-color:LightSteelBlue">
+	            
+			<?php
 
+			//print the top menu
+			if(isset($globalMenu)){
+				
+				//buiding menu layout, first part menu, next part user logout menu
+
+				$menu_content = 	'<div class="dropdown"><div class="row">';
+				$menu_content = 	$menu_content.'<div class="col-sm-11">';
+				$menu_content = 	$menu_content.print_top_menu($globalMenu);
+				$menu_content = 	$menu_content.'</div>';
+				$menu_content = 	$menu_content.'<div class="col-sm-1">'.$logoutMenu;
+				$menu_content = 	$menu_content.'</div>';
+				$menu_content = 	$menu_content.'</div></div>';
+				
+				echo $menu_content; 
+			}
+
+			?>
+	</div>
+
+<?php
 function print_top_logout_menu($CurrentUser){
 
    $logout_content = '<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">'.
