@@ -25,7 +25,7 @@ if(isset($_GET['del']))
 	$School->setID($_GET['del']);	
 	$_SchoolBAO->deleteSchool($School); //reading the School object from the result object
 
-	header("Location: view.school.php");
+	header("Location:".PageUtil::$SCHOOL);
 }
 
 
@@ -34,7 +34,8 @@ if(isset($_GET['edit']))
 {
 	$School = new School();	
 	$School->setID($_GET['edit']);	
-	$getROW = $_SchoolBAO->readSchool($School)->getResultObject(); //reading the School object from the result object
+	$getROW = $_SchoolBAO->readSchool($School)->getResultObject(); 
+	//reading the School object from the result object
 }
 
 /*updating an existing School information*/
@@ -47,7 +48,7 @@ if(isset($_POST['update']))
 	
 	$_SchoolBAO->updateSchool($School);
 
-	header("Location: view.school.php");
+	header("Location:".PageUtil::$SCHOOL);
 }
 
 

@@ -5,36 +5,59 @@ include_once './common/class.common.php';
 
 ?>
 
-<center>
+<div class="panel panel-default">
+    
+    <div class="panel-heading">User Information</div>
+    
+    <div class="panel-body">
 
 	<div id="form">
-		<form method="post">
-			<table class="table table-bordered">
-				<tr>
-					<td><input type="text" name="txtUniversityID" placeholder="University Identity" value="<?php 
-					if(isset($_GET['edit'])) echo $globalUser->getUniversityID();  ?>" /></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="txtEmail" placeholder="Email Address" value="<?php 
-					if(isset($_GET['edit'])) echo $globalUser->getEmail();  ?>" /></td>
-				</tr>
-				<tr>
-					<td><input type="password" name="txtPassword" placeholder="Password" value="<?php 
-					if(isset($_GET['edit'])) echo $globalUser->getPassword();  ?>" /></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="txtFirstName" placeholder="First Name" value="<?php 
-					if(isset($_GET['edit'])) echo $globalUser->getFirstName();  ?>" /></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="txtLastName" placeholder="Last Name" value="<?php 
-					if(isset($_GET['edit'])) echo $globalUser->getLastName();  ?>" /></td>
-				</tr>
-				<tr>
-					<td>
-							<label>Assigned Roles:: </label>
-						    
+		<form method="post" class="form-horizontal">
 
+			<div class="form-group">
+              	<label class="control-label col-sm-2" for="txtUniversityID">University ID:</label>
+              	<div class="col-sm-10">
+              	<input type="text" name="txtUniversityID" placeholder="University Identity" value="<?php 
+					if(isset($_GET['edit'])) echo $globalUser->getUniversityID();  ?>" />
+			  	</div>
+			</div>
+			  
+			<div class="form-group">
+              	<label class="control-label col-sm-2" for="txtEmail">Email:</label>
+              	<div class="col-sm-10">
+			  	<input type="email" name="txtEmail" placeholder="Email Address" value="<?php 
+					if(isset($_GET['edit'])) echo $globalUser->getEmail();  ?>" />
+
+			  	</div>
+			</div>
+			
+			<div class="form-group">
+              	<label class="control-label col-sm-2" for="txtPassword">Password:</label>
+              	<div class="col-sm-10">  		
+				<input type="password" name="txtPassword" placeholder="Password" value="<?php 
+					if(isset($_GET['edit'])) echo $globalUser->getPassword();  ?>" />
+				</div>
+			</div>
+
+			<div class="form-group">
+              	<label class="control-label col-sm-2" for="txtFirstName">First Name:</label>
+              	<div class="col-sm-10">  		
+				<input type="text" name="txtFirstName" placeholder="First Name" value="<?php 
+					if(isset($_GET['edit'])) echo $globalUser->getFirstName();  ?>" />
+				</div>
+			</div>
+
+			<div class="form-group">
+              	<label class="control-label col-sm-2" for="txtLastName">First Name:</label>
+              	<div class="col-sm-10">	
+				<input type="text" name="txtLastName" placeholder="Last Name" value="<?php 
+					if(isset($_GET['edit'])) echo $globalUser->getLastName();  ?>" />
+				</div>
+			</div>
+			<div class="form-group">
+              	<label class="control-label col-sm-2" for="assignedRoles">Assigned Roles:</label>
+              	<div class="col-sm-10">		
+						   
 						    <?php
 						    // this block of code prints the list box of roles with current assigned  roles
 
@@ -63,13 +86,12 @@ include_once './common/class.common.php';
 							}
 							echo $var;
 							?>	
-					</td>
-				</tr>
-				<tr>
-					<td>
-							<label>Assigned Positions:: </label>
-						    
-
+				</div>
+			</div>
+			<div class="form-group">
+              	<label class="control-label col-sm-2" for="assignedPositions">Assigned Positions:</label>
+              	<div class="col-sm-10">		
+			
 						    <?php
 						    // this block of code prints the list box of Positions with current assigned  Positions
 
@@ -98,28 +120,27 @@ include_once './common/class.common.php';
 							}
 							echo $var;
 							?>	
-					</td>
-				</tr>	
-
-				<tr>
-					<td>
+				</div>
+			</div>
+	        <div class="form-group">        
+              <div class="col-sm-offset-2 col-sm-10">
+    
 						<?php
 						if(isset($_GET['edit']))
 						{
 							?>
-							<button type="submit" name="update">update</button>
+							<button type="submit" value="update" name="update">update</button>
 							<?php
 						}
 						else
 						{
 							?>
-							<button type="submit" name="save">save</button>
+							<button type="submit" value="save" name="save">save</button>
 							<?php
 						}
 						?>
-					</td>
-				</tr>
-			</table>
+			    </div>
+            </div> 
 		</form>
 
 <br />
@@ -168,4 +189,6 @@ include_once './common/class.common.php';
 	?>
 	</table>
 	</div>
-</center>
+</div>
+</div>
+

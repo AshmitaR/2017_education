@@ -25,7 +25,7 @@ if(isset($_GET['del']))
 	$Role->setID($_GET['del']);	
 	$_RoleBAO->deleteRole($Role); //reading the Role object from the result object
 
-	header("Location: role.php");
+	header("Location:".PageUtil::$ROLE);
 }
 
 
@@ -47,7 +47,7 @@ if(isset($_POST['update']))
 	
 	$_RoleBAO->updateRole($Role);
 
-	header("Location: view.role.php");
+	header("Location:".PageUtil::$ROLE);
 }
 
 

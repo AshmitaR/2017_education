@@ -41,7 +41,7 @@ if(isset($_SESSION['globalPage'])&&strcasecmp($_SESSION['globalPage'],$page)!=0)
         <link rel="stylesheet" href="resources/css/style.css" type="text/css" />        
         <script src="resources/js/jquery.min.js"></script>
         <script src="resources/js/bootstrap.min.js"></script>
-        <script src="resources/js/myscript.js"></script>                
+        <script src="resources/js/myscript.js"></script>                               
     </head>
 
 <body>

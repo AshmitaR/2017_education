@@ -25,7 +25,7 @@ if(isset($_GET['del']))
 	$Term->setID($_GET['del']);	
 	$_TermBAO->deleteTerm($Term); //reading the Term object from the result object
 
-	header("Location: view.term.php");
+	header("Location:".PageUtil::$TERM);
 }
 
 
@@ -47,7 +47,7 @@ if(isset($_POST['update']))
 	
 	$_TermBAO->updateTerm($Term);
 
-	header("Location: view.term.php");
+	header("Location:".PageUtil::$TERM);
 }
 
 

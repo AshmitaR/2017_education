@@ -25,7 +25,7 @@ if(isset($_GET['del']))
 	$Discipline->setID($_GET['del']);	
 	$_DisciplineBAO->deleteDiscipline($Discipline); //reading the Discipline object from the result object
 
-	header("Location: view.discipline.php");
+	header("Location:".PageUtil::$DISCIPLINE);
 }
 
 
@@ -47,7 +47,7 @@ if(isset($_POST['update']))
 	
 	$_DisciplineBAO->updateDiscipline($Discipline);
 
-	header("Location: view.discipline.php");
+	header("Location:".PageUtil::$DISCIPLINE);
 }
 
 

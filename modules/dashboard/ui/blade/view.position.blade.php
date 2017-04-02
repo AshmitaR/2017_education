@@ -25,7 +25,7 @@ if(isset($_GET['del']))
 	$Position->setID($_GET['del']);	
 	$_PositionBAO->deletePosition($Position); //reading the Position object from the result object
 
-	header("Location: view.position.php");
+	header("Location:".PageUtil::$POSITION);
 }
 
 
@@ -47,7 +47,7 @@ if(isset($_POST['update']))
 	
 	$_PositionBAO->updatePosition($Position);
 
-	header("Location: view.position.php");
+	header("Location:".PageUtil::$POSITION);
 }
 
 

@@ -1,4 +1,4 @@
-<div id="body" style="background-color:AliceBlue" >  
+<div id="body" style="background-color:AliceBlue">  
 	<div class="row">
 		<div class="col-sm-12">
 			<?php
