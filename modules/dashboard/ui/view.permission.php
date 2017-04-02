@@ -38,16 +38,17 @@ include_once './common/class.common.php';
 
 		</script>
 
-<center>
+	<div class="panel panel-default">
+    
+    <div class="panel-heading">Position Information</div>
+    
+    <div class="panel-body">
 
 	<div id="form">
-		<form method="post" name="formPermissions">
-			<table width="100%" border="1" cellpadding="15">
-				<tr>
-					<td>
-							<label>Available Roles:: </label>
-						    
 
+		<form method="post" class="form-horizontal" name="formPermissions">
+					<div class="form-group">
+		              	<label class="control-label col-sm-2" for="selectedRole">Available Roles:</label>		 <div class="col-sm-10">   
 						    <?php
 						    // this block of code prints the list box of roles with current assigned  roles
 						    //window.location.href+=\'?edit=\'+this.value;
@@ -78,21 +79,22 @@ include_once './common/class.common.php';
 							}
 							echo $var;
 							?>	
-					</td>
-				</tr>
-				<tr>
-					<td>
+						</div>	
+					</div>
+					
+					<div class="form-group">        
+	              		<div class="col-sm-10">	
 						
 						    <?php
 						    // this block of code prints the checkbox of permissions
-						    $var='<table>';
+						    $var='<table class="table table-bordered">';
 
 						    $var=$var.'<tr>';
-						    $var=$var.'<td>Permissions</td>';
-						    $var=$var.'<td>Create</td>';
-						    $var=$var.'<td>Read</td>';
-						    $var=$var.'<td>Update</td>';
-						    $var=$var.'<td>Delete</td>';
+						    $var=$var.'<th>Permissions</th>';
+						    $var=$var.'<th>Create</th>';
+						    $var=$var.'<th>Read</th>';
+						    $var=$var.'<th>Update</th>';
+						    $var=$var.'<th>Delete</th>';
 						    $var=$var.'</tr>';
 						    $Result = $_RoleBAO->getAllPermissions();
 
@@ -142,34 +144,28 @@ include_once './common/class.common.php';
 
 						    echo $var;
 						    ?>
-					</td>
-				</tr>
-				<tr>
-					<table>
-						<tr>
-							<td>
-									<input type="button" name="checkAll" onclick="SetAllCheckBoxes('formPermissions', 'selectedPermissions[]', true);" value="Check All"/> 
-							</td>
-							<td>
-									<input type="button" name="uncheckAll" onclick="SetAllCheckBoxes('formPermissions', 'selectedPermissions[]', false);" value="Uncheck All"/> 
-							</td>
-						</tr>
-					</table>
-				</tr>
-				<tr>
-					<td>		
+						</div>	
+					</div>	    
 
+					<div class="form-group">        
+	              		<div class="col-sm-5">	
+				
+									<input type="button" name="checkAll" onclick="SetAllCheckBoxes('formPermissions', 'selectedPermissions[]', true);" value="Check All"/> 
+						</div>		
+						<div class="col-sm-5">		
+									<input type="button" name="uncheckAll" onclick="SetAllCheckBoxes('formPermissions', 'selectedPermissions[]', false);" value="Uncheck All"/> 
+						</div>
+					</div>
+					<div class="form-group">        
+	              		<div class="col-sm-10">	
 							<button type="submit" name="save">save</button>
 
-					</td>
-				</tr>
-			</table>
+						</div>
+					</div>	
 		</form>
 
-<br />
-
-	<table width="100%" border="1" cellpadding="15" align="center">
-	
-	</table>
 	</div>
-</center>
+	</div>
+	</div>
+
+

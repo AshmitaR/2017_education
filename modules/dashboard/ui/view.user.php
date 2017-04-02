@@ -143,7 +143,10 @@ include_once './common/class.common.php';
             </div> 
 		</form>
 
-<br />
+	</div>
+	</div>
+
+	<div class="panel-body">
 
 	<table class="table table-bordered">
 	<?php
@@ -189,6 +192,6 @@ include_once './common/class.common.php';
 	?>
 	</table>
 	</div>
-</div>
+
 </div>
 

@@ -4,29 +4,25 @@ include_once 'blade/view.term.blade.php';
 include_once './common/class.common.php';
 
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Term CRUD Operations</title>
-		<link rel="stylesheet" href="style.css" type="text/css" />
-	</head>
 
-<body>
-<center>
-	<div id="header">
-		<label>By : Kazi Masudul Alam</a></label>
-	</div>
+<div class="panel panel-default">
+    
+    <div class="panel-heading">Term Information</div>
+    
+    <div class="panel-body">
 
 	<div id="form">
-		<form method="post">
-			<table width="100%" border="1" cellpadding="15">
-				<tr>
-					<td><input type="text" name="txtName" placeholder="Term Name" value="<?php 
-					if(isset($_GET['edit'])) echo $getROW->getName();  ?>" /></td>
-				</tr>
-				<tr>
-					<td>
+		<form method="post" class="form-horizontal">
+				
+				<div class="form-group">
+              	<label class="control-label col-sm-2" for="txtName">Term Name:</label>
+              	<div class="col-sm-10">       
+				<input type="text" name="txtName" placeholder="Term Name" value="<?php 
+					if(isset($_GET['edit'])) echo $getROW->getName();  ?>" />
+				</div>
+				</div>
+		        <div class="form-group">        
+	              <div class="col-sm-offset-2 col-sm-10">						
 						<?php
 						if(isset($_GET['edit']))
 						{
@@ -40,15 +36,19 @@ include_once './common/class.common.php';
 							<button type="submit" name="save">save</button>
 							<?php
 						}
-						?>
-					</td>
-				</tr>
-			</table>
+					?>
+					</div>
+				</div>	
+
 		</form>
 
-<br />
+	</div>
+	</div>
 
-	<table width="100%" border="1" cellpadding="15" align="center">
+	<div class="panel-body">
+
+
+	<table class="table table-bordered">
 	<?php
 	
 	
@@ -60,7 +60,7 @@ include_once './common/class.common.php';
 		$TermList = $Result->getResultObject();
 	?>
 		<tr>
-			<td>Term Name</td>
+			<th>Term Name</th>
 		</tr>
 		<?php
 		for($i = 0; $i < sizeof($TermList); $i++) {
@@ -84,6 +84,4 @@ include_once './common/class.common.php';
 	?>
 	</table>
 	</div>
-</center>
-</body>
-</html>
+</div>	
