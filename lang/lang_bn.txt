@@ -1,0 +1,2 @@
+dashboard_email=ই-মেইল
+dashboard_password=পাসওয়ার্ড

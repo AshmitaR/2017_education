@@ -13,6 +13,19 @@ interface I_DBConfig{
 	public function getDBName();
 }
 
+interface I_LogConfig{
+	
+	public function isLogEnabled();
+	public function getLogLevel();
+
+}
+
+interface I_LanguageConfig{
+
+	public function getDefaultLanguage();
+
+}
+
 // Declare the interface 'I_DBUtil'
 interface I_DBUtil{
 
@@ -25,6 +38,123 @@ interface I_DBUtil{
 }
 
 
+
+
+/*
+Configuration class that reads *.ini file for different
+configurations. Only one instance of this class is allowed at any time
+*/
+class ConfigUtil implements I_DBConfig, I_LogConfig, I_LanguageConfig{
+
+	public static $s_instance;
+	private $ini_array;
+
+
+	private $_host;
+	private $_username;
+	private $_password;
+	private $_database;
+	
+	private $_log_enabled=false;
+	private $_log_level="info";
+	private $_log_file_path;
+
+	private $_lang_default="EN";
+
+
+	private function __construct(){
+
+		$this->readConfig();
+
+	}
+
+	/*
+	Get an instance of the Database
+	@return Instance
+	*/
+	public static function getInstance() {
+		if(!self::$s_instance) { // If no instance then make one
+			self::$s_instance = new self();
+		}
+		return self::$s_instance;
+	}
+
+	// Magic method clone is empty to prevent duplication of connection
+	private function __clone() { }
+
+
+	/*
+	Reading database related configuration file
+	*/
+	private function readConfig(){
+
+		$this->_ini_array = parse_ini_file("./config/system.ini");
+
+		$this->_host =	$this->_ini_array['db_host'];
+		$this->_username = $this->_ini_array['db_username'];
+		$this->_password = $this->_ini_array['db_password'];
+		$this->_database = $this->_ini_array['db_database'];
+	
+		$this->_log_enabled=$this->_ini_array['log_enabled'];
+		$this->_log_level=$this->_ini_array['log_level'];
+		$this->_log_file_path=$this->_ini_array['log_path'];
+	
+
+		$this->_lang_default=$this->_ini_array['lang_default'];
+
+	}
+
+	// Get the host of database
+	public function getDBHost(){
+
+		return $this->_host;
+	}
+
+	// Get the user name of database
+	public function getDBUserName(){
+
+		return $this->_username;
+	}
+
+	// Get the password of the database
+	public function getDBPassword(){
+
+		return $this->_password;
+	}
+
+	// Get the database name
+	public function getDBName(){
+
+		return $this->_database;
+	}
+
+	// get whether the log is enabled
+	public function isLogEnabled(){
+
+		return $this->_log_enabled;
+	}
+
+	// give the log level info, warning, debug, error
+	public function getLogLevel(){
+
+		return $this->_log_level;
+	}
+
+	// return the log file path
+
+	public function getLogFilePath(){
+
+		return $this->_log_file_path; 
+	}
+	
+
+	// give the default language EN, BN, FN etc
+	public function getDefaultLanguage(){
+		return $this->_lang_default;
+	}
+
+
+}
 
 
 /*
@@ -129,84 +259,7 @@ class DBUtil implements I_DBUtil {
 }
 
 
-
-
-/*
-Configuration class that reads *.ini file for different
-configurations. Only one instance of this class is allowed at any time
-*/
-class ConfigUtil implements I_DBConfig{
-
-	public static $s_instance;
-
-	private $_host;
-	private $_username;
-	private $_password;
-	private $_database;
-
-
-	private function __construct(){
-
-		$this->readDBConfig();
-
-	}
-
-	/*
-	Get an instance of the Database
-	@return Instance
-	*/
-	public static function getInstance() {
-		if(!self::$s_instance) { // If no instance then make one
-			self::$s_instance = new self();
-		}
-		return self::$s_instance;
-	}
-
-	// Magic method clone is empty to prevent duplication of connection
-	private function __clone() { }
-
-
-	/*
-	Reading database related configuration file
-	*/
-	private function readDBConfig(){
-
-		$ini_array = parse_ini_file("/../config/db.ini");
-		$this->_host = $ini_array['host'];
-		$this->_username = $ini_array['username'];
-		$this->_password = $ini_array['password'];
-		$this->_database = $ini_array['database'];
-	}
-
-	// Get the host of database
-	public function getDBHost(){
-
-		return $this->_host;
-	}
-
-	// Get the user name of database
-	public function getDBUserName(){
-
-		return $this->_username;
-	}
-
-	// Get the password of the database
-	public function getDBPassword(){
-
-		return $this->_password;
-	}
-
-	// Get the database name
-	public function getDBName(){
-
-		return $this->_database;
-	}
-
-
-
-}
-
-
+//give a unique GUID for CRUD operations on objects
 class Util{
 
 	public static function getGUID(){
@@ -233,6 +286,7 @@ class LogUtil{
 
 	private static $s_instance;
 
+	private $_log_enabled=false;
 	private $_log_level="info";
 	private $_log_file_path;
 	private $_log_file;
@@ -265,11 +319,12 @@ class LogUtil{
 	*/
 	private function readLogConfig(){
 
-		$ini_array = parse_ini_file("/../config/log.ini");
-		$this->_log_level = $ini_array['level'];
-		$this->_log_file_path = $ini_array['path'];
-	
+		$_config = ConfigUtil::getInstance();
 
+		$this->_log_enabled = $_config->isLogEnabled();
+		$this->_log_level = $_config->getLogLevel();
+		$this->_log_file_path = $_config->getLogFilePath();
+	
 	}
 
 	//opening a flile
@@ -378,6 +433,56 @@ class LogUtil{
 
 
 }
+
+class LangUtil{
+
+	private static $s_instance; //The single instance
+
+	private $_lang_default;
+
+	private static $_lang_array;
+
+	/*
+	Get an instance of the language
+	@return Instance
+	*/
+	public static function getInstance() {
+		if(!self::$s_instance) { // If no instance then make one
+			self::$s_instance = new self();
+		}
+		return self::$s_instance;
+	}
+
+	// Constructor
+	private function __construct() {
+
+		$this->readLangConfig();
+	}
+
+	private function readLangConfig(){
+
+		$_config = ConfigUtil::getInstance();
+
+		//getting the default language text
+		$this->_lang_default = $_config->getDefaultLanguage();
+
+		self::$_lang_array = parse_ini_file("./lang/lang_".$this->_lang_default.".txt");
+
+	}
+
+	public static function get($ID){
+
+		if(array_key_exists($ID, self::$_lang_array))
+			return self::$_lang_array[$ID];
+		else 
+			return '['.$ID.']';
+	}
+}
+
+ConfigUtil::getInstance();
+DBUtil::getInstance();
+LogUtil::getInstance();
+LangUtil::getInstance();
 
 echo '<br> log:: exit the util';
 
