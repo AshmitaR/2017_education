@@ -59,7 +59,7 @@ include_once './common/class.common.php';
 		$DisciplineList = $Result->getResultObject();
 	?>
 		<tr>
-			<td>Discipline Name</td>
+			<th>Discipline Name</th>
 		</tr>
 		<?php
 		for($i = 0; $i < sizeof($DisciplineList); $i++) {
