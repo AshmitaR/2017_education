@@ -50,6 +50,30 @@
 		<category>COURSE TYPE</category>
 	</permission>
 
+	<!-- COURSE_SESSIONAL_TYPE Category -->
+	<permission>
+		<id>COURSE_SESSIONAL_TYPE_C</id>
+		<name>COURSE_SESSIONAL_TYPE_C</name>
+		<category>COURSE SESSIONAL TYPE</category>
+	</permission>
+
+	<permission>
+		<id>COURSE_SESSIONAL_TYPE_R</id>
+		<name>COURSE_SESSIONAL_TYPE_R</name>
+		<category>COURSE SESSIONAL TYPE</category>
+	</permission>
+
+	<permission>
+		<id>COURSE_SESSIONAL_TYPE_U</id>
+		<name>COURSE_SESSIONAL_TYPE_U</name>
+		<category>COURSE SESSIONAL TYPE</category>
+	</permission>
+
+	<permission>
+		<id>COURSE_SESSIONAL_TYPE_D</id>
+		<name>COURSE_SESSIONAL_TYPE_D</name>
+		<category>COURSE SESSIONAL TYPE</category>
+	</permission>
 
 	<!-- CLUB Category -->
 	<permission>

@@ -1,8 +1,13 @@
 <?php
+include_once 'path.php';
 
-include_once '/common/class.common.php';
+//current template path
+$template_link= TEMPLATE.'/basic/';
 
-$template_link='template/basic/';
+//including the common file
+include_once COMMON.'/class.common.php';
+
+
 
 // start session always
 if (session_status() == PHP_SESSION_NONE) {

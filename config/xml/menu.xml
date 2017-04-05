@@ -156,11 +156,33 @@
 			<Menu>
 				<ParentMenu>Course Related</ParentMenu>
 				<Title>Manage Course</Title>
-				<Link>#</Link>
+				<Link>course.php</Link>
 				<Permissions>
 					<Permission>COURSE_C</Permission>
 					<Permission>COURSE_U</Permission>
 					<Permission>COURSE_D</Permission>				
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Course Related</ParentMenu>
+				<Title>Manage Course Type</Title>
+				<Link>course_type.php</Link>
+				<Permissions>
+					<Permission>COURSE_TYPE_C</Permission>
+					<Permission>COURSE_TYPE_U</Permission>
+					<Permission>COURSE_TYPE_D</Permission>				
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Course Related</ParentMenu>
+				<Title>Manage Sessional Type</Title>
+				<Link>course_sessional_type.php</Link>
+				<Permissions>
+					<Permission>COURSE_SESSIONAL_TYPE_C</Permission>
+					<Permission>COURSE_SESSIONAL_TYPE_U</Permission>
+					<Permission>COURSE_SESSIONAL_TYPE_D</Permission>				
 				</Permissions>
 			</Menu>
 
@@ -219,11 +241,65 @@
 			<Menu>
 				<ParentMenu>Discussion Topic</ParentMenu>
 				<Title>Manage Discussion</Title>
-				<Link>#</Link>
+				<Link>discussion.php</Link>
 				<Permissions>
 					<Permission>DISCUSSION_C</Permission>
 					<Permission>DISCUSSION_U</Permission>
 					<Permission>DISCUSSION_D</Permission>
+				</Permissions>
+			</Menu>
+
+		<Menu>
+			<ParentMenu>Student Center</ParentMenu>
+			<Title>Archive</Title>
+			<Permissions>
+				<Permission>PROJECT_C</Permission>
+				<Permission>PROJECT_R</Permission>
+				<Permission>PROJECT_U</Permission>
+				<Permission>PROJECT_D</Permission>												
+				<Permission>QUESTION_C</Permission>
+				<Permission>QUESTION_R</Permission>
+				<Permission>QUESTION_U</Permission>
+				<Permission>QUESTION_D</Permission>	
+			</Permissions>
+		</Menu>
+			<Menu>
+				<ParentMenu>Archive</ParentMenu>
+				<Title>Manage Project</Title>
+				<Link>project.php</Link>
+				<Permissions>
+					<Permission>PROJECT_C</Permission>
+					<Permission>PROJECT_U</Permission>
+					<Permission>PROJECT_D</Permission>	
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Archive</ParentMenu>
+				<Title>Search Project</Title>
+				<Link>project_search.php</Link>
+				<Permissions>
+					<Permission>PROJECT_R</Permission>
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Archive</ParentMenu>
+				<Title>Manage Question</Title>
+				<Link>question.php</Link>
+				<Permissions>
+					<Permission>QUESTION_C</Permission>
+					<Permission>QUESTION_U</Permission>
+					<Permission>QUESTION_D</Permission>	
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Archive</ParentMenu>
+				<Title>Search Question</Title>
+				<Link>question_search.php</Link>
+				<Permissions>
+					<Permission>QUESTION_R</Permission>
 				</Permissions>
 			</Menu>
 

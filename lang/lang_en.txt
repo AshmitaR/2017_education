@@ -3,4 +3,4 @@ login_email=Email
 login_password=Password
 login_enter_email=Enter Email
 login_enter_password=Enter Password
-login_submit_login=Login
+login_submit=Login

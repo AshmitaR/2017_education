@@ -35,7 +35,7 @@ include_once './common/class.common.php';
 
             <div class="form-group">        
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" name="login" value="login" class="btn btn-default"><?php echo LangUtil::get('login_submit_login'); ?></button>
+                <button type="submit" name="login" value="login" class="btn btn-default"><?php echo LangUtil::get('login_submit'); ?></button>
               </div>
             </div>                
 
