@@ -127,12 +127,26 @@
 			<Permission>COURSE_C</Permission>
 			<Permission>COURSE_U</Permission>
 			<Permission>COURSE_D</Permission>												
+			<Permission>COURSE_TYPE_C</Permission>
+			<Permission>COURSE_TYPE_U</Permission>
+			<Permission>COURSE_TYPE_D</Permission>				
+			<Permission>COURSE_SESSIONAL_TYPE_C</Permission>
+			<Permission>COURSE_SESSIONAL_TYPE_U</Permission>
+			<Permission>COURSE_SESSIONAL_TYPE_D</Permission>
 			<Permission>USER_C</Permission>
 			<Permission>USER_U</Permission>
 			<Permission>USER_D</Permission>								
+			<Permission>REGISTRATION_C</Permission>
+			<Permission>REGISTRATION_U</Permission>
+			<Permission>REGISTRATION_D</Permission>		
+			<Permission>TERM_C</Permission>
+			<Permission>TERM_U</Permission>
+			<Permission>TERM_D</Permission>	
+			<Permission>YEAR_C</Permission>
+			<Permission>YEAR_U</Permission>
+			<Permission>YEAR_D</Permission>							
 		</Permissions>			
 	</Menu>
-
 
 		<Menu>
 			<ParentMenu>Registration</ParentMenu>
@@ -141,15 +155,12 @@
 				<Permission>COURSE_C</Permission>
 				<Permission>COURSE_U</Permission>
 				<Permission>COURSE_D</Permission>												
-				<Permission>USER_C</Permission>
-				<Permission>USER_U</Permission>
-				<Permission>USER_D</Permission>								
-				<Permission>REGISTRATION_C</Permission>
-				<Permission>REGISTRATION_U</Permission>
-				<Permission>REGISTRATION_D</Permission>		
-				<Permission>TERM_C</Permission>
-				<Permission>TERM_U</Permission>
-				<Permission>TERM_D</Permission>															
+				<Permission>COURSE_TYPE_C</Permission>
+				<Permission>COURSE_TYPE_U</Permission>
+				<Permission>COURSE_TYPE_D</Permission>				
+				<Permission>COURSE_SESSIONAL_TYPE_C</Permission>
+				<Permission>COURSE_SESSIONAL_TYPE_U</Permission>
+				<Permission>COURSE_SESSIONAL_TYPE_D</Permission>												
 			</Permissions>
 		</Menu>	
 
@@ -188,6 +199,36 @@
 
 			<Menu>
 				<ParentMenu>Course Related</ParentMenu>
+				<Title>Assign Teacher to Course</Title>
+				<Link>course_teacher.php</Link>
+				<Permissions>
+					<Permission>COURSE_C</Permission>
+					<Permission>COURSE_U</Permission>
+					<Permission>COURSE_D</Permission>				
+				</Permissions>
+			</Menu>			
+
+		<Menu>
+			<ParentMenu>Registration</ParentMenu>
+			<Title>Registration Related</Title>
+			<Permissions>											
+				<Permission>USER_C</Permission>
+				<Permission>USER_U</Permission>
+				<Permission>USER_D</Permission>								
+				<Permission>REGISTRATION_C</Permission>
+				<Permission>REGISTRATION_U</Permission>
+				<Permission>REGISTRATION_D</Permission>		
+				<Permission>TERM_C</Permission>
+				<Permission>TERM_U</Permission>
+				<Permission>TERM_D</Permission>	
+				<Permission>YEAR_C</Permission>
+				<Permission>YEAR_U</Permission>
+				<Permission>YEAR_D</Permission>																	
+			</Permissions>
+		</Menu>	
+
+			<Menu>
+				<ParentMenu>Registration Related</ParentMenu>
 				<Title>Manage Student</Title>
 				<Link>user.php</Link>
 				<Permissions>
@@ -198,7 +239,7 @@
 			</Menu>
 
 			<Menu>
-				<ParentMenu>Course Related</ParentMenu>
+				<ParentMenu>Registration Related</ParentMenu>
 				<Title>Manage Registration</Title>
 				<Link>#</Link>
 				<Permissions>
@@ -209,13 +250,24 @@
 			</Menu>
 
 			<Menu>
-				<ParentMenu>Course Related</ParentMenu>
+				<ParentMenu>Registration Related</ParentMenu>
 				<Title>Manage Term</Title>
 				<Link>term.php</Link>
 				<Permissions>
 					<Permission>TERM_C</Permission>
 					<Permission>TERM_U</Permission>
 					<Permission>TERM_D</Permission>												
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Registration Related</ParentMenu>
+				<Title>Manage Year</Title>
+				<Link>year.php</Link>
+				<Permissions>
+					<Permission>YEAR_C</Permission>
+					<Permission>YEAR_U</Permission>
+					<Permission>YEAR_D</Permission>												
 				</Permissions>
 			</Menu>
 
@@ -226,6 +278,14 @@
 			<Permission>DISCUSSION_C</Permission>
 			<Permission>DISCUSSION_U</Permission>
 			<Permission>DISCUSSION_D</Permission>												
+			<Permission>PROJECT_C</Permission>
+			<Permission>PROJECT_R</Permission>
+			<Permission>PROJECT_U</Permission>
+			<Permission>PROJECT_D</Permission>												
+			<Permission>QUESTION_C</Permission>
+			<Permission>QUESTION_R</Permission>
+			<Permission>QUESTION_U</Permission>
+			<Permission>QUESTION_D</Permission>	
 		</Permissions>			
 	</Menu>
 
@@ -248,6 +308,36 @@
 					<Permission>DISCUSSION_D</Permission>
 				</Permissions>
 			</Menu>
+
+		<Menu>
+			<ParentMenu>Student Center</ParentMenu>
+			<Title>Video Related</Title>
+			<Permissions>
+				<Permission>VIDEO_C</Permission>
+				<Permission>VIDEO_R</Permission>
+				<Permission>VIDEO_U</Permission>
+				<Permission>VIDEO_D</Permission>												
+			</Permissions>
+		</Menu>
+			<Menu>
+				<ParentMenu>Video Related</ParentMenu>
+				<Title>Manage Video</Title>
+				<Link>video.php</Link>
+				<Permissions>
+					<Permission>VIDEO_C</Permission>
+					<Permission>VIDEO_U</Permission>
+					<Permission>VIDEO_D</Permission>
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>Video Related</ParentMenu>
+				<Title>Video Search</Title>
+				<Link>video_search.php</Link>
+				<Permissions>
+					<Permission>VIDEO_R</Permission>
+				</Permissions>
+			</Menu>
+
 
 		<Menu>
 			<ParentMenu>Student Center</ParentMenu>
@@ -303,5 +393,69 @@
 				</Permissions>
 			</Menu>
 
+		<Menu>
+			<ParentMenu>Student Center</ParentMenu>
+			<Title>Survey</Title>
+			<Permissions>
+				<Permission>SURVEY_C</Permission>
+				<Permission>SURVEY_R</Permission>
+				<Permission>SURVEY_U</Permission>
+				<Permission>SURVEY_D</Permission>												
+				<Permission>SURVEY_QUESTION_C</Permission>
+				<Permission>SURVEY_QUESTION_R</Permission>
+				<Permission>SURVEY_QUESTION_U</Permission>
+				<Permission>SURVEY_QUESTION_D</Permission>	
+				<Permission>SURVEY_QUESTION_TYPE_C</Permission>	
+				<Permission>SURVEY_QUESTION_TYPE_R</Permission>	
+				<Permission>SURVEY_QUESTION_TYPE_U</Permission>	
+				<Permission>SURVEY_QUESTION_TYPE_D</Permission>	
+				<Permission>SURVEY_QUESTION_FILLUP_C</Permission>
+				<Permission>SURVEY_QUESTION_FILLUP_R</Permission>
+				<Permission>SURVEY_QUESTION_FILLUP_U</Permission>
+				<Permission>SURVEY_QUESTION_FILLUP_D</Permission>
+			</Permissions>
+		</Menu>
+			<Menu>
+				<ParentMenu>Survey</ParentMenu>
+				<Title>Manage Survey</Title>
+				<Link>survey.php</Link>
+				<Permissions>
+					<Permission>SURVEY_C</Permission>
+					<Permission>SURVEY_U</Permission>
+					<Permission>SURVEY_D</Permission>	
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>Survey</ParentMenu>
+				<Title>Manage Survey Question</Title>
+				<Link>survey_question.php</Link>
+				<Permissions>
+					<Permission>SURVEY_QUESTION_C</Permission>
+					<Permission>SURVEY_QUESTION_U</Permission>
+					<Permission>SURVEY_QUESTION_D</Permission>	
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>Survey</ParentMenu>
+				<Title>Manage Survey Question Type</Title>
+				<Link>survey_question_type.php</Link>
+				<Permissions>
+					<Permission>SURVEY_QUESTION_TYPE_C</Permission>
+					<Permission>SURVEY_QUESTION_TYPE_U</Permission>
+					<Permission>SURVEY_QUESTION_TYPE_D</Permission>	
+				</Permissions>
+			</Menu>
+
+			<Menu>
+				<ParentMenu>Survey</ParentMenu>
+				<Title>Survey Question Fillup</Title>
+				<Link>survey_question_fillup.php</Link>
+				<Permissions>
+					<Permission>SURVEY_QUESTION_FILLUP_C</Permission>
+					<Permission>SURVEY_QUESTION_FILLUP_R</Permission>
+					<Permission>SURVEY_QUESTION_FILLUP_U</Permission>
+					<Permission>SURVEY_QUESTION_FILLUP_D</Permission>					
+				</Permissions>
+			</Menu>
 
 </Menus>

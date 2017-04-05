@@ -459,6 +459,81 @@
 		<category>SURVEY</category>
 	</permission>
 
+	<!-- SURVEY QUESTION Category -->
+	<permission>
+		<id>SURVEY_QUESTION_C</id>
+		<name>SURVEY_QUESTION_C</name>
+		<category>SURVEY QUESTION</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_R</id>
+		<name>SURVEY_QUESTION_R</name>
+		<category>SURVEY QUESTION</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_U</id>
+		<name>SURVEY_QUESTION_U</name>
+		<category>SURVEY QUESTION</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_D</id>
+		<name>SURVEY_QUESTION_D</name>
+		<category>SURVEY QUESTION</category>
+	</permission>
+
+	<!-- SURVEY QUESTION TYPE Category -->
+	<permission>
+		<id>SURVEY_QUESTION_TYPE_C</id>
+		<name>SURVEY_QUESTION_TYPE_C</name>
+		<category>SURVEY QUESTION TYPE</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_TYPE_R</id>
+		<name>SURVEY_QUESTION_TYPE_R</name>
+		<category>SURVEY QUESTION TYPE</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_TYPE_U</id>
+		<name>SURVEY_QUESTION_TYPE_U</name>
+		<category>SURVEY QUESTION TYPE</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_TYPE_D</id>
+		<name>SURVEY_QUESTION_TYPE_D</name>
+		<category>SURVEY QUESTION TYPE</category>
+	</permission>
+
+	<!-- SURVEY QUESTION FILLUP Category -->
+	<permission>
+		<id>SURVEY_QUESTION_FILLUP_C</id>
+		<name>SURVEY_QUESTION_FILLUP_C</name>
+		<category>SURVEY QUESTION FILLUP</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_FILLUP_R</id>
+		<name>SURVEY_QUESTION_FILLUP_R</name>
+		<category>SURVEY QUESTION FILLUP</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_FILLUP_U</id>
+		<name>SURVEY_QUESTION_FILLUP_U</name>
+		<category>SURVEY QUESTION FILLUP</category>
+	</permission>
+
+	<permission>
+		<id>SURVEY_QUESTION_FILLUP_D</id>
+		<name>SURVEY_QUESTION_FILLUP_D</name>
+		<category>SURVEY QUESTION FILLUP</category>
+	</permission>
+
 	
 	<!-- TERM Category -->
 	<permission>
@@ -561,5 +636,29 @@
 		<category>VIDEO</category>
 	</permission>	
 
+	<!-- VIDEO COMMENT Category -->
+	<permission>
+		<id>VIDEO_COMMENT_C</id>
+		<name>VIDEO_COMMENT_C</name>
+		<category>VIDEO COMMENT</category>
+	</permission>
+
+	<permission>
+		<id>VIDEO_COMMENT_R</id>
+		<name>VIDEO_COMMENT_R</name>
+		<category>VIDEO COMMENT</category>
+	</permission>
+
+	<permission>
+		<id>VIDEO_COMMENT_U</id>
+		<name>VIDEO_COMMENT_U</name>
+		<category>VIDEO COMMENT</category>
+	</permission>
+
+	<permission>
+		<id>VIDEO_COMMENT_D</id>
+		<name>VIDEO_COMMENT_D</name>
+		<category>VIDEO COMMENT</category>
+	</permission>
 
 </permissions>
