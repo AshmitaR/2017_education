@@ -13,7 +13,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-
+//if there is one logged in user
 if (isset($_SESSION["globalUser"])){
 	//retreving the logged user from the session 
 	$globalUser = $_SESSION["globalUser"];
@@ -68,7 +68,7 @@ if (isset($_SESSION["globalPage"])){
 <?php
 function print_top_logout_menu($CurrentUser){
 
-   $logout_content = '<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">'.
+   $logout_content = '<button class="btn btn-default  dropdown-toggle" type="button" data-toggle="dropdown">'.
    					 $CurrentUser->getFirstName().' '.$CurrentUser->getLastName().'<span class="caret"></span></button>';
    $logout_content = $logout_content.'<ul class="dropdown-menu">'; 
    $logout_content = $logout_content.'<li><a tabindex="-1" href="home.php">Dashboard</a></li>';
@@ -90,8 +90,8 @@ function print_top_menu($globalMenu){
 		if($globalMenu[$i]->isVisible()){ 
 		
  			//$firstLayer  = '<div class="col-sm-'.(12/sizeof($globalMenu)).'">';
- 			$firstLayer  = '<div class="col-sm-1">';
-    		$firstLayer  =  $firstLayer.'<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">'.$globalMenu[$i]->getTitle().'<span class="caret"></span></button>';
+ 			$firstLayer  = '<div class="col-sm-2">';
+    		$firstLayer  =  $firstLayer.'<button class="dropdown-toggle btn btn-default btn-block" type="button" data-toggle="dropdown">'.$globalMenu[$i]->getTitle().'<span class="caret"></span></button>';
     		$firstLayer  =  $firstLayer.'<ul class="dropdown-menu">';
 
 			for ($j=0; $j <sizeof($globalMenu[$i]->_Child) ; $j++) {	

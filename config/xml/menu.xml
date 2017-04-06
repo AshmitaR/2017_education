@@ -473,6 +473,36 @@
 				</Permissions>
 			</Menu>
 
+		<Menu>
+			<ParentMenu>Student Center</ParentMenu>
+			<Title>Club Related</Title>
+			<Permissions>
+				<Permission>CLUB_C</Permission>
+				<Permission>CLUB_R</Permission>
+				<Permission>CLUB_U</Permission>
+				<Permission>CLUB_D</Permission>												
+			</Permissions>
+		</Menu>
+			<Menu>
+				<ParentMenu>Club Related</ParentMenu>
+				<Title>Manage Club</Title>
+				<Link>club.php</Link>
+				<Permissions>
+					<Permission>CLUB_C</Permission>
+					<Permission>CLUB_U</Permission>
+					<Permission>CLUB_D</Permission>	
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>Club Related</ParentMenu>
+				<Title>Search Club</Title>
+				<Link>club_search.php</Link>
+				<Permissions>
+					<Permission>CLUB_R</Permission>
+				</Permissions>
+			</Menu>
+
+
 <!-- File -->
 
 	<Menu>
@@ -506,6 +536,16 @@
 					<Permission>FILE_D</Permission>	
 				</Permissions>
 			</Menu>
+			<Menu>
+				<ParentMenu>File Related</ParentMenu>
+				<Title>My Files</Title>
+				<Link>file_my.php</Link>
+				<Permissions>
+					<Permission>FILE_C</Permission>
+					<Permission>FILE_U</Permission>												
+					<Permission>FILE_D</Permission>	
+				</Permissions>
+			</Menu>			
 			<Menu>
 				<ParentMenu>File Related</ParentMenu>
 				<Title>File History</Title>
