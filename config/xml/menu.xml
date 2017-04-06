@@ -1,6 +1,6 @@
 <Menus>
 
-
+<!-- Administration -->
 	<Menu>
 		<ParentMenu></ParentMenu>
 		<Title>Administration</Title>
@@ -119,7 +119,10 @@
 					<Permission>POSITION_U</Permission>
 					<Permission>POSITION_D</Permission>
 				</Permissions>
-			</Menu>	
+			</Menu>
+
+<!-- Registration -->
+
 	<Menu>
 		<ParentMenu></ParentMenu>
 		<Title>Registration</Title>
@@ -240,8 +243,8 @@
 
 			<Menu>
 				<ParentMenu>Registration Related</ParentMenu>
-				<Title>Manage Registration</Title>
-				<Link>#</Link>
+				<Title>Student Course Registration</Title>
+				<Link>course_student_registration.php</Link>
 				<Permissions>
 					<Permission>REGISTRATION_C</Permission>
 					<Permission>REGISTRATION_U</Permission>
@@ -270,6 +273,18 @@
 					<Permission>YEAR_D</Permission>												
 				</Permissions>
 			</Menu>
+			<Menu>
+				<ParentMenu>Registration Related</ParentMenu>
+				<Title>Assign Teacher for Registration</Title>
+				<Link>course_teacher_registration.php</Link>
+				<Permissions>
+					<Permission>YEAR_C</Permission>
+					<Permission>YEAR_U</Permission>
+					<Permission>YEAR_D</Permission>												
+				</Permissions>
+			</Menu>
+
+<!-- Student Center -->
 
 	<Menu>
 		<ParentMenu></ParentMenu>
@@ -458,4 +473,48 @@
 				</Permissions>
 			</Menu>
 
+<!-- File -->
+
+	<Menu>
+		<ParentMenu></ParentMenu>
+		<Title>File Management</Title>
+		<Permissions>
+			<Permission>FILE_C</Permission>
+			<Permission>FILE_R</Permission>
+			<Permission>FILE_U</Permission>												
+			<Permission>FILE_D</Permission>
+		</Permissions>			
+	</Menu>
+
+		<Menu>
+			<ParentMenu>File Management</ParentMenu>
+			<Title>File Related</Title>
+			<Permissions>
+				<Permission>FILE_C</Permission>
+				<Permission>FILE_R</Permission>
+				<Permission>FILE_U</Permission>												
+				<Permission>FILE_D</Permission>												
+			</Permissions>
+		</Menu>
+			<Menu>
+				<ParentMenu>File Related</ParentMenu>
+				<Title>Manage Files</Title>
+				<Link>file.php</Link>
+				<Permissions>
+					<Permission>FILE_C</Permission>
+					<Permission>FILE_U</Permission>												
+					<Permission>FILE_D</Permission>	
+				</Permissions>
+			</Menu>
+			<Menu>
+				<ParentMenu>File Related</ParentMenu>
+				<Title>File History</Title>
+				<Link>file_history.php</Link>
+				<Permissions>
+					<Permission>FILE_C</Permission>
+					<Permission>FILE_R</Permission>
+					<Permission>FILE_U</Permission>												
+					<Permission>FILE_D</Permission>	
+				</Permissions>
+			</Menu>
 </Menus>
