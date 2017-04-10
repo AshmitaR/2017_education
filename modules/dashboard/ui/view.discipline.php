@@ -13,7 +13,42 @@ include_once './common/class.common.php';
 
 	<div id="form">
 		<form method="post" class="form-horizontal">
+				<div class="form-group">
+	              	<label class="control-label col-sm-2" for="selectedSchool">Schools:</label>
+	              	<div class="col-sm-10">   
+					    <?php
+
+					    $var = '<select name="selectedSchool" id="select-from-schools">';
+						$Result = $_SchoolBAO->getAllSchools();
+							//building the school options
+						if($Result->getIsSuccess()){
+
+							$Schools = $Result->getResultObject();
+
+							$var = $var.'<option value="select">Select</option>';
+						
+					       for ($i=0; $i < sizeof($Schools); $i++) { 
+					       		
+					       		$School = $Schools[$i];
+					    
+					    		$var = $var. '<option value="'.$School->getID().'"';   
+
+					    		if(isset($_GET['edit']) && 
+					    			!strcmp($School->getID(),$getROW->getSchool()->getID())//loaded discipline
+					    		  ) {
+					          		$var = $var.' selected="selected"';
+					          	} 			
+
+					          	$var = $var.'>'.$School->getName().'</option>';
 				
+							}
+
+							$var = $var.'</select>';
+						}
+						echo $var;
+						?>	
+					</div>	
+				</div>
 				<div class="form-group">
               	<label class="control-label col-sm-2" for="txtName">Discipline Name:</label>
               	<div class="col-sm-10">
@@ -60,6 +95,7 @@ include_once './common/class.common.php';
 	?>
 		<tr>
 			<th>Discipline Name</th>
+			<th>School Name</th>
 		</tr>
 		<?php
 		for($i = 0; $i < sizeof($DisciplineList); $i++) {
@@ -67,6 +103,7 @@ include_once './common/class.common.php';
 			?>
 		    <tr>
 			    <td><?php echo $Discipline->getName(); ?></td>
+			    <td><?php echo $Discipline->getSchool()->getName(); ?></td>
 			    <td><a href="?edit=<?php echo $Discipline->getID(); ?>" onclick="return confirm('sure to edit !'); " >edit</a></td>
 			    <td><a href="?del=<?php echo $Discipline->getID(); ?>" onclick="return confirm('sure to delete !'); " >delete</a></td>
 		    </tr>

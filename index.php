@@ -8,6 +8,7 @@ $template_link= TEMPLATE.'/basic/';
 include_once COMMON.'/class.common.php';
 
 
+ob_start(); //converts php output to a buffer and later publish it
 
 // start session always
 if (session_status() == PHP_SESSION_NONE) {
@@ -33,6 +34,9 @@ if(isset($_SESSION['globalPage'])&&strcasecmp($_SESSION['globalPage'],$page)!=0)
 //store current page in the session
  $_SESSION['globalPage']=$page;
 
+// adding menu code here
+include $template_link.'menu.php'; 
+
 ?>
 
 
@@ -52,34 +56,39 @@ if(isset($_SESSION['globalPage'])&&strcasecmp($_SESSION['globalPage'],$page)!=0)
 <body>
 
 <div class="container-fluid" >
-    
+        <div id="menu" style="background-color:LightSteelBlue">
             <?php 
                 //do not show the menu for login page
                 if(strcasecmp($page, PageUtil::$LOGIN)!=0)
-                    require $template_link.'menu.php'; 
+                    echo print_top_menu($globalMenu,$logoutMenu);
+                    
                 
             ?>
-    
-    
+        </div>
+        <div id="header">
             <?php 
 
                 //do not show the header for login page
                 if(strcasecmp($page, PageUtil::$LOGIN)!=0)
-                	require $template_link.'header.php'; 
-            	
+                    include $template_link.'header.php'; 
+                
             ?>        
+        </div>        
       
-      
+        <div id="body" style="background-color:AliceBlue"> 
             <?php 
-                require $template_link.'body.php'; 
+                include $template_link.'body.php'; 
 
             ?>	                    
-     
-  
+        </div>
+
+        <div id="footer" style="background-color:LightSteelBlue">
+
         	<?php 
-        		require $template_link.'footer.php'; 
+        		include $template_link.'footer.php'; 
 
         	?>
+        </div>    
  
 </div>    
 </body>

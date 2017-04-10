@@ -284,6 +284,40 @@
 				</Permissions>
 			</Menu>
 
+<!-- Result -->
+
+	<Menu>
+		<ParentMenu></ParentMenu>
+		<Title>Result</Title>
+		<Permissions>
+			<Permission>RESULT_C</Permission>
+			<Permission>RESULT_U</Permission>												
+			<Permission>RESULT_D</Permission>
+		</Permissions>			
+	</Menu>
+
+		<Menu>
+			<ParentMenu>Result</ParentMenu>
+			<Title>Result Related</Title>
+			<Permissions>
+				<Permission>RESULT_C</Permission>
+				<Permission>RESULT_U</Permission>												
+				<Permission>RESULT_D</Permission>
+			</Permissions>
+		</Menu>	
+
+			<Menu>
+				<ParentMenu>Result Related</ParentMenu>
+				<Title>Prepare Result</Title>
+				<Link>prepare_result.php</Link>
+				<Permissions>
+					<Permission>RESULT_C</Permission>
+					<Permission>RESULT_U</Permission>												
+					<Permission>RESULT_D</Permission>			
+				</Permissions>
+			</Menu>
+
+
 <!-- Student Center -->
 
 	<Menu>

@@ -1,5 +1,3 @@
-
-
 <?php
 //menu based on the permission value from the globaluser variable
 
@@ -20,17 +18,18 @@ if (isset($_SESSION["globalUser"])){
 
 
 	if (isset($_SESSION["globalPermission"])){	
-		//retreiveing the permission from the session
+		//retreiveing the permission of the user from the session
 		$globalPermission = $_SESSION["globalPermission"]; 
 	}
 
 	if (isset($_SESSION["globalMenu"])){	
-		//retreving the menu setup	
+		//retreving the total menu setup of the sysetm that is initiated
 		$globalMenu =  $_SESSION["globalMenu"];
 	  	
 	}
 
-	$logoutMenu = print_top_logout_menu($globalUser);
+	// generating logout menu part
+	$logoutMenu = build_top_logout_menu($globalUser);
 
 }
 
@@ -40,33 +39,29 @@ if (isset($_SESSION["globalPage"])){
   	
 }
 
-?>
 
-	<div id="menu" style="background-color:LightSteelBlue">
-	            
-			<?php
+//print the top menu
+function print_top_menu($globalMenu,$logoutMenu)
+{
+	$menu_content='';
 
-			//print the top menu
-			if(isset($globalMenu)){
-				
-				//buiding menu layout, first part menu, next part user logout menu
+	if(isset($globalMenu)){
+		
+		//buiding full menu layout, first part menu, next part user logout menu
+		$menu_content = 	'<div class="dropdown"><div class="row">';
+		$menu_content = 	$menu_content.'<div class="col-sm-11">';
+		$menu_content = 	$menu_content.build_top_nav_menu($globalMenu);
+		$menu_content = 	$menu_content.'</div>';
+		$menu_content = 	$menu_content.'<div class="col-sm-1">'.$logoutMenu;
+		$menu_content = 	$menu_content.'</div>';
+		$menu_content = 	$menu_content.'</div></div>';
+	}
 
-				$menu_content = 	'<div class="dropdown"><div class="row">';
-				$menu_content = 	$menu_content.'<div class="col-sm-11">';
-				$menu_content = 	$menu_content.print_top_menu($globalMenu);
-				$menu_content = 	$menu_content.'</div>';
-				$menu_content = 	$menu_content.'<div class="col-sm-1">'.$logoutMenu;
-				$menu_content = 	$menu_content.'</div>';
-				$menu_content = 	$menu_content.'</div></div>';
-				
-				echo $menu_content; 
-			}
+	return $menu_content;
+}
 
-			?>
-	</div>
-
-<?php
-function print_top_logout_menu($CurrentUser){
+//logout menu part
+function build_top_logout_menu($CurrentUser){
 
    $logout_content = '<button class="btn btn-default  dropdown-toggle" type="button" data-toggle="dropdown">'.
    					 $CurrentUser->getFirstName().' '.$CurrentUser->getLastName().'<span class="caret"></span></button>';
@@ -79,8 +74,8 @@ function print_top_logout_menu($CurrentUser){
 }
 
 
-//build the the top menu using bootstrap css
-function print_top_menu($globalMenu){
+//build the the top menu using bootstrap css based on permission and menu visibility
+function build_top_nav_menu($globalMenu){
 
 	$superLayer = '<div class="row">';
 

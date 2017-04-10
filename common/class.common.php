@@ -453,9 +453,9 @@ class RolePermission{
 
 class Discipline{
 
-private $_ID;
+    private $_ID;
     private $_Name;
-
+    private $_School;
 
     public function setID ( $ID ) {
         $this->_ID = $ID;
@@ -473,6 +473,15 @@ private $_ID;
     public function getName() {
         return $this->_Name;
     }
+
+    public function setSchool( $School ) {
+        $this->_School = $School;
+    }
+
+    public function getSchool() {
+        return $this->_School;
+    }
+
 
 }
 

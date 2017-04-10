@@ -8,33 +8,6 @@ include_once './common/class.common.php';
 	
 		<script type="text/javascript">
 			
-			function SetAllCheckBoxes(FormName, FieldName, CheckValue)
-			{
-				if(!document.forms[FormName])
-					return;
-				var objCheckBoxes = document.forms[FormName].elements[FieldName];
-				if(!objCheckBoxes)
-					return;
-				var countCheckBoxes = objCheckBoxes.length;
-				if(!countCheckBoxes)
-					objCheckBoxes.checked = CheckValue;
-				else
-					// set the check value for all check boxes
-					for(var i = 0; i < countCheckBoxes; i++)
-						objCheckBoxes[i].checked = CheckValue;
-			}
-		
-			/*
-			 *  onChange event handler
-			 * getting the url and parsing and rebuilding it with selection information and finally redirect
-			 */
-			function onChangeEventHandler(event,obj){
-				 if(event != null){
-				  var url = window.location.href;
-				  url = url.indexOf("?") ? url.substring(0,url.indexOf("?")): url;	
-				  window.location = url + '?edit='+obj.value;
-				 }	
-			}
 
 		</script>
 

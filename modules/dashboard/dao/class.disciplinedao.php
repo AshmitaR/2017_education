@@ -25,12 +25,23 @@ Class DisciplineDAO{
 		$rows = $this->_DB->getAllRows();
 
 		for($i = 0; $i < sizeof($rows); $i++) {
+			
 			$row = $rows[$i];
+			
 			$this->_Discipline = new Discipline();
-
 		    $this->_Discipline->setID ( $row['ID']);
 		    $this->_Discipline->setName( $row['Name'] );
+		
+			$School = new School();
+			$School->setID($row['SchoolID']);
+					
+			//get the school name
+			$this->_DB->doQuery("SELECT * FROM tbl_School where ID='".$row['SchoolID']."'");
+			$schoolRow = $this->_DB->getTopRow();
+			$School->setName($schoolRow['Name']);
 
+
+			$this->_Discipline->setSchool($School);	  
 
 		    $DisciplineList[]=$this->_Discipline;
    
@@ -51,9 +62,10 @@ Class DisciplineDAO{
 
 		$ID=$Discipline->getID();
 		$Name=$Discipline->getName();
+		$SchoolID = $Discipline->getSchool()->getID();
 
 
-		$SQL = "INSERT INTO tbl_Discipline(ID,Name) VALUES('$ID','$Name')";
+		$SQL = "INSERT INTO tbl_Discipline(ID,Name,SchoolID) VALUES('$ID','$Name','$SchoolID')";
 
 		$SQL = $this->_DB->doQuery($SQL);		
 		
@@ -68,7 +80,8 @@ Class DisciplineDAO{
 	public function readDiscipline($Discipline){
 		
 		
-		$SQL = "SELECT * FROM tbl_Discipline WHERE ID='".$Discipline->getID()."'";
+		$SQL = "SELECT * FROM tbl_Discipline where ID='".$Discipline->getID()."'";
+
 		$this->_DB->doQuery($SQL);
 
 		//reading the top row for this Discipline from the database
@@ -80,6 +93,15 @@ Class DisciplineDAO{
 	    $this->_Discipline->setID ( $row['ID']);
 	    $this->_Discipline->setName( $row['Name'] );
 
+		$School = new School();
+		$School->setID($row['SchoolID']);
+
+		$this->_DB->doQuery("SELECT * FROM tbl_School where ID='".$row['SchoolID']."'");
+		$schoolRow = $this->_DB->getTopRow();
+		$School->setName($schoolRow['Name']);
+ 
+		
+		$this->_Discipline->setSchool($School);	    
 
 
 	 	$Result = new Result();
@@ -92,9 +114,11 @@ Class DisciplineDAO{
 	//update an Discipline object based on its 
 	public function updateDiscipline($Discipline){
 
-		$SQL = "UPDATE tbl_Discipline SET Name='".$Discipline->getName()."' WHERE ID='".$Discipline->getID()."'";
+		$SQL = "UPDATE tbl_Discipline SET Name='".$Discipline->getName()."', SchoolID='".
+				$Discipline->getSchool()->getID()."' WHERE ID='".$Discipline->getID()."'";
 
 
+		//echo $SQL;		
 		$SQL = $this->_DB->doQuery($SQL);
 
 	 	$Result = new Result();
