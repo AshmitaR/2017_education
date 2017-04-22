@@ -7,7 +7,7 @@ include_once './common/class.common.php';
 
 <div class="panel panel-default">
     
-    <div class="panel-heading">Question Archive Management</div>
+    <div class="panel-heading">Question Archive Manager</div>
     
     <div class="panel-body">
 
@@ -17,7 +17,7 @@ include_once './common/class.common.php';
 
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="selectCourseTitle">Select Course Title:</label>
+              	<label class="control-label col-sm-4" for="title">Select Course Title:</label>
               	<div class="col-sm-6">	
 
 					
@@ -64,7 +64,7 @@ include_once './common/class.common.php';
 			</div>	
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="selectCourseNo">Select Course No:</label>
+              	<label class="control-label col-sm-4" for="course">Select Course No:</label>
               	<div class="col-sm-6">				
 						
 					<?php
@@ -115,7 +115,7 @@ include_once './common/class.common.php';
 			</div>			
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="selectTerm">Select Term:</label>
+              	<label class="control-label col-sm-4" for="term">Select Term:</label>
               	<div class="col-sm-6">				
 
 				<?php
@@ -211,7 +211,7 @@ include_once './common/class.common.php';
 			</div>
 
 			<div class="form-group">
-              	<label class="control-label col-sm-4" for="selectTeacher">Select Teacher:</label>
+              	<label class="control-label col-sm-4" for="teacher">Select Teacher:</label>
               	<div class="col-sm-6">				
 				
 				<?php
@@ -297,7 +297,7 @@ include_once './common/class.common.php';
               	<label class="control-label col-sm-4" for="tag">Tag:</label>
               	<div class="col-sm-6">  
               		<input type="text" name="tag" class="form-control" placeholder="Tag" value="<?php 
-						if(isset($_GET['edit'])) echo $getROW->getTag();  ?>" required>
+						if(isset($_GET['edit'])) echo $getROW->getTag();  ?>" >
 				</div>		
 			</div>	
 
@@ -305,7 +305,7 @@ include_once './common/class.common.php';
               	<label class="control-label col-sm-4" for="question_date">Date:</label>
               	<div class="col-sm-6"> 				
 				<input type="date" name="question_date" class="form-control" placeholder="Date" value="<?php 
-					if(isset($_GET['edit'])) echo $getROW->getQuestionDate(); ?>" required>
+					if(isset($_GET['edit'])) echo $getROW->getQuestionDate(); ?>" >
 				</div>
 			</div>	
 
@@ -314,7 +314,7 @@ include_once './common/class.common.php';
               	<label class="control-label col-sm-4" for="link">Question Link:</label>
               	<div class="col-sm-6"> 
               	<input type="text" name="link" class="form-control" placeholder="Question Link" value="<?php 
-					if(isset($_GET['edit'])) echo $getROW->getLink(); ?>" required>
+					if(isset($_GET['edit'])) echo $getROW->getLink(); ?>" >
 				</div>
 			</div>
 	        <div class="form-group">        
@@ -324,13 +324,13 @@ include_once './common/class.common.php';
 						if(isset($_GET['edit']))
 						{
 							?>
-							<button type="submit" name="update"  class="w3-button w3-black w3-round-large ">update</button>
+							<button type="submit" name="update" >update</button>
 							<?php
 						}
 						else
 						{
 							?>
-							<button type="submit" name="save" class="w3-button w3-black w3-round-large">save</button>
+							<button type="submit" name="save" >save</button>
 							<?php
 						}
 						?>

@@ -6,23 +6,27 @@ include_once './common/class.common.php';
 ?>
 
 
-<body bgcolor="#999999">
-<center>
+<div class="panel panel-default">
+    
+    <div class="panel-heading">Question Archive Manager</div>
+    
+    <div class="panel-body">
 
 	
 	<div id="form" >
-		<form method="post">
-		<button type="submit" name="upload" button class="w3-button w3-blue w3-round-xlarge">Upload Question</button>
-			<table width="100%" border="1" cellpadding="15">
-				<tr>
+		<form method="post" class="form-horizontal">
+
+			<div class="form-group">
+              	<label class="control-label col-sm-4" for="title">Select Course Title:</label>
+              	<div class="col-sm-6">	
 					
 					<?php
 						$Result = $_QuestionBAO->getAllCourse();
 						if ($Result->getIsSuccess())
 							$CourseList = $Result->getResultObject();					
 				?>
-				<td>
-					<select name="title" style="width:170px">
+		
+				<select name="title" class="form-control" for="title_check">
 					<option selected disabled>Select Course Title</option>
 					<?php
 						for ($i = 0; $i<sizeof($CourseList); $i++){
@@ -36,15 +40,21 @@ include_once './common/class.common.php';
 					}
 				?>	
 				</select>
-				<input type="checkbox" name="title_check">
-				</td>
-					<?php
+				
+				<input type="checkbox" name="title_check" >
+				
+				</div>
+			</div>	
+			<div class="form-group">
+              	<label class="control-label col-sm-4" for="course">Select Course No:</label>
+              	<div class="col-sm-6">				
+	
+				<?php
 						$Result = $_QuestionBAO->getAllCourse();
 						if ($Result->getIsSuccess())
 							$CourseList = $Result->getResultObject();					
 				?>
-				<td>
-					<select name="course" style="width:170px">
+				<select name="course" class="form-control" for="course_check">
 					<option selected disabled>Select Course No</option>
 					<?php
 						for ($i = 0; $i<sizeof($CourseList); $i++){
@@ -60,18 +70,20 @@ include_once './common/class.common.php';
 				?>	
 				</select>
 				<input type="checkbox" name="course_check">
-				</td>
+				</div>
+			</div>	
 
-				</tr>
+			<div class="form-group">
+              	<label class="control-label col-sm-4" for="term">Select Term:</label>
+              	<div class="col-sm-6">				
 
-				<tr>
 				<?php
 						$Result = $_QuestionBAO->getAllTerms();
 						if ($Result->getIsSuccess())
 							$TermList = $Result->getResultObject();					
 				?>
-				<td>
-					<select name="term" style="width:170px">
+				
+					<select name="term" class="form-control" for="term_check">
 					<option selected disabled>Select Term</option>
 					<?php
 						for ($i = 0; $i<sizeof($TermList); $i++){
@@ -87,14 +99,20 @@ include_once './common/class.common.php';
 				?>	
 				</select>
 				<input type="checkbox" name="term_check">
-				</td>		
+				</div>
+			</div>	
+
+			<div class="form-group">
+              	<label class="control-label col-sm-4" for="session">Select Session:</label>
+              	<div class="col-sm-6">	
+
 					<?php
 						$Result = $_QuestionBAO->getAllSession();
 						if ($Result->getIsSuccess())
 							$SessionList = $Result->getResultObject();					
 				?>
-				<td>
-					<select name="session" style="width:170px">
+				
+					<select name="session" class="form-control" for="session_check">
 					<option selected disabled>Select Session</option>
 					<?php
 						for ($i = 0; $i<sizeof($SessionList); $i++){
@@ -104,7 +122,8 @@ include_once './common/class.common.php';
 						if (!isset($_GET['edit'])){
 
 					?>
-						<option value="<?php echo $Session->getID();?>" > <?php echo $Session->getName(); ?> 
+						<option value="<?php echo $Session->getID();?>" > 
+						<?php echo $Session->getName(); ?> 
 						</option>
 					<?php
 					}
@@ -112,35 +131,38 @@ include_once './common/class.common.php';
 							
 							if ($getROW->getSession() == $Session->getID() ){
 					?>
-						<option selected value = "<?php echo $Session->getID();?>" > <?php echo $Session->getName();?> 
+						<option selected value = "<?php echo $Session->getID();?>" > 
+						<?php echo $Session->getName();?> 
 						</option>
 					<?php
 					}
 						else {
 
 					?>
-					<option value="<?php echo $Session->getID();?>" > <?php echo $Session->getName(); ?> 
+					<option value="<?php echo $Session->getID();?>" > 
+					<?php echo $Session->getName(); ?> 
 					</option>
 				<?php
-				}	
-				}
+					}	
+					}
 				}
 				?>	
 				</select>
 				<input type="checkbox" name="session_check">
-				</td>
-
-				</tr>
-
-				<tr>
+				</div>
+			</div>
+				
+			<div class="form-group">
+              	<label class="control-label col-sm-4" for="teacher">Select Teacher:</label>
+              	<div class="col-sm-6">		
 				
 				<?php
 						$Result = $_QuestionBAO->getAllUser();
 						if ($Result->getIsSuccess())
 							$UserList = $Result->getResultObject();					
 				?>
-				<td>
-					<select name="teacher" style="width:170px">
+				
+					<select name="teacher" class="form-control" for="teacher_check">
 					<option selected disabled>Select Teacher</option>
 					<?php
 						for ($i = 0; $i<sizeof($UserList); $i++){
@@ -150,7 +172,8 @@ include_once './common/class.common.php';
 						if (!isset($_GET['edit'])){
 
 					?>
-						<option value="<?php echo $User->getID();?>" > <?php echo $User->getFirstName(); ?> 
+						<option value="<?php echo $User->getID();?>" > 
+						<?php echo $User->getFirstName(); ?> 
 						</option>
 					<?php
 					}
@@ -158,39 +181,44 @@ include_once './common/class.common.php';
 							
 							if ($getROW->getTeacher() == $User->getID() ){
 					?>
-						<option selected value = "<?php echo $User->getID();?>" > <?php echo $User->getFirstName();?> 
+						<option selected value = "<?php echo $User->getID();?>" > 
+						<?php echo $User->getFirstName();?> 
 						</option>
 					<?php
 					}
 						else {
 
 					?>
-					<option value="<?php echo $User->getID();?>" > <?php echo $User->getFirstName(); ?> 
+					<option value="<?php echo $User->getID();?>" > 
+					<?php echo $User->getFirstName(); ?> 
 					</option>
 				<?php
-				}	
-				}
+					}	
+					}
 				}
 				?>	
 				</select>
 				<input type="checkbox" name="teacher_check">
-				</td>
+				</div>
+			</div>	
 
-					<td>
-					<select name="type" style="width:170px">
+			<div>
+              	<label class="control-label col-sm-4" for="type">Select Question Type:</label>
+              	<div class="col-sm-6">
+					<select name="type" class="form-control" for="type_check">
 					<option selected disabled>Select Question Type</option>
 					<option value="CT">CT</option>
 					<option value="Term-Final">Term-Final</option>	
 					</select>
 					<input type="checkbox" name="type_check">
-					</td>
+				</div>	
+			</div>	
 
-				</tr>
 
-				<tr>
-				
-				<td>
-					<select name="tag" style="width:170px">
+			<div class="form-group">
+              	<label class="control-label col-sm-4" for="tag">Tag:</label>
+              	<div class="col-sm-6">
+					<select name="tag" class="form-control" for="tag_check">
 					<option disabled selected>Select Tag</option>
 					<?php
 						$query=" ";
@@ -206,30 +234,41 @@ include_once './common/class.common.php';
 					?>
 					</select>
 					<input type="checkbox" name="tag_check">
-				</td>
-				<td><input style="width:170px" type="date" name="question_date" placeholder="Date" value="<?php 
+				</div>
+			</div>
+			<div class="form-group">
+              	<label class="control-label col-sm-4" for="question_date">Date:</label>
+              	<div class="col-sm-6"> 				
+				
+				<input class="form-control" type="date" name="question_date" placeholder="Date" value="<?php 
 					if(isset($_GET['edit'])) echo $getROW->getQuestionDate(); ?>">
 				<input type="checkbox" name="date_check">
-				</td>
+				</div>
+			</div>	
 
-				</tr>
+        <div class="form-group">        
+             <div class="col-sm-4">					
+					
+				<button type="submit" name="search_upload" >Search</button>
 
+			</div>	
+             <div class="col-sm-8">					
+					
+				<button type="submit" name="upload" >Manage Question</button>
 
-				<tr>
-					<td>
-						<center><button type="submit" name="search_upload" button class="w3-button w3-black w3-round-xlarge">search</button></center>
-					</td> 
+			</div>	
 
+		</div>		
 				
-				
-				</tr>
-			</table>
 		</form>
 
+	</div>
+	</div>
 
-<br>
-   <div id="show">  
-	<table width="100%" border="1" cellpadding="15" align="center">
+ <div class="panel-body">
+	
+	<table class="table table-bordered">
+
 	<?php
 
 	$query =" ";
@@ -325,14 +364,14 @@ include_once './common/class.common.php';
 	
 		<tr>
 			
-			<td>Title </td>
-			<td>Course </td>
-			<td>Term </td>
-			<td>Session </td>
-			<td>Teacher </td>
-			<td>Type</td>
-			<td>Tag</td>
-			<td>Date</td>
+			<th>Title </th>
+			<th>Course </th>
+			<th>Term </th>
+			<th>Session </th>
+			<th>Teacher </th>
+			<th>Type</th>
+			<th>Tag</th>
+			<th>Date</th>
 
 		</tr>
 		<?php
@@ -366,7 +405,5 @@ include_once './common/class.common.php';
 	?>
 	</table>
 	</div>
-	
-	</div>
-</center>
-</body>
+
+</div>
