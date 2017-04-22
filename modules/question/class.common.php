@@ -1,135 +1,7 @@
 <?php
 
 /*All the common Model classes are listed here*/
-class PermissionXML{
-    var $id;  // id of permission
-    var $name;    // name of permission
-    var $category;  // category of permission
-    
-    //map the tag, value pair with the members serially
-    //used in xml to permission mapping
-    function PermissionXML ($row) {
 
-        //todo: check for the exception situation
-
-        foreach ($row as $k=>$v)
-            $this->$k = $row[$k];
-
-    }
-
-}
-
-class MenuXML{
-    private $_ParentTitle;
-    public $_Child;
-    private $_Title;
-    private $_Permissions;
-    private $_Link;
-    private $_Visible=0; // by default every menu is in visible
-
-    public function getTitle(){
-        return $this->_Title;
-    }
-
-    public function setTitle($Title){
-        $this->_Title = $Title;
-    }
-
-
-    public function getParentTitle(){
-        return $this->_ParentTitle;
-    }
-
-    public function setParentTitle($ParentTitle){
-        $this->_ParentTitle = $ParentTitle; 
-    }
-
-    public function getPermissions(){
-        return $this->_Permissions;
-    }
-
-    public function setPermissions($Permissions){
-        $this->_Permissions = $Permissions;
-    }
-
-    public function getLink(){
-        return $this->_Link;
-    }
-
-    public function setLink($Link){
-        $this->_Link = $Link;
-    }
-
-    public function setVisible($Visible){
-        $this->_Visible = $Visible;
-    }
-
-    public function isVisible(){
-
-        return $this->_Visible;
-    }
-
-}
-
-class Course{
-    private $_ID;
-    private $_Course;
-    private $_Title;
-
-    public function setID($ID){
-        $this->_ID = $ID;
-    }
-    public function getID(){
-        return $this->_ID;
-    }
-    public function setCourse($Course){
-        $this->_Course = $Course;
-    }
-    public function getCourse(){
-        return $this->_Course;
-    }
-    public function setTitle($Title){
-        $this->_Title = $Title;
-    }
-    public function getTitle(){
-        return $this->_Title;
-    }
-}
-
-class CourseType{
-
-    private $_ID;
-    private $_Name;
-    private $_SessionalType;
-
-
-    public function setID ( $ID ) {
-        $this->_ID = $ID;
-    }
-
-    public function getID () {
-        return $this->_ID;
-    }
-
-
-    public function setName( $Name ) {
-        $this->_Name = $Name;
-    }
-
-    public function getName() {
-        return $this->_Name;
-    }
-
-    public function setSessionalType ( $SessionalType ) {
-        $this->_SessionalType = $SessionalType;
-    }
-
-    public function getSessionalType () {
-        return $this->_SessionalType;
-    }
-
-
-}
 
 class Result{
 
@@ -439,6 +311,168 @@ class Permission{
 
 }
 
+class RolePermission{
+
+    private $_Role;
+    private $_PermissionList = array();
+
+    public function setRole ( $Role ) {
+        $this->_Role = $Role;
+    }
+
+    public function getRole () {
+        return $this->_Role;
+    }
+
+
+    public function setPermissionList( $PermissionList ) {
+        if(is_array($PermissionList)){
+            $this->_PermissionList = $PermissionList;
+        }
+        else{
+            throw new Exception("Error!! not an array!!!");
+        }
+            
+    }
+
+    public function getPermissionList() {
+        return $this->_PermissionList;
+    }
+
+    public function addNewPermission($Permission){
+
+        $this->_PermissionList[]=$Permission;
+
+    }
+
+}
+
+class Discipline{
+
+private $_ID;
+    private $_Name;
+
+
+    public function setID ( $ID ) {
+        $this->_ID = $ID;
+    }
+
+    public function getID () {
+        return $this->_ID;
+    }
+
+
+    public function setName( $Name ) {
+        $this->_Name = $Name;
+    }
+
+    public function getName() {
+        return $this->_Name;
+    }
+
+}
+
+class School{
+
+    private $_ID;
+    private $_Name;
+
+
+    public function setID ( $ID ) {
+        $this->_ID = $ID;
+    }
+
+    public function getID () {
+        return $this->_ID;
+    }
+
+
+    public function setName( $Name ) {
+        $this->_Name = $Name;
+    }
+
+    public function getName() {
+        return $this->_Name;
+    }
+
+
+}
+
+class Term{
+
+    private $_ID;
+    private $_Name;
+
+
+    public function setID ( $ID ) {
+        $this->_ID = $ID;
+    }
+
+    public function getID () {
+        return $this->_ID;
+    }
+
+
+    public function setName( $Name ) {
+        $this->_Name = $Name;
+    }
+
+    public function getName() {
+        return $this->_Name;
+    }
+
+
+}
+class Session{
+
+    private $_ID;
+    private $_Name;
+
+
+    public function setID ( $ID ) {
+        $this->_ID = $ID;
+    }
+
+    public function getID () {
+        return $this->_ID;
+    }
+
+
+    public function setName( $Name ) {
+        $this->_Name = $Name;
+    }
+
+    public function getName() {
+        return $this->_Name;
+    }
+
+
+}
+class Course{
+    private $_ID;
+    private $_Course;
+    private $_Title;
+
+    public function setID($ID){
+        $this->_ID = $ID;
+    }
+    public function getID(){
+        return $this->_ID;
+    }
+    public function setCourse($Course){
+        $this->_Course = $Course;
+    }
+    public function getCourse(){
+        return $this->_Course;
+    }
+    public function setTitle($Title){
+        $this->_Title = $Title;
+    }
+    public function getTitle(){
+        return $this->_Title;
+    }
+}
+
 class Question {
 
     private $_ID;
@@ -521,159 +555,10 @@ class Question {
     } 
 }
 
-
-class RolePermission{
-
-    private $_Role;
-    private $_PermissionList = array();
-
-    public function setRole ( $Role ) {
-        $this->_Role = $Role;
-    }
-
-    public function getRole () {
-        return $this->_Role;
-    }
-
-
-    public function setPermissionList( $PermissionList ) {
-        if(is_array($PermissionList)){
-            $this->_PermissionList = $PermissionList;
-        }
-        else{
-            throw new Exception("Error!! not an array!!!");
-        }
-            
-    }
-
-    public function getPermissionList() {
-        return $this->_PermissionList;
-    }
-
-    public function addNewPermission($Permission){
-
-        $this->_PermissionList[]=$Permission;
-
-    }
-
-}
-
-class Discipline{
-
-    private $_ID;
-    private $_Name;
-    private $_School;
-
-    public function setID ( $ID ) {
-        $this->_ID = $ID;
-    }
-
-    public function getID () {
-        return $this->_ID;
-    }
-
-
-    public function setName( $Name ) {
-        $this->_Name = $Name;
-    }
-
-    public function getName() {
-        return $this->_Name;
-    }
-
-    public function setSchool( $School ) {
-        $this->_School = $School;
-    }
-
-    public function getSchool() {
-        return $this->_School;
-    }
-
-
-}
-
-class School{
-
-    private $_ID;
-    private $_Name;
-
-
-    public function setID ( $ID ) {
-        $this->_ID = $ID;
-    }
-
-    public function getID () {
-        return $this->_ID;
-    }
-
-
-    public function setName( $Name ) {
-        $this->_Name = $Name;
-    }
-
-    public function getName() {
-        return $this->_Name;
-    }
-
-
-}
-
-class Session{
-
-    private $_ID;
-    private $_Name;
-
-
-    public function setID ( $ID ) {
-        $this->_ID = $ID;
-    }
-
-    public function getID () {
-        return $this->_ID;
-    }
-
-
-    public function setName( $Name ) {
-        $this->_Name = $Name;
-    }
-
-    public function getName() {
-        return $this->_Name;
-    }
-
-
-}
-
-class Term{
-
-    private $_ID;
-    private $_Name;
-
-
-    public function setID ( $ID ) {
-        $this->_ID = $ID;
-    }
-
-    public function getID () {
-        return $this->_ID;
-    }
-
-
-    public function setName( $Name ) {
-        $this->_Name = $Name;
-    }
-
-    public function getName() {
-        return $this->_Name;
-    }
-
-
-}
-
 class Club{
 
     private $_ID;
-    private $_Name;
+   private $_Name;
     private $_CoverPhoto;
     private $_Description;
     private $_CreationDate;
@@ -720,115 +605,6 @@ class Club{
 
 } 
 
-class ClubExecutive{
-
-    private $_Club;
-    private $_Executive;
-    private $_Designation;
-
-    public function setClub( $Club ) {
-        $this->_Club = $Club;
-    }
-
-    public function getClub() {
-        return $this->_Club;
-    }
-
-    public function setExecutive( $Executive ) {
-        $this->_Executive = $Executive;
-    }
-
-    public function getExecutive() {
-        return $this->_Executive;
-    }
-
-    public function setDesignation( $Designation ) {
-        $this->_Designation = $Designation;
-    }
-
-    public function getDesignation() {
-        return $this->_Designation;
-    }
-
-}
-
-class ClubModule{
-
-    private $_Club;
-    private $_ModuleID;
-    private $_ModuleName;
-    private $_IsVisible;
-    private $_PositionX;
-    private $_PositionY;
-    private $_SizeX;
-    private $_SizeY;
-
-    public function setClub( $Club ) {
-        $this->_Club = $Club;
-    }
-
-    public function getClub() {
-        return $this->_Club;
-    }
-
-
-    public function setModuleID( $ModuleID ) {
-        $this->_ModuleID = $ModuleID;
-    }
-
-    public function getModuleID() {
-        return $this->_ModuleID;
-    }
-
-    public function setModuleName( $ModuleName ) {
-        $this->_ModuleName = $ModuleName;
-    }
-
-    public function getModuleName() {
-        return $this->_ModuleName;
-    }
-
-    public function setIsVisible( $IsVisible ) {
-        $this->_IsVisible = $IsVisible;
-    }
-
-    public function getIsVisible() {
-        return $this->_IsVisible;
-    }
-
-    public function setPositionX( $PositionX ) {
-        $this->_PositionX = $PositionX;
-    }
-
-    public function getPositionX() {
-        return $this->_PositionX;
-    }
-
-    public function setPositionY( $PositionY ) {
-        $this->_PositionY = $PositionY;
-    }
-
-    public function getPositionY() {
-        return $this->_PositionY;
-    }
-
-    public function setSizeX( $SizeX ) {
-        $this->_SizeX = $SizeX;
-    }
-
-    public function getSizeX() {
-        return $this->_SizeX;
-    }
-
-    public function setSizeY( $SizeY ) {
-        $this->_SizeY = $SizeY;
-    }
-
-    public function getSizeY() {
-        return $this->_SizeY;
-    }
-
-}
 
 
 
@@ -906,11 +682,7 @@ class PermissionUtil{
 class PageUtil{
 
     public static $CLUB='club.php';
-    public static $CLUB_EXECUTIVE='club_executive.php';
-    public static $CLUB_MODULE='club_module.php';
-
     public static $COURSE='course.php';
-    public static $COURSE_TYPE='course_type.php';
 
     public static $DISCIPLINE='discipline.php';
     public static $DISCUSSION='discussion.php';
@@ -918,13 +690,9 @@ class PageUtil{
     public static $ERROR='error.php';
 
     public static $FILE='file.php';
-    public static $FEEDBACK='feedback.php';
-
     public static $HOME='home.php';
 
     public static $QUESTION='question.php';
-    public static $QUESTION_SEARCH='question_search.php';
-
 
     public static $LOGIN='login.php';
 
@@ -961,37 +729,25 @@ class RouteUtil{
          self::$s_Routes = array();
 
         //add new page and routing address here always
+         self::$s_Routes[PageUtil::$DISCIPLINE]       =   "/modules/dash/view.discipline.php";
 
-         self::$s_Routes[PageUtil::$CLUB]       =   "/modules/club/ui/view.club.php";
-         self::$s_Routes[PageUtil::$CLUB_EXECUTIVE]       =   "/modules/club/ui/view.club_executive.php";
-         self::$s_Routes[PageUtil::$CLUB_MODULE]       =   "/modules/club/ui/view.club_module.php";
+         self::$s_Routes[PageUtil::$HOME]             =   "/modules/dash/view.home.php";
 
-         self::$s_Routes[PageUtil::$DISCIPLINE]       =   "/modules/dashboard/ui/view.discipline.php";
+         self::$s_Routes[PageUtil::$LOGIN]            =   "/modules/dash/view.login.php";
 
-         self::$s_Routes[PageUtil::$HOME]             =   "/modules/dashboard/ui/view.home.php";
+         self::$s_Routes[PageUtil::$PERMISSION]       =   "/modules/dash/view.permission.php";
+         self::$s_Routes[PageUtil::$POSITION]         =   "/modules/dash/view.position.php";
 
-         self::$s_Routes[PageUtil::$LOGIN]            =   "/modules/dashboard/ui/view.login.php";
+         self::$s_Routes[PageUtil::$ROLE]             =   "/modules/dash/view.role.php";
 
-         self::$s_Routes[PageUtil::$PERMISSION]       =   "/modules/dashboard/ui/view.permission.php";
-         self::$s_Routes[PageUtil::$POSITION]         =   "/modules/dashboard/ui/view.position.php";
+         self::$s_Routes[PageUtil::$SCHOOL]           =   "/modules/dash/view.school.php";
 
-         self::$s_Routes[PageUtil::$POSITION]         =   "/modules/dashboard/ui/view.position.php";
+         self::$s_Routes[PageUtil::$TERM]             =   "/modules/regs/view.term.php";
 
-         self::$s_Routes[PageUtil::$QUESTION]         =   "/modules/question/ui/view.question.php";
-         self::$s_Routes[PageUtil::$QUESTION_SEARCH]  =   "/modules/question/ui/view.search.question.php";
-
-         self::$s_Routes[PageUtil::$ROLE]             =   "/modules/dashboard/ui/view.role.php";
-
-         self::$s_Routes[PageUtil::$SCHOOL]           =   "/modules/dashboard/ui/view.school.php";
-
-         self::$s_Routes[PageUtil::$TERM]             =   "/modules/dashboard/ui/view.term.php";
-
-         self::$s_Routes[PageUtil::$USER]             =   "/modules/dashboard/ui/view.user.php";
+         self::$s_Routes[PageUtil::$USER]             =   "/modules/dash/view.user.php";
 
         //the page not found will redirect to error page
-         self::$s_Routes[PageUtil::$ERROR]            =   "/modules/dashboard/ui/view.error.php";
-
-         self::$s_Routes[PageUtil::$FEEDBACK]            =   "/modules/survey/view.feedback.php";
+         self::$s_Routes[PageUtil::$ERROR]            =   "/modules/dash/view.error.php";
 
     }
 
@@ -1018,110 +774,6 @@ class RouteUtil{
 
 }
 
-class MiddlewareUtil{
-
-    private static $s_Routes; //The single instance
-    private static $s_instance; //The single instance
-
-
-    private function MiddlewareUtil(){
-        
-         self::$s_Routes = array();
-
-        //add which page should be successfully logged before getting to this page
-        //example: login.php should be successfully logged in to get to home.php
-         self::$s_Routes[PageUtil::$HOME]   =  PageUtil::$LOGIN ;
-         self::$s_Routes[PageUtil::$USER]   =  PageUtil::$LOGIN ;
-   
-    }
-
-    public static function getInstance() {
-        if(!self::$s_instance) { // If no instance then make one
-            self::$s_instance = new self();
-        }
-        return self::$s_instance;
-    }
-
-    private static function isAvailable($Page){
-
-        $Page = strtolower(trim($Page)); 
-
-        //if the page is refereneced in the middleware
-        if(array_key_exists($Page, self::$s_Routes)){
-            
-            return true;
-        }
-        else{
-        
-            return false; 
-        }
-    }
-
-    public static function get($Page){
-
-
-        //if page is referenced
-        if(self::isAvailable($Page)){
-            //start session and check whether the middleware is successfully crossed
-
-            if (session_status() == PHP_SESSION_NONE) {
-                session_start();
-            }
-
-            // other send initial page: example if logged out then go to login.php page
-            return isset($_SESSION[self::$s_Routes[$Page]])? $Page: self::$s_Routes[$Page]; 
-
-        }else{
-            // if no middleware then just go on with the current request
-            return $Page;
-        }
-    }
-
-}
-
-//finding different partse of an url
-    function unparse_url($parsed_url) { 
-        $scheme   = isset($parsed_url['scheme']) ? $parsed_url['scheme'] . '://' : ''; 
-        $host     = isset($parsed_url['host']) ? $parsed_url['host'] : ''; 
-        $port     = isset($parsed_url['port']) ? ':' . $parsed_url['port'] : ''; 
-        $user     = isset($parsed_url['user']) ? $parsed_url['user'] : ''; 
-        $pass     = isset($parsed_url['pass']) ? ':' . $parsed_url['pass']  : ''; 
-        $pass     = ($user || $pass) ? "$pass@" : ''; 
-        $path     = isset($parsed_url['path']) ? $parsed_url['path'] : ''; 
-        $query    = isset($parsed_url['query']) ? '?' . $parsed_url['query'] : ''; 
-        $fragment = isset($parsed_url['fragment']) ? '#' . $parsed_url['fragment'] : ''; 
-
-        //extracting the page name such as user.php from the url
-        $page = substr($path, strrpos($path,'/')+1,strrpos($path,'.php')-strrpos($path,'/')+strlen('.php'));
-
-        return $page;
-        //return "$scheme$user$pass$host$port$path$query$fragment"; 
-} 
-
-
-//applying middleware such as login.php comes before home.php
-    function apply_middleware($page) { 
-     
-        // checking whtether there is any middleware     
-        $page=MiddlewareUtil::get($page);   
-
-        return $page;
-         
-    }
-
-//finding different partse of an url
-    function apply_routing(&$page) { 
-     
-        //looking for the extracted page in the route list
-        $page=RouteUtil::get($page);
-
-        return true;
-    }
-
-
-
-
-MiddlewareUtil::getInstance();
 RouteUtil::getInstance();
 
 ?>

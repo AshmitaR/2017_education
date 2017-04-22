@@ -15,53 +15,53 @@ include_once './common/class.common.php';
 		<form method="post" class="form-horizontal">
 
 			<div class="form-group">
-              	<label class="control-label col-sm-2" for="txtUniversityID">University ID:</label>
-              	<div class="col-sm-10">
-              	<input type="text" name="txtUniversityID" placeholder="University Identity" value="<?php 
+              	<label class="control-label col-sm-4" for="txtUniversityID">University ID:</label>
+              	<div class="col-sm-6">
+              	<input type="text" name="txtUniversityID" class="form-control" placeholder="University Identity" value="<?php 
 					if(isset($_GET['edit'])) echo $globalUser->getUniversityID();  ?>" />
 			  	</div>
 			</div>
 			  
 			<div class="form-group">
-              	<label class="control-label col-sm-2" for="txtEmail">Email:</label>
-              	<div class="col-sm-10">
-			  	<input type="email" name="txtEmail" placeholder="Email Address" value="<?php 
+              	<label class="control-label col-sm-4" for="txtEmail">Email:</label>
+              	<div class="col-sm-6">
+			  	<input type="email" name="txtEmail" class="form-control" placeholder="Email Address" value="<?php 
 					if(isset($_GET['edit'])) echo $globalUser->getEmail();  ?>" />
 
 			  	</div>
 			</div>
 			
 			<div class="form-group">
-              	<label class="control-label col-sm-2" for="txtPassword">Password:</label>
-              	<div class="col-sm-10">  		
-				<input type="password" name="txtPassword" placeholder="Password" value="<?php 
+              	<label class="control-label col-sm-4" for="txtPassword">Password:</label>
+              	<div class="col-sm-6">  		
+				<input type="password" name="txtPassword" class="form-control" placeholder="Password" value="<?php 
 					if(isset($_GET['edit'])) echo $globalUser->getPassword();  ?>" />
 				</div>
 			</div>
 
 			<div class="form-group">
-              	<label class="control-label col-sm-2" for="txtFirstName">First Name:</label>
-              	<div class="col-sm-10">  		
-				<input type="text" name="txtFirstName" placeholder="First Name" value="<?php 
+              	<label class="control-label col-sm-4" for="txtFirstName">First Name:</label>
+              	<div class="col-sm-6">  		
+				<input type="text" name="txtFirstName" class="form-control" placeholder="First Name" value="<?php 
 					if(isset($_GET['edit'])) echo $globalUser->getFirstName();  ?>" />
 				</div>
 			</div>
 
 			<div class="form-group">
-              	<label class="control-label col-sm-2" for="txtLastName">First Name:</label>
-              	<div class="col-sm-10">	
-				<input type="text" name="txtLastName" placeholder="Last Name" value="<?php 
+              	<label class="control-label col-sm-4" for="txtLastName">First Name:</label>
+              	<div class="col-sm-6">	
+				<input type="text" name="txtLastName" class="form-control" placeholder="Last Name" value="<?php 
 					if(isset($_GET['edit'])) echo $globalUser->getLastName();  ?>" />
 				</div>
 			</div>
 			<div class="form-group">
-              	<label class="control-label col-sm-2" for="assignedRoles">Assigned Roles:</label>
-              	<div class="col-sm-10">		
+              	<label class="control-label col-sm-4" for="assignedRoles">Assigned Roles:</label>
+              	<div class="col-sm-6">		
 						   
 						    <?php
 						    // this block of code prints the list box of roles with current assigned  roles
 
-						    $var = '<select name="assignedRoles[]" id="select-from-roles" multiple>';
+						    $var = '<select name="assignedRoles[]" class="form-control" id="select-from-roles" multiple>';
 							$Result = $_RoleBAO->getAllRoles();
 								//if DAO access is successful to load all the Roles then show them one by one
 							if($Result->getIsSuccess()){
@@ -89,13 +89,13 @@ include_once './common/class.common.php';
 				</div>
 			</div>
 			<div class="form-group">
-              	<label class="control-label col-sm-2" for="assignedPositions">Assigned Positions:</label>
-              	<div class="col-sm-10">		
+              	<label class="control-label col-sm-4" for="assignedPositions">Assigned Positions:</label>
+              	<div class="col-sm-6">		
 			
 						    <?php
 						    // this block of code prints the list box of Positions with current assigned  Positions
 
-						    $var = '<select name="assignedPositions[]" id="select-from-positions" multiple>';
+						    $var = '<select name="assignedPositions[]" class="form-control" id="select-from-positions" multiple>';
 							$Result = $_PositionBAO->getAllPositions();
 								//if DAO access is successful to load all the Positions then show them one by one
 							if($Result->getIsSuccess()){
