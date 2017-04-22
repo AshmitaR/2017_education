@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2017 at 06:00 PM
+-- Generation Time: Apr 22, 2017 at 06:12 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -42,7 +42,7 @@ CREATE TABLE `tbl_club` (
 
 CREATE TABLE `tbl_club_member` (
   `ClubID` varchar(40) NOT NULL,
-  `MemberID` varchar(40) NOT NULL,
+  `ExecutiveID` varchar(40) NOT NULL,
   `Designation` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -54,6 +54,7 @@ CREATE TABLE `tbl_club_member` (
 
 CREATE TABLE `tbl_club_module` (
   `ClubID` varchar(20) NOT NULL,
+  `ModuleID` varchar(40) NOT NULL,
   `ModuleName` varchar(50) NOT NULL,
   `IsVisible` tinyint(1) NOT NULL,
   `PositionX` int(11) NOT NULL,
@@ -77,6 +78,13 @@ CREATE TABLE `tbl_course` (
   `DisciplineID` varchar(40) NOT NULL,
   `IsDeleted` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_course`
+--
+
+INSERT INTO `tbl_course` (`ID`, `CourseNo`, `Title`, `Credit`, `CourseTypeID`, `DisciplineID`, `IsDeleted`) VALUES
+('123', 'cse 3200', 'Web Programming Lab', 1.5, '1', '1', 0);
 
 -- --------------------------------------------------------
 
@@ -254,14 +262,13 @@ CREATE TABLE `tbl_discipline` (
 --
 
 INSERT INTO `tbl_discipline` (`ID`, `Name`, `SchoolID`) VALUES
-('{0CF37516-06FE-41CD-93AD-D2D1652509D6}', 'Mathematics', ''),
-('{560A0FC0-6221-497D-8D41-E584EE4BBEE3}', 'Architecture', ''),
-('{63F3C00B-6168-4FBD-AB01-7A1FE413BDDE}', 'Statistics', ''),
-('{AF41CC9F-3BCD-4952-9D02-17184CC40C79}', 'Urban and Rural Planning', ''),
-('{B34A0580-0B92-49BD-84FB-929297B104C5}', 'Electrical and Communication Engineering', ''),
-('{E03C2DC3-CAF3-477E-A851-0C11DF93FD3B}', 'Chemistry', ''),
-('{E7280448-E379-424E-A11D-357F4334AC8D}', 'Physics', ''),
-('{FFDB1CB8-AF34-4381-8971-9784DCB516C5}', 'Computer Science and Engineering', '');
+('{0CF37516-06FE-41CD-93AD-D2D1652509D6}', 'Mathematics', '{39DDC0C2-CFC2-4246-8748-8812B1751A5C}'),
+('{560A0FC0-6221-497D-8D41-E584EE4BBEE3}', 'Architecture', '{39DDC0C2-CFC2-4246-8748-8812B1751A5C}'),
+('{63F3C00B-6168-4FBD-AB01-7A1FE413BDDE}', 'Forestry and Wood Technology', '{4D46079B-AFA3-40F1-B8D1-6CC9E9F56812}'),
+('{AF41CC9F-3BCD-4952-9D02-17184CC40C79}', 'Urban and Rural Planning', '{4D46079B-AFA3-40F1-B8D1-6CC9E9F56812}'),
+('{E065BBA7-D0C5-4DFA-9768-81B6F056EB4A}', 'FMRT', '{4D46079B-AFA3-40F1-B8D1-6CC9E9F56812}'),
+('{E7280448-E379-424E-A11D-357F4334AC8D}', 'Physics', '{39DDC0C2-CFC2-4246-8748-8812B1751A5C}'),
+('{FFDB1CB8-AF34-4381-8971-9784DCB516C5}', 'Computer Science and Engineering', '{39DDC0C2-CFC2-4246-8748-8812B1751A5C}');
 
 -- --------------------------------------------------------
 
@@ -385,15 +392,35 @@ INSERT INTO `tbl_permission` (`ID`, `Name`, `Category`) VALUES
 ('COURSE_C', 'COURSE_C', 'COURSE'),
 ('COURSE_D', 'COURSE_D', 'COURSE'),
 ('COURSE_R', 'COURSE_R', 'COURSE'),
+('COURSE_SESSIONAL_TYPE_C', 'COURSE_SESSIONAL_TYPE_C', 'COURSE SESSIONAL TYPE'),
+('COURSE_SESSIONAL_TYPE_D', 'COURSE_SESSIONAL_TYPE_D', 'COURSE SESSIONAL TYPE'),
+('COURSE_SESSIONAL_TYPE_R', 'COURSE_SESSIONAL_TYPE_R', 'COURSE SESSIONAL TYPE'),
+('COURSE_SESSIONAL_TYPE_U', 'COURSE_SESSIONAL_TYPE_U', 'COURSE SESSIONAL TYPE'),
+('COURSE_TYPE_C', 'COURSE_TYPE_C', 'COURSE TYPE'),
+('COURSE_TYPE_D', 'COURSE_TYPE_D', 'COURSE TYPE'),
+('COURSE_TYPE_R', 'COURSE_TYPE_R', 'COURSE TYPE'),
+('COURSE_TYPE_U', 'COURSE_TYPE_U', 'COURSE TYPE'),
 ('COURSE_U', 'COURSE_U', 'COURSE'),
 ('DISCIPLINE_C', 'DISCIPLINE_C', 'DISCIPLINE'),
 ('DISCIPLINE_D', 'DISCIPLINE_D', 'DISCIPLINE'),
 ('DISCIPLINE_R', 'DISCIPLINE_R', 'DISCIPLINE'),
 ('DISCIPLINE_U', 'DISCIPLINE_U', 'DISCIPLINE'),
+('DISCUSSION_C', 'DISCUSSION_C', 'DISCUSSION'),
+('DISCUSSION_COMMENT_C', 'DISCUSSION_COMMENT_C', 'DISCUSSION COMMENT'),
+('DISCUSSION_COMMENT_D', 'DISCUSSION_COMMENT_D', 'DISCUSSION COMMENT'),
+('DISCUSSION_COMMENT_R', 'DISCUSSION_COMMENT_R', 'DISCUSSION COMMENT'),
+('DISCUSSION_COMMENT_U', 'DISCUSSION_COMMENT_U', 'DISCUSSION COMMENT'),
+('DISCUSSION_D', 'DISCUSSION_D', 'DISCUSSION'),
+('DISCUSSION_R', 'DISCUSSION_R', 'DISCUSSION'),
+('DISCUSSION_U', 'DISCUSSION_U', 'DISCUSSION'),
 ('FILE_C', 'FILE_C', 'FILE'),
 ('FILE_D', 'FILE_D', 'FILE'),
 ('FILE_R', 'FILE_R', 'FILE'),
 ('FILE_U', 'FILE_U', 'FILE'),
+('PERMISSION_C', 'PERMISSION_C', 'PERMISSION'),
+('PERMISSION_D', 'PERMISSION_D', 'PERMISSION'),
+('PERMISSION_R', 'PERMISSION_R', 'PERMISSION'),
+('PERMISSION_U', 'PERMISSION_U', 'PERMISSION'),
 ('POSITION_C', 'POSITION_C', 'POSITION'),
 ('POSITION_D', 'POSITION_D', 'POSITION'),
 ('POSITION_R', 'POSITION_R', 'POSITION'),
@@ -402,6 +429,18 @@ INSERT INTO `tbl_permission` (`ID`, `Name`, `Category`) VALUES
 ('PROJECT_D', 'PROJECT_D', 'PROJECT'),
 ('PROJECT_R', 'PROJECT_R', 'PROJECT'),
 ('PROJECT_U', 'PROJECT_U', 'PROJECT'),
+('QUESTION_C', 'QUESTION_C', 'QUESTION'),
+('QUESTION_D', 'QUESTION_D', 'QUESTION'),
+('QUESTION_R', 'QUESTION_R', 'QUESTION'),
+('QUESTION_U', 'QUESTION_U', 'QUESTION'),
+('REGISTRATION_C', 'REGISTRATION_C', 'REGISTRATION'),
+('REGISTRATION_D', 'REGISTRATION_D', 'REGISTRATION'),
+('REGISTRATION_R', 'REGISTRATION_R', 'REGISTRATION'),
+('REGISTRATION_U', 'REGISTRATION_U', 'REGISTRATION'),
+('RESULT_C', 'RESULT_C', 'RESULT'),
+('RESULT_D', 'RESULT_D', 'RESULT'),
+('RESULT_R', 'RESULT_R', 'RESULT'),
+('RESULT_U', 'RESULT_U', 'RESULT'),
 ('ROLE_C', 'ROLE_C', 'ROLE'),
 ('ROLE_D', 'ROLE_D', 'ROLE'),
 ('ROLE_R', 'ROLE_R', 'ROLE'),
@@ -416,6 +455,18 @@ INSERT INTO `tbl_permission` (`ID`, `Name`, `Category`) VALUES
 ('SESSION_U', 'SESSION_U', 'SESSION'),
 ('SURVEY_C', 'SURVEY_C', 'SURVEY'),
 ('SURVEY_D', 'SURVEY_D', 'SURVEY'),
+('SURVEY_QUESTION_C', 'SURVEY_QUESTION_C', 'SURVEY QUESTION'),
+('SURVEY_QUESTION_D', 'SURVEY_QUESTION_D', 'SURVEY QUESTION'),
+('SURVEY_QUESTION_FILLUP_C', 'SURVEY_QUESTION_FILLUP_C', 'SURVEY QUESTION FILLUP'),
+('SURVEY_QUESTION_FILLUP_D', 'SURVEY_QUESTION_FILLUP_D', 'SURVEY QUESTION FILLUP'),
+('SURVEY_QUESTION_FILLUP_R', 'SURVEY_QUESTION_FILLUP_R', 'SURVEY QUESTION FILLUP'),
+('SURVEY_QUESTION_FILLUP_U', 'SURVEY_QUESTION_FILLUP_U', 'SURVEY QUESTION FILLUP'),
+('SURVEY_QUESTION_R', 'SURVEY_QUESTION_R', 'SURVEY QUESTION'),
+('SURVEY_QUESTION_TYPE_C', 'SURVEY_QUESTION_TYPE_C', 'SURVEY QUESTION TYPE'),
+('SURVEY_QUESTION_TYPE_D', 'SURVEY_QUESTION_TYPE_D', 'SURVEY QUESTION TYPE'),
+('SURVEY_QUESTION_TYPE_R', 'SURVEY_QUESTION_TYPE_R', 'SURVEY QUESTION TYPE'),
+('SURVEY_QUESTION_TYPE_U', 'SURVEY_QUESTION_TYPE_U', 'SURVEY QUESTION TYPE'),
+('SURVEY_QUESTION_U', 'SURVEY_QUESTION_U', 'SURVEY QUESTION'),
 ('SURVEY_R', 'SURVEY_R', 'SURVEY'),
 ('SURVEY_U', 'SURVEY_U', 'SURVEY'),
 ('TERM_C', 'TERM_C', 'TERM'),
@@ -426,6 +477,14 @@ INSERT INTO `tbl_permission` (`ID`, `Name`, `Category`) VALUES
 ('USER_D', 'USER_D', 'USER'),
 ('USER_R', 'USER_R', 'USER'),
 ('USER_U', 'USER_U', 'USER'),
+('VIDEO_C', 'VIDEO_C', 'VIDEO'),
+('VIDEO_COMMENT_C', 'VIDEO_COMMENT_C', 'VIDEO COMMENT'),
+('VIDEO_COMMENT_D', 'VIDEO_COMMENT_D', 'VIDEO COMMENT'),
+('VIDEO_COMMENT_R', 'VIDEO_COMMENT_R', 'VIDEO COMMENT'),
+('VIDEO_COMMENT_U', 'VIDEO_COMMENT_U', 'VIDEO COMMENT'),
+('VIDEO_D', 'VIDEO_D', 'VIDEO'),
+('VIDEO_R', 'VIDEO_R', 'VIDEO'),
+('VIDEO_U', 'VIDEO_U', 'VIDEO'),
 ('YEAR_C', 'YEAR_C', 'YEAR'),
 ('YEAR_D', 'YEAR_D', 'YEAR'),
 ('YEAR_R', 'YEAR_R', 'YEAR'),
@@ -506,8 +565,18 @@ CREATE TABLE `tbl_question_archive` (
   `TeacherID` varchar(40) NOT NULL,
   `Type` varchar(20) NOT NULL,
   `Tag` varchar(200) NOT NULL,
-  `QuestionDate` date NOT NULL
+  `QuestionDate` date NOT NULL,
+  `Link` varchar(300) NOT NULL,
+  `CreatorID` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_question_archive`
+--
+
+INSERT INTO `tbl_question_archive` (`ID`, `Title`, `CourseID`, `TermID`, `SessionID`, `TeacherID`, `Type`, `Tag`, `QuestionDate`, `Link`, `CreatorID`) VALUES
+('{FA88E08E-4F53-420B-8055-AE89CA8A55B8}', '123', '123', '{C0C2FBD3-75DB-4A6F-BB2A-3F131027A744}', '123', 'mkazi078@uottawa.ca', 'Term-Final', 'lab', '2017-04-19', 'www.test.me.123', 'mkazi078@uottawa.ca'),
+('{E5F1917B-6636-48FB-8854-39CA9F258C77}', '123', '123', '{22EDE2D2-D36C-4160-9D2A-80184B8AD35B}', '123', 'jinat@gmail.com', 'Term-Final', 'love', '2017-04-12', 'www.test.me', 'mkazi078@uottawa.ca');
 
 -- --------------------------------------------------------
 
@@ -520,6 +589,13 @@ CREATE TABLE `tbl_registration_session` (
   `Name` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_registration_session`
+--
+
+INSERT INTO `tbl_registration_session` (`ID`, `Name`) VALUES
+('123', '2012-2013');
+
 -- --------------------------------------------------------
 
 --
@@ -528,6 +604,7 @@ CREATE TABLE `tbl_registration_session` (
 
 CREATE TABLE `tbl_resource` (
   `ID` varchar(40) NOT NULL,
+  `ShortID` varchar(30) NOT NULL,
   `Name` varchar(40) NOT NULL,
   `Type` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -548,10 +625,12 @@ CREATE TABLE `tbl_role` (
 --
 
 INSERT INTO `tbl_role` (`ID`, `Name`) VALUES
-('{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'Staff'),
-('{3477F777-3F53-408B-9773-249C5937C2B8}', 'Teacher'),
-('{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'Student'),
-('{F9C458F2-5298-441F-AE63-7514029760C4}', 'Admin');
+('administrator', 'Administrator'),
+('registration coordinator', 'Registration Coordinator'),
+('student', 'Student'),
+('stuff', 'Stuff'),
+('tabulator', 'Tabulator'),
+('teacher', 'Teacher');
 
 -- --------------------------------------------------------
 
@@ -570,79 +649,170 @@ CREATE TABLE `tbl_role_permission` (
 --
 
 INSERT INTO `tbl_role_permission` (`Row`, `RoleID`, `PermissionID`) VALUES
-(225, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'COURSE_C'),
-(226, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'COURSE_D'),
-(227, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'FILE_C'),
-(228, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'FILE_D'),
-(229, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'FILE_R'),
-(230, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'FILE_U'),
-(231, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'POSITION_C'),
-(232, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'POSITION_D'),
-(233, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'POSITION_R'),
-(234, '{3477F777-3F53-408B-9773-249C5937C2B8}', 'POSITION_U'),
-(441, '{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'FILE_C'),
-(442, '{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'FILE_D'),
-(443, '{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'SURVEY_U'),
-(444, '{1AF8A832-4C03-49C7-8071-C71D4EB4FC57}', 'TERM_U'),
-(557, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'CLUB_D'),
-(558, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'CLUB_R'),
-(559, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'COURSE_D'),
-(560, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'PROJECT_C'),
-(561, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'PROJECT_D'),
-(562, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'PROJECT_R'),
-(563, '{9CC63B6A-99BD-4710-B675-9881B5F7337A}', 'PROJECT_U'),
-(564, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'CLUB_C'),
-(565, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'CLUB_D'),
-(566, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'CLUB_R'),
-(567, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'CLUB_U'),
-(568, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'COURSE_C'),
-(569, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'COURSE_D'),
-(570, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'COURSE_R'),
-(571, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'COURSE_U'),
-(572, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'DISCIPLINE_C'),
-(573, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'DISCIPLINE_D'),
-(574, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'DISCIPLINE_R'),
-(575, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'DISCIPLINE_U'),
-(576, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'FILE_C'),
-(577, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'FILE_D'),
-(578, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'FILE_R'),
-(579, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'FILE_U'),
-(580, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'POSITION_C'),
-(581, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'POSITION_D'),
-(582, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'POSITION_R'),
-(583, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'POSITION_U'),
-(584, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'PROJECT_C'),
-(585, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'PROJECT_D'),
-(586, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'PROJECT_R'),
-(587, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'PROJECT_U'),
-(588, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'ROLE_C'),
-(589, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'ROLE_D'),
-(590, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'ROLE_R'),
-(591, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'ROLE_U'),
-(592, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SCHOOL_C'),
-(593, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SCHOOL_D'),
-(594, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SCHOOL_R'),
-(595, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SCHOOL_U'),
-(596, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SESSION_C'),
-(597, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SESSION_D'),
-(598, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SESSION_R'),
-(599, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SESSION_U'),
-(600, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SURVEY_C'),
-(601, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SURVEY_D'),
-(602, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SURVEY_R'),
-(603, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'SURVEY_U'),
-(604, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'TERM_C'),
-(605, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'TERM_D'),
-(606, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'TERM_R'),
-(607, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'TERM_U'),
-(608, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'USER_C'),
-(609, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'USER_D'),
-(610, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'USER_R'),
-(611, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'USER_U'),
-(612, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'YEAR_C'),
-(613, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'YEAR_D'),
-(614, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'YEAR_R'),
-(615, '{F9C458F2-5298-441F-AE63-7514029760C4}', 'YEAR_U');
+(1001, 'teacher', 'COURSE_C'),
+(1002, 'teacher', 'COURSE_D'),
+(1003, 'teacher', 'COURSE_R'),
+(1004, 'teacher', 'COURSE_U'),
+(1005, 'teacher', 'DISCUSSION_C'),
+(1006, 'teacher', 'DISCUSSION_D'),
+(1007, 'teacher', 'DISCUSSION_R'),
+(1008, 'teacher', 'DISCUSSION_U'),
+(1009, 'teacher', 'DISCUSSION_COMMENT_U'),
+(1010, 'teacher', 'DISCUSSION_COMMENT_C'),
+(1011, 'teacher', 'DISCUSSION_COMMENT_D'),
+(1012, 'teacher', 'DISCUSSION_COMMENT_R'),
+(1013, 'teacher', 'FILE_C'),
+(1014, 'teacher', 'FILE_D'),
+(1015, 'teacher', 'FILE_R'),
+(1016, 'teacher', 'FILE_U'),
+(1017, 'teacher', 'PROJECT_C'),
+(1018, 'teacher', 'PROJECT_D'),
+(1019, 'teacher', 'PROJECT_R'),
+(1020, 'teacher', 'PROJECT_U'),
+(1021, 'teacher', 'QUESTION_C'),
+(1022, 'teacher', 'QUESTION_D'),
+(1023, 'teacher', 'QUESTION_R'),
+(1024, 'teacher', 'QUESTION_U'),
+(1025, 'teacher', 'REGISTRATION_C'),
+(1026, 'teacher', 'REGISTRATION_D'),
+(1027, 'teacher', 'REGISTRATION_R'),
+(1028, 'teacher', 'REGISTRATION_U'),
+(1029, 'teacher', 'RESULT_C'),
+(1030, 'teacher', 'RESULT_D'),
+(1031, 'teacher', 'RESULT_R'),
+(1032, 'teacher', 'RESULT_U'),
+(1033, 'student', 'CLUB_C'),
+(1034, 'student', 'CLUB_D'),
+(1035, 'student', 'CLUB_R'),
+(1036, 'student', 'CLUB_U'),
+(1037, 'student', 'DISCUSSION_C'),
+(1038, 'student', 'DISCUSSION_D'),
+(1039, 'student', 'DISCUSSION_R'),
+(1040, 'student', 'DISCUSSION_U'),
+(1041, 'student', 'DISCUSSION_COMMENT_U'),
+(1042, 'student', 'DISCUSSION_COMMENT_C'),
+(1043, 'student', 'DISCUSSION_COMMENT_D'),
+(1044, 'student', 'DISCUSSION_COMMENT_R'),
+(1045, 'student', 'PROJECT_C'),
+(1046, 'student', 'PROJECT_D'),
+(1047, 'student', 'PROJECT_R'),
+(1048, 'student', 'PROJECT_U'),
+(1049, 'student', 'QUESTION_C'),
+(1050, 'student', 'QUESTION_D'),
+(1051, 'student', 'QUESTION_R'),
+(1052, 'student', 'QUESTION_U'),
+(1053, 'student', 'REGISTRATION_C'),
+(1054, 'student', 'REGISTRATION_D'),
+(1055, 'student', 'REGISTRATION_R'),
+(1056, 'student', 'REGISTRATION_U'),
+(1057, 'student', 'VIDEO_C'),
+(1058, 'student', 'VIDEO_D'),
+(1059, 'student', 'VIDEO_R'),
+(1060, 'student', 'VIDEO_U'),
+(1241, 'administrator', 'CLUB_C'),
+(1242, 'administrator', 'CLUB_D'),
+(1243, 'administrator', 'CLUB_R'),
+(1244, 'administrator', 'CLUB_U'),
+(1245, 'administrator', 'COURSE_C'),
+(1246, 'administrator', 'COURSE_D'),
+(1247, 'administrator', 'COURSE_R'),
+(1248, 'administrator', 'COURSE_U'),
+(1249, 'administrator', 'COURSE_SESSIONAL_TYPE_C'),
+(1250, 'administrator', 'COURSE_SESSIONAL_TYPE_D'),
+(1251, 'administrator', 'COURSE_SESSIONAL_TYPE_R'),
+(1252, 'administrator', 'COURSE_SESSIONAL_TYPE_U'),
+(1253, 'administrator', 'COURSE_TYPE_C'),
+(1254, 'administrator', 'COURSE_TYPE_D'),
+(1255, 'administrator', 'COURSE_TYPE_R'),
+(1256, 'administrator', 'COURSE_TYPE_U'),
+(1257, 'administrator', 'DISCIPLINE_C'),
+(1258, 'administrator', 'DISCIPLINE_D'),
+(1259, 'administrator', 'DISCIPLINE_R'),
+(1260, 'administrator', 'DISCIPLINE_U'),
+(1261, 'administrator', 'DISCUSSION_C'),
+(1262, 'administrator', 'DISCUSSION_D'),
+(1263, 'administrator', 'DISCUSSION_R'),
+(1264, 'administrator', 'DISCUSSION_U'),
+(1265, 'administrator', 'DISCUSSION_COMMENT_C'),
+(1266, 'administrator', 'DISCUSSION_COMMENT_D'),
+(1267, 'administrator', 'DISCUSSION_COMMENT_R'),
+(1268, 'administrator', 'DISCUSSION_COMMENT_U'),
+(1269, 'administrator', 'FILE_C'),
+(1270, 'administrator', 'FILE_D'),
+(1271, 'administrator', 'FILE_R'),
+(1272, 'administrator', 'FILE_U'),
+(1273, 'administrator', 'PERMISSION_C'),
+(1274, 'administrator', 'PERMISSION_D'),
+(1275, 'administrator', 'PERMISSION_R'),
+(1276, 'administrator', 'PERMISSION_U'),
+(1277, 'administrator', 'POSITION_C'),
+(1278, 'administrator', 'POSITION_D'),
+(1279, 'administrator', 'POSITION_R'),
+(1280, 'administrator', 'POSITION_U'),
+(1281, 'administrator', 'PROJECT_C'),
+(1282, 'administrator', 'PROJECT_D'),
+(1283, 'administrator', 'PROJECT_R'),
+(1284, 'administrator', 'PROJECT_U'),
+(1285, 'administrator', 'QUESTION_C'),
+(1286, 'administrator', 'QUESTION_D'),
+(1287, 'administrator', 'QUESTION_R'),
+(1288, 'administrator', 'QUESTION_U'),
+(1289, 'administrator', 'REGISTRATION_C'),
+(1290, 'administrator', 'REGISTRATION_D'),
+(1291, 'administrator', 'REGISTRATION_R'),
+(1292, 'administrator', 'REGISTRATION_U'),
+(1293, 'administrator', 'RESULT_C'),
+(1294, 'administrator', 'RESULT_D'),
+(1295, 'administrator', 'RESULT_R'),
+(1296, 'administrator', 'RESULT_U'),
+(1297, 'administrator', 'ROLE_C'),
+(1298, 'administrator', 'ROLE_D'),
+(1299, 'administrator', 'ROLE_R'),
+(1300, 'administrator', 'ROLE_U'),
+(1301, 'administrator', 'SCHOOL_C'),
+(1302, 'administrator', 'SCHOOL_D'),
+(1303, 'administrator', 'SCHOOL_R'),
+(1304, 'administrator', 'SCHOOL_U'),
+(1305, 'administrator', 'SESSION_C'),
+(1306, 'administrator', 'SESSION_D'),
+(1307, 'administrator', 'SESSION_R'),
+(1308, 'administrator', 'SESSION_U'),
+(1309, 'administrator', 'SURVEY_C'),
+(1310, 'administrator', 'SURVEY_D'),
+(1311, 'administrator', 'SURVEY_R'),
+(1312, 'administrator', 'SURVEY_U'),
+(1313, 'administrator', 'SURVEY_QUESTION_C'),
+(1314, 'administrator', 'SURVEY_QUESTION_D'),
+(1315, 'administrator', 'SURVEY_QUESTION_R'),
+(1316, 'administrator', 'SURVEY_QUESTION_U'),
+(1317, 'administrator', 'SURVEY_QUESTION_FILLUP_C'),
+(1318, 'administrator', 'SURVEY_QUESTION_FILLUP_D'),
+(1319, 'administrator', 'SURVEY_QUESTION_FILLUP_R'),
+(1320, 'administrator', 'SURVEY_QUESTION_FILLUP_U'),
+(1321, 'administrator', 'SURVEY_QUESTION_TYPE_C'),
+(1322, 'administrator', 'SURVEY_QUESTION_TYPE_D'),
+(1323, 'administrator', 'SURVEY_QUESTION_TYPE_R'),
+(1324, 'administrator', 'SURVEY_QUESTION_TYPE_U'),
+(1325, 'administrator', 'TERM_C'),
+(1326, 'administrator', 'TERM_D'),
+(1327, 'administrator', 'TERM_R'),
+(1328, 'administrator', 'TERM_U'),
+(1329, 'administrator', 'USER_C'),
+(1330, 'administrator', 'USER_D'),
+(1331, 'administrator', 'USER_R'),
+(1332, 'administrator', 'USER_U'),
+(1333, 'administrator', 'VIDEO_C'),
+(1334, 'administrator', 'VIDEO_D'),
+(1335, 'administrator', 'VIDEO_R'),
+(1336, 'administrator', 'VIDEO_U'),
+(1337, 'administrator', 'VIDEO_COMMENT_C'),
+(1338, 'administrator', 'VIDEO_COMMENT_D'),
+(1339, 'administrator', 'VIDEO_COMMENT_R'),
+(1340, 'administrator', 'VIDEO_COMMENT_U'),
+(1341, 'administrator', 'YEAR_C'),
+(1342, 'administrator', 'YEAR_D'),
+(1343, 'administrator', 'YEAR_R'),
+(1344, 'administrator', 'YEAR_U');
 
 -- --------------------------------------------------------
 
@@ -788,7 +958,7 @@ CREATE TABLE `tbl_term` (
 
 INSERT INTO `tbl_term` (`ID`, `Name`) VALUES
 ('{19B15CDF-264C-4924-8608-258673BCC448}', 'B.Sc 8th'),
-('{22EDE2D2-D36C-4160-9D2A-80184B8AD35B}', 'B.Sc 1st'),
+('{22EDE2D2-D36C-4160-9D2A-80184B8AD35B}', 'B.Sc I'),
 ('{298E9628-8DE2-4742-8F93-0491C01BB152}', 'M.Sc 1st'),
 ('{9C84629E-11FA-4459-A593-C9AD9CF0D3F2}', 'B.Sc 4th'),
 ('{9D35C1A5-8091-47BE-AF7E-160C95789EC3}', 'B.Sc 7th'),
@@ -797,7 +967,7 @@ INSERT INTO `tbl_term` (`ID`, `Name`) VALUES
 ('{E2D0D30D-654E-4157-8F71-527023AFAB2F}', 'B.Sc 3rd'),
 ('{F3C92204-C532-4544-9729-858EFBED98A1}', 'M.Sc 3rd'),
 ('{F78D6E1A-8B11-46D3-A88A-BD6D8DA4532B}', 'M.Sc 2nd'),
-('{F9121C67-1E89-4F0B-80AA-89FD3B6BD665}', 'B.Sc 2nd');
+('{F9121C67-1E89-4F0B-80AA-89FD3B6BD665}', 'B.Sc II');
 
 -- --------------------------------------------------------
 
@@ -821,14 +991,9 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`ID`, `UniversityID`, `Email`, `Password`, `FirstName`, `LastName`, `IsArchived`, `IsDeleted`) VALUES
-('{0B2F4F89-2048-4504-AB17-0412CC624A05}', '020215', 'mohidul@gmail.com', 'test', 'SM Mohidul', 'Islam          ', 0, 0),
-('{8104FB4F-8E63-489D-8D90-DB45A9A2327B}', '020203', 'zahid@gmail.com', 'test', 'Md. Zahid', 'Islam     ', 0, 0),
-('{8B24B76D-9969-4F71-ABC4-6EE59355C686}', '020229', 'mkazi078@uottawa.ca', 'test', 'Kazi Masudul', 'Alam           ', 0, 0),
-('{9E2E6363-A0FF-4C0F-B58F-D162725FB702}', '020216', 'alamgir@gmail.com', 'test', 'Sk Alamgir', 'Hossain   ', 0, 0),
-('{A4F96981-F014-46F6-BB93-87500C3CBB03}', '020208', 'aakth072@uottawa.ca', 'test', 'Aysha', 'Akther     ', 0, 0),
-('{B51D020E-1BB9-4FA3-86BF-C32949367885}', '040212', 'saikat@gmail.com', 'test', 'Saikat', 'Mondal  ', 0, 0),
-('{E0F0AE1A-AECF-46C1-A148-4485036F3CCF}', 'e020202', 'rafiq@gmail.com', 'test', 'Md. Rafiqul', 'Islam ', 0, 0),
-('{EC675CB7-2551-4062-A79E-0EF15481D38A}', 'test new!', 'test@gmail.com', 'test', 'test', 'test ', 0, 1);
+('jinat@gmail.com', '020230', 'jinat@gmail.com', 'test', 'Jinat', 'Rehana ', 0, 1),
+('mkazi078@uottawa.ca', '020229', 'mkazi078@uottawa.ca', '123', 'Kazi Masudul', 'Alam                    ', 0, 0),
+('mohidul@gmail.com', '020219', 'mohidul@gmail.com', '123', 'SM Mohidul', 'Islam ', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -858,14 +1023,15 @@ CREATE TABLE `tbl_user_position` (
 --
 
 INSERT INTO `tbl_user_position` (`ID`, `UserID`, `PositionID`) VALUES
-(1, '{9E2E6363-A0FF-4C0F-B58F-D162725FB702}', '{C27B6BCF-FB83-4F3D-85CA-B7870D8B12D0}'),
 (4, '{693F944F-328D-433A-9F94-459D92841645}', '{EB4880E2-01B3-4C6E-A2C9-89B6E5427C0A}'),
-(10, '{8104FB4F-8E63-489D-8D90-DB45A9A2327B}', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}'),
-(11, '{8B24B76D-9969-4F71-ABC4-6EE59355C686}', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}'),
-(13, '{B51D020E-1BB9-4FA3-86BF-C32949367885}', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}'),
 (14, '{E0F0AE1A-AECF-46C1-A148-4485036F3CCF}', '{EB4880E2-01B3-4C6E-A2C9-89B6E5427C0A}'),
 (16, '{A4F96981-F014-46F6-BB93-87500C3CBB03}', '{7CDA1F32-A2F8-4469-B5A8-C2038FCE1F9A}'),
-(17, '{0B2F4F89-2048-4504-AB17-0412CC624A05}', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}');
+(17, '{0B2F4F89-2048-4504-AB17-0412CC624A05}', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}'),
+(19, '{8104FB4F-8E63-489D-8D90-DB45A9A2327B}', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}'),
+(21, '{8B24B76D-9969-4F71-ABC4-6EE59355C686}', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}'),
+(24, '{9E2E6363-A0FF-4C0F-B58F-D162725FB702}', '{C27B6BCF-FB83-4F3D-85CA-B7870D8B12D0}'),
+(30, 'mohidul@gmail.com', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}'),
+(31, 'mkazi078@uottawa.ca', '{64D25DDA-16B6-47B8-BBFC-4E2AAF5680C7}');
 
 -- --------------------------------------------------------
 
@@ -884,14 +1050,9 @@ CREATE TABLE `tbl_user_role` (
 --
 
 INSERT INTO `tbl_user_role` (`ID`, `UserID`, `RoleID`) VALUES
-(40, '{8104FB4F-8E63-489D-8D90-DB45A9A2327B}', '{3477F777-3F53-408B-9773-249C5937C2B8}'),
-(41, '{8B24B76D-9969-4F71-ABC4-6EE59355C686}', '{3477F777-3F53-408B-9773-249C5937C2B8}'),
-(42, '{8B24B76D-9969-4F71-ABC4-6EE59355C686}', '{F9C458F2-5298-441F-AE63-7514029760C4}'),
-(43, '{B51D020E-1BB9-4FA3-86BF-C32949367885}', '{3477F777-3F53-408B-9773-249C5937C2B8}'),
-(44, '{E0F0AE1A-AECF-46C1-A148-4485036F3CCF}', '{3477F777-3F53-408B-9773-249C5937C2B8}'),
-(47, '{A4F96981-F014-46F6-BB93-87500C3CBB03}', '{3477F777-3F53-408B-9773-249C5937C2B8}'),
-(48, '{0B2F4F89-2048-4504-AB17-0412CC624A05}', '{3477F777-3F53-408B-9773-249C5937C2B8}'),
-(49, '{0B2F4F89-2048-4504-AB17-0412CC624A05}', '{9CC63B6A-99BD-4710-B675-9881B5F7337A}');
+(82, 'mohidul@gmail.com', 'teacher'),
+(83, 'mkazi078@uottawa.ca', 'administrator'),
+(84, 'mkazi078@uottawa.ca', 'teacher');
 
 -- --------------------------------------------------------
 
@@ -910,6 +1071,13 @@ CREATE TABLE `tbl_video` (
   `CreatorID` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `tbl_video`
+--
+
+INSERT INTO `tbl_video` (`ID`, `Title`, `Description`, `TagID`, `Link`, `IsEmbed`, `CreationDate`, `CreatorID`) VALUES
+('{A5329563-EA17-4240-B632-AC3F1627AAC3}', 'Mera sanam o sanam', 'mera sanam', 'movie', 'https://www.youtube.com/watch?v=M8U6EDjQhpM', 1, '2017-04-22', 'mkazi078@uottawa.ca');
+
 -- --------------------------------------------------------
 
 --
@@ -921,8 +1089,16 @@ CREATE TABLE `tbl_video_comment` (
   `Comment` varchar(150) NOT NULL,
   `CreatorID` varchar(40) NOT NULL,
   `VideoID` varchar(40) NOT NULL,
-  `CommentIDTop` varchar(40) NOT NULL
+  `CommentIDTop` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_video_comment`
+--
+
+INSERT INTO `tbl_video_comment` (`CommentID`, `Comment`, `CreatorID`, `VideoID`, `CommentIDTop`) VALUES
+('{7BCC6DCD-001E-4200-970C-EB296B3AAD28}', 'test me', 'mkazi078@uottawa.ca', '{A5329563-EA17-4240-B632-AC3F1627AAC3}', NULL),
+('{1F93DC0E-6569-481A-BFD8-709A2B11AB53}', 'another test me', 'mkazi078@uottawa.ca', '{A5329563-EA17-4240-B632-AC3F1627AAC3}', NULL);
 
 -- --------------------------------------------------------
 
@@ -1057,7 +1233,9 @@ ALTER TABLE `tbl_term`
 -- Indexes for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `Email` (`Email`),
+  ADD UNIQUE KEY `UniversityID` (`UniversityID`);
 
 --
 -- Indexes for table `tbl_user_position`
@@ -1085,7 +1263,7 @@ ALTER TABLE `tbl_video`
 -- AUTO_INCREMENT for table `tbl_role_permission`
 --
 ALTER TABLE `tbl_role_permission`
-  MODIFY `Row` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=616;
+  MODIFY `Row` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1345;
 --
 -- AUTO_INCREMENT for table `tbl_survey_question_filled`
 --
@@ -1095,12 +1273,12 @@ ALTER TABLE `tbl_survey_question_filled`
 -- AUTO_INCREMENT for table `tbl_user_position`
 --
 ALTER TABLE `tbl_user_position`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 --
 -- AUTO_INCREMENT for table `tbl_user_role`
 --
 ALTER TABLE `tbl_user_role`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
