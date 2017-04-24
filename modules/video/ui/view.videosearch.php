@@ -6,23 +6,36 @@ include_once './common/class.common.php';
 
 
 ?>
-	<div id="form2">
-		<form method="post">
-				<table width="100%" border="1" cellpadding="15">
-				
-				<tr>
-					<td style="width:80%"><input style="width:98%" type="text"  name="txtsearch" placeholder="Search video"></input></td>
-					<td>
-						<input  type="submit" id="savebutton" style="width:100px" name="search" value="Search">
-					</td>
-				</tr>
+<div class="panel panel-default">
+    
+    <div class="panel-heading">Video Search</div>
+    
+    <div class="panel-body">
 
-				</table>
-				
+	
+	<div id="form" >
+		<form method="post" class="form-horizontal">
+
+				<div class="form-group">
+              	<label class="control-label col-sm-4" for="search">Search Video:</label>
+	              	<div class="col-sm-8">  
+					<input type="text"  name="txtsearch" placeholder="Search video"></input>
+					</div>
+				</div>
+		        <div class="form-group">        
+	            	<div class="col-sm-offset-6 col-sm-4">								
+					<input  type="submit" id="savebutton" name="search" value="Search">
+					</div>
+				</div>	
 		</form>
-		<br><br>
-		<form method="post" style="background-color:#040725">
-	<table width="100%" border="1" cellpadding="15" align="center" >
+	</div>
+	</div>
+
+	<div class="panel-body">			
+	<table class="table table-bordered">
+	<tr>
+		<th>Video Title</th>
+	</tr>	
 	<?php
 	
 	$tag = null;
@@ -39,15 +52,19 @@ include_once './common/class.common.php';
 	if($Result->getIsSuccess()){
 
 		$VideoList = $Result->getResultObject();
+
 	?>
 		<?php
 		for($i = 0; $i < sizeof($VideoList); $i++) {
 			$Video = $VideoList[$i];
 			?>
 		    <tr>
-			    <td style="color:white;font-size:20px;width:80%"><?php echo $Video->getTitle(); ?></td>
-			    
-			    <td><a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >view</a></td>
+			    <td >
+			    <a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >
+			    <?php echo $Video->getTitle(); ?>
+			    	
+			    </a>
+			    </td>
 			    
 		    </tr>
 	    <?php
@@ -62,6 +79,7 @@ include_once './common/class.common.php';
 
 	?>
 	</table>
-	</form>
+
 
 	</div>
+</div>	
