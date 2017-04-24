@@ -116,7 +116,7 @@ class XMLtoMenuUtil{
     private $_Menus;
     private $_OrganizedMenus;
   
-    private function __construct($fileToRead='c:/wamp64/www/2017_education/config/xml/menu.xml'){
+    private function __construct($fileToRead='./config/xml/menu.xml'){
         
         $this->_FileName = $fileToRead;       
     }

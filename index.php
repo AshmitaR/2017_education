@@ -1,11 +1,11 @@
 <?php
 include_once 'path.php';
+//including the common file
+include_once COMMON.'/class.common.php';
 
 //current template path
 $template_link= TEMPLATE.'/basic/';
 
-//including the common file
-include_once COMMON.'/class.common.php';
 
 
 ob_start(); //converts php output to a buffer and later publish it
@@ -35,7 +35,7 @@ if(isset($_SESSION['globalPage'])&&strcasecmp($_SESSION['globalPage'],$page)!=0)
  $_SESSION['globalPage']=$page;
 
 // adding menu code here
-include $template_link.'menu.php'; 
+include_once $template_link.'menu.php'; 
 
 ?>
 

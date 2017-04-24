@@ -45,6 +45,7 @@ function print_top_menu($globalMenu,$logoutMenu)
 {
 	$menu_content='';
 
+	
 	if(isset($globalMenu)){
 		
 		//buiding full menu layout, first part menu, next part user logout menu
@@ -76,6 +77,8 @@ function build_top_logout_menu($CurrentUser){
 
 //build the the top menu using bootstrap css based on permission and menu visibility
 function build_top_nav_menu($globalMenu){
+
+	
 
 	$superLayer = '<div class="row">';
 
