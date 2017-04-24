@@ -5,12 +5,16 @@ include_once './common/class.common.php';
 
 
 ?>
-	<div id="form1">
-		<form method="post">
-			<table width="100%" border="1" cellpadding="15" align="center">
-			<tr>
-				
-			</tr>
+<div class="panel panel-default">
+    
+    <div class="panel-heading">Video Tutorial Viewer</div>
+    
+    <div class="panel-body">
+
+	
+	<div id="form" >
+		<form method="post" class="form-horizontal">
+
 			<?php
 				$id = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				$Video2 = substr($id, -38);
@@ -21,23 +25,21 @@ include_once './common/class.common.php';
 
 					$Vedio = $Result1->getResultObject();
 				?> 
-					    <tr>
-						    <td style="color:white;font-size:20px"><?php echo $Vedio->getTitle(); ?></td>
-						</tr>
-						<tr>
-						    <td><?php
+					    <div class="form-group">
+              				<label class="control-label"><?php echo $Vedio->getTitle(); ?></label>
+						</div>
+						<div class="form-group">
+						    <?php
 						    $front = '<iframe width="560" height="315" src="https://www.youtube.com/embed/' ;
 							$back = '" frameborder="0" allowfullscreen></iframe>';
 							$link = $Vedio->getLink();
 							$link2= substr($link,32);
 							$Link=$front.$link2.$back;
 						     echo $Link; 
-						     ?></td>
-					    </tr>
+						     ?>
+					    </div>
 		
 				    <?php
-
-					
 
 				}
 				else{
@@ -46,6 +48,9 @@ include_once './common/class.common.php';
 				}
 
 				?>
+
+				<div class="form-group">
+
 				<?php
 				$id = 'http://'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];
 				$Video2 = substr($id, -38);
@@ -58,34 +63,40 @@ include_once './common/class.common.php';
 
 					$VideoList = $Result1->getResultObject();
 						?> 
-						<table width="100%" border="1" cellpadding="15" align="center">
+						
 							<?php
 							for($i = 0; $i < sizeof($VideoList); $i++) {
 								$Video = $VideoList[$i];
+
+								if($i%2==0){
 								?>
-							    <tr>
-							    <tr>
-							    	<td>
+								<div class="col-sm-12" style="border-style:solid;background-color: #8aaaaa">
+								<?php
+								}
+								else{ 
+								?>
+								<div class="col-sm-12" style="border-style:solid;background-color: #878aaa">
+								<?php
+								}?>								
+							    <div class="col-sm-4" style="font-size:12px;font-weight:bold">
 								    <?php 
 									    $id= $Video->getCreator();
 									    $Result5 = $_VideoCommentBAO->readCreator($id);
 								    	if ($Result5->getIsSuccess()) {
 								    		$user = $Result5->getResultObject();
 
-							    			echo $user->getFirstName();
+							    			echo $user->getFirstName().' '.$user->getLastName().'::';
 							    		} 
 
 						    		?>
-					    		
-					    			</td>
-							    
-								    <td style="color:white;font-size:20px;background-color: #040725;text-align: justify;font-style: italic"><?php echo $Video->getComment(); ?></td>
-
-							    </tr>
+						    	</div>		
+							    <div class="col-sm-8" style="font-size:15px;text-align: justify;font-style: italic;color:blue">
+								    <?php echo $Video->getComment(); ?>
+							    </div>
+							    </div>						   
 						    <?php
 
-							}
-
+							}	
 				}
 				else{
 
@@ -93,25 +104,25 @@ include_once './common/class.common.php';
 				}
 
 				?>
-				</table>
-				<table width="100%" border="1" cellpadding="15" align="center">
-				</table>
-			<table width="100%" border="1" cellpadding="15">
-				
-				<tr>
-					<td><label>Comment : </label></td>
-					<td style="background-color: #B4B6B3"><textarea rows="5" cols="50" name="txtAns" placeholder="Comment" value="<?php 
-					if(isset($_GET['edit'])) echo $getROW->getComment();  ?>" ></textarea></td>
-				</tr>	
-				</table>
-				<input type='text' name ="txtvideo" value="<?php echo $Video2 ; ?>" placeholder="<?php echo $Video2 ; ?>"" style="display : none" />
-				<table width="100%" border="1" cellpadding="15">
-				<tr>
-					<td style="background-color:#040725">
-						<input  type="submit" id="savebutton" style="width:100px;margin-left:550px;height:30px" name="save" value="Submit">
-					</td>
-				</tr>
-			</table>
+
+				</div>
+
+				<div class="form-group">		
+				<input type='text' name ="txtvideo" value="<?php echo $Video2 ; ?>" placeholder="<?php echo $Video2 ; ?>"" style="display : none" />		
+				<label class="control-label col-sm-3" for="txtAns">Comment : </label>
+				<div class="col-sm-9">
+					<textarea rows="5" cols="50" name="txtAns" 
+					placeholder="Enter your comment" 
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getComment();  ?>" >
+					</textarea>
+				</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-4 col-sm-4">
+						<input  type="submit" id="savebutton"  name="save" value="Submit">
+					</div>
+				</div>	
 		</form>
 
 	</div>
