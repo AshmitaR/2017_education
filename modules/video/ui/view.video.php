@@ -5,64 +5,94 @@ include_once './common/class.common.php';
 
 ?>
 
-	<div id="form">
-		<form method="post">
-			<table width="100%" border="1" cellpadding="15">
-				<tr>
-					<td><input type="text" name="txtName" placeholder="Video Title" value="<?php 
-					if(isset($_GET['edit'])) echo $getROW->getTitle();  ?>" /></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="txtdes" placeholder="Video Description" value="<?php 
-					if(isset($_GET['edit'])) echo $getROW->getDescription();  ?>" /></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="txtlink" placeholder="Link" value="<?php
+<div class="panel panel-default">
+    
+    <div class="panel-heading">Video Tutorial Manager</div>
+    
+    <div class="panel-body">
+
+	
+	<div id="form" >
+		<form method="post" class="form-horizontal">
+
+				<div class="form-group">
+              	<label class="control-label col-sm-4" for="txtName">Video Title:</label>
+              	<div class="col-sm-8">  
+				
+					<input type="text" class="form-control" name="txtName" placeholder="Video Title" 
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getTitle();  ?>" />
+				</div>
+				</div>	
+
+				<div class="form-group">
+              	<label class="control-label col-sm-4" for="txtdes">Video Description:</label>
+              	<div class="col-sm-8">  
+
+					<input type="text" name="txtdes" class="form-control" placeholder="Video Description" 
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getDescription();  ?>" />
+				</div>
+				</div>
+
+				<div class="form-group">
+              	<label class="control-label col-sm-4" for="txtlink">Video Link:</label>
+              	<div class="col-sm-8">  
+
+				<input type="text" name="txtlink" class="form-control"  placeholder="Link" value="<?php
 					
 					if(isset($_GET['edit'])){
 						$link = $getROW->getLink();
 						echo $link;
-						//$link1 = substr($link,72,-46); 
-						//echo "https://www.youtube.com/watch?v=".$link1  ;
-						} ?>" /></td>
-				</tr>
-				<tr>
-					<td><input type="text" name="txttag" placeholder="TagName" value="<?php 
-					if(isset($_GET['edit'])) echo $getROW->getTag();  ?>" /></td>
-				</tr>
-				<tr>
-					<td id="embed">IsEmbed: &nbsp;&nbsp;&nbsp;
+						} ?>" />
+				</div>
+				</div>				
+
+				<div class="form-group">
+              	<label class="control-label col-sm-4" for="txttag">Video Tags:</label>
+              	<div class="col-sm-8">  
+
+					<input type="text" name="txttag" class="form-control" placeholder="TagName" 
+					value="<?php if(isset($_GET['edit'])) echo $getROW->getTag();  ?>" />
+				</div>
+				</div>
+				<div class="form-group">
+              	<label class="control-label col-sm-4" for="txtembed">Is Embedded:</label>
+              	<div class="col-sm-1">  
 						<select name="txtembed">
 							<option>0</option>
 							<option>1</option>
 						</select>
-					</td>
-				</tr>
-				<tr>
-					<td>
+				</div>
+				</div>
+		        <div class="form-group">        
+	              <div class="col-sm-offset-4 col-sm-4">					
+
 						<?php
 						if(isset($_GET['edit']))
 						{
 							?>
-							<input  type="submit" id="savebutton" style="width:100px;margin-left:550px" name="update" value="Update">
+							<input  type="submit" id="savebutton" name="update" value="Update">
 							<?php
 						}
 						else
 						{
 							?>
-							<input type="submit" style="width:100px;margin-left:550px" id="savebutton" name="save" value="Save">
+							<input type="submit"  id="savebutton" name="save" value="Save">
 							<?php
 						}
 						?>
-					</td>
-				</tr>
-
-			</table>
+					</div>
+				</div>	
 		</form>
-<br><br>
-<label style="margin-left:-480px; font-size:20px; color:#69baac;text-transform: uppercase; text-shadow: none">Video Title</label>
-<form method="post" style="background-color:#040725">
-	<table width="100%" border="1" cellpadding="15" align="center" >
+	</div>
+	</div>
+
+	<div class="panel-body">
+	
+	<table class="table table-bordered">
+	<tr>
+		<th>Video Title</th>
+	</tr>
+
 	<?php
 	
 	$Result = $_VideoBAO->getAllVideos();
@@ -77,7 +107,7 @@ include_once './common/class.common.php';
 			$Video = $VideoList[$i];
 			?>
 		    <tr>
-			    <td style="color:white;font-size:20px"><?php echo $Video->getTitle(); ?></td>
+			    <td><?php echo $Video->getTitle(); ?></td>
 			    
 			    <td><a href="video_comment.php?view=<?php echo $Video->getID(); ?>" onclick="return ; " >view</a></td>
 			    <td><a href="?edit=<?php echo $Video->getID(); ?>" onclick="return confirm('sure to edit !'); " >edit</a></td>
@@ -95,5 +125,8 @@ include_once './common/class.common.php';
 
 	?>
 	</table>
-	</form>
+	
 	</div>
+
+</div>
+

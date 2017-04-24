@@ -222,3 +222,8 @@
 - [Sat, 22 Apr 17 11:18:27 +0000]	debug:	exit blade.user.php	@file:"C:\wamp64\www\2017_education\util\class.util.php", object:"LogUtil", line:374
 - [Sat, 22 Apr 17 11:19:36 +0000]	debug:	exit blade.user.php	@file:"C:\wamp64\www\2017_education\util\class.util.php", object:"LogUtil", line:374
 - [Sat, 22 Apr 17 11:20:01 +0000]	debug:	exit blade.user.php	@file:"C:\wamp64\www\2017_education\util\class.util.php", object:"LogUtil", line:374
+- [Sat, 22 Apr 17 18:18:22 +0000]	debug:	exit blade.user.php	@file:"C:\wamp64\www\2017_education\util\class.util.php", object:"LogUtil", line:374
+- [Sat, 22 Apr 17 18:21:33 +0000]	debug:	exit blade.login.php	@file:"C:\wamp64\www\2017_education\util\class.util.php", object:"LogUtil", line:374
+- [Sat, 22 Apr 17 18:21:33 +0000]	debug:	exit blade.login.php	@file:"C:\wamp64\www\2017_education\util\class.util.php", object:"LogUtil", line:374
+- [Mon, 24 Apr 17 04:53:28 +0000]	debug:	exit blade.login.php	@file:"C:\wamp64\www\2017_education\util\class.util.php", object:"LogUtil", line:374
+- [Mon, 24 Apr 17 04:53:33 +0000]	debug:	exit blade.login.php	@file:"C:\wamp64\www\2017_education\util\class.util.php", object:"LogUtil", line:374
