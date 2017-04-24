@@ -185,6 +185,7 @@ class PageUtil{
 
     public static $COURSE='course.php';
     public static $COURSE_TYPE='course_type.php';
+    public static $COURSE_SESSIONAL_TYPE='course_sessional_type.php';
 
     public static $DISCIPLINE='discipline.php';
     public static $DISCUSSION='discussion.php';
@@ -254,18 +255,30 @@ class RouteUtil{
          self::$s_Routes[PageUtil::$POSITION]         =   "/modules/dashboard/ui/view.position.php";
 
          self::$s_Routes[PageUtil::$QUESTION]         =   "/modules/question/ui/view.question.php";
-         self::$s_Routes[PageUtil::$QUESTION_SEARCH]  =   "/modules/question/ui/view.search.question.php";
+         
+         self::$s_Routes[PageUtil::$QUESTION_SEARCH]  =   
+         "/modules/question/ui/view.search.question.php";
 
          self::$s_Routes[PageUtil::$ROLE]             =   "/modules/dashboard/ui/view.role.php";
 
          self::$s_Routes[PageUtil::$SCHOOL]           =   "/modules/dashboard/ui/view.school.php";
 
          self::$s_Routes[PageUtil::$TERM]             =   "/modules/registration/ui/view.term.php";
+         
+         self::$s_Routes[PageUtil::$COURSE_TYPE]      =   
+         "/modules/registration/ui/view.course_type.php";
+
+         self::$s_Routes[PageUtil::$COURSE_SESSIONAL_TYPE] =
+         "/modules/registration/ui/view.course_sessional_type.php";
 
          self::$s_Routes[PageUtil::$USER]             =   "/modules/dashboard/ui/view.user.php";
 
-         self::$s_Routes[PageUtil::$VIDEO]             =   "/modules/video/ui/view.video.php";
-         self::$s_Routes[PageUtil::$VIDEO_COMMENT]             =   "/modules/video/ui/view.videoComment.php";
+         self::$s_Routes[PageUtil::$VIDEO]             =   
+         "/modules/video/ui/view.video.php";
+
+         self::$s_Routes[PageUtil::$VIDEO_COMMENT]             =   
+         "/modules/video/ui/view.videoComment.php";
+
          self::$s_Routes[PageUtil::$VIDEO_SEARCH]             =   "/modules/video/ui/view.videosearch.php";
   
 

@@ -1,8 +1,8 @@
 <?php
 
-include_once '/../../../util/class.util.php';
-include_once '/../../../bao/class.coursetypebao.php';
-include_once '/../../../bao/class.coursesessionaltypebao.php';
+include_once './util/class.util.php';
+include_once '/../../bao/class.coursetypebao.php';
+include_once '/../../bao/class.coursesessionaltypebao.php';
 
 
 

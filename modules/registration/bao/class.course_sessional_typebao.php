@@ -1,7 +1,7 @@
 <?php
 
-include_once '/../util/class.util.php';
-include_once '/../dao/class.coursesessionaltypedao.php';
+include_once './util/class.util.php';
+include_once '/../dao/class.course_sessional_typedao.php';
 
 
 /*

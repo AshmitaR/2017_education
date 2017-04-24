@@ -1,7 +1,7 @@
 <?php
 // write dao object for each class
-include_once '/../common/class.common.php';
-include_once '/../util/class.util.php';
+include_once './common/class.common.php';
+include_once './util/class.util.php';
 
 Class CourseTypeDAO{
 

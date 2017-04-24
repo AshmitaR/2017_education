@@ -1,7 +1,7 @@
 <?php
 
-include_once '/../../../util/class.util.php';
-include_once '/../../../bao/class.coursesessionaltypebao.php';
+include_once './util/class.util.php';
+include_once '/../../bao/class.course_sessional_typebao.php';
 
 
 $_SessionalTypeBAO = new SessionalTypeBAO();
@@ -25,7 +25,7 @@ if(isset($_GET['del']))
 	$SessionalType->setID($_GET['del']);	
 	$_SessionalTypeBAO->deleteSessionalType($SessionalType); //reading the SessionalType object from the result object
 
-	header("Location: view.coursesessionaltype.php");
+	header("Location:".PageUtil::$COURSE_SESSIONAL_TYPE);
 }
 
 
@@ -47,7 +47,7 @@ if(isset($_POST['update']))
 	
 	$_SessionalTypeBAO->updateSessionalType($SessionalType);
 
-	header("Location: view.coursesessionaltype.php");
+	header("Location:".PageUtil::$COURSE_SESSIONAL_TYPE);
 }
 
 
