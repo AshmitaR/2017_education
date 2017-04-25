@@ -265,6 +265,9 @@ class RouteUtil{
 
          self::$s_Routes[PageUtil::$TERM]             =   "/modules/registration/ui/view.term.php";
          
+         self::$s_Routes[PageUtil::$COURSE]      =   
+         "/modules/registration/ui/view.course.php";
+
          self::$s_Routes[PageUtil::$COURSE_TYPE]      =   
          "/modules/registration/ui/view.course_type.php";
 

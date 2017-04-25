@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2017 at 06:12 PM
+-- Generation Time: Apr 25, 2017 at 04:16 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -84,7 +84,10 @@ CREATE TABLE `tbl_course` (
 --
 
 INSERT INTO `tbl_course` (`ID`, `CourseNo`, `Title`, `Credit`, `CourseTypeID`, `DisciplineID`, `IsDeleted`) VALUES
-('123', 'cse 3200', 'Web Programming Lab', 1.5, '1', '1', 0);
+('{2A038C6A-B6DA-408D-8458-7493D4EE5D6C}', 'cse-3200', 'Web Programming Lab', 1.5, '{EF5CA3BF-A886-4450-ABC4-DED45C7600C0}', '{FFDB1CB8-AF34-4381-8971-9784DCB516C5}', 0),
+('{53650FB7-D76E-459D-8B56-BC7A4919C0F6}', 'cse-4112', 'Computer Networks Lab', 1.5, '{3DC4DDE5-514F-4BE4-8682-37EA32C3FDB7}', '{FFDB1CB8-AF34-4381-8971-9784DCB516C5}', 0),
+('{683A3D91-D124-44AF-82A3-FB43837A4392}', 'cse-4111', 'Computer Networks', 3, '{3DC4DDE5-514F-4BE4-8682-37EA32C3FDB7}', '{FFDB1CB8-AF34-4381-8971-9784DCB516C5}', 0),
+('{B17BDB32-6D88-4537-9545-65D940E17EEF}', 'cse-2115', 'Advanced Programming Lab', 1.5, '{EF5CA3BF-A886-4450-ABC4-DED45C7600C0}', '{FFDB1CB8-AF34-4381-8971-9784DCB516C5} ', 0);
 
 -- --------------------------------------------------------
 
@@ -189,8 +192,20 @@ CREATE TABLE `tbl_course_resource` (
 
 CREATE TABLE `tbl_course_sessional_type` (
   `ID` varchar(40) NOT NULL,
-  `Name` int(11) NOT NULL
+  `Name` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_course_sessional_type`
+--
+
+INSERT INTO `tbl_course_sessional_type` (`ID`, `Name`) VALUES
+('{126156BB-18ED-4CAB-8DB9-1C0F72BB63C1}', 'N/A'),
+('{45B2147F-5FE0-4CC9-880C-C19EB6323955}', 'physics'),
+('{4B342686-B38E-449C-AAD2-1F7DD77E6594}', 'chemistry'),
+('{D1E54E03-CDEB-4155-AD0C-27C70A3A490C}', 'ece'),
+('{D3F895D3-7389-487F-A604-0BD546DCC764}', 'software'),
+('{F1D0443A-EC5D-41C4-94BA-D6F0D9AB1691}', 'hardware');
 
 -- --------------------------------------------------------
 
@@ -244,6 +259,15 @@ CREATE TABLE `tbl_course_type` (
   `Name` varchar(30) NOT NULL,
   `SessionalTypeID` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tbl_course_type`
+--
+
+INSERT INTO `tbl_course_type` (`ID`, `Name`, `SessionalTypeID`) VALUES
+('{3DC4DDE5-514F-4BE4-8682-37EA32C3FDB7}', 'Theory', '{126156BB-18ED-4CAB-8DB9-1C0F72BB63C1}'),
+('{5F886686-4EB1-48C8-A801-8D46233739D1}', 'Thesis', '{126156BB-18ED-4CAB-8DB9-1C0F72BB63C1}'),
+('{EF5CA3BF-A886-4450-ABC4-DED45C7600C0}', 'Sessional', '{126156BB-18ED-4CAB-8DB9-1C0F72BB63C1}');
 
 -- --------------------------------------------------------
 
@@ -1098,7 +1122,10 @@ CREATE TABLE `tbl_video_comment` (
 
 INSERT INTO `tbl_video_comment` (`CommentID`, `Comment`, `CreatorID`, `VideoID`, `CommentIDTop`) VALUES
 ('{7BCC6DCD-001E-4200-970C-EB296B3AAD28}', 'test me', 'mkazi078@uottawa.ca', '{A5329563-EA17-4240-B632-AC3F1627AAC3}', NULL),
-('{1F93DC0E-6569-481A-BFD8-709A2B11AB53}', 'another test me', 'mkazi078@uottawa.ca', '{A5329563-EA17-4240-B632-AC3F1627AAC3}', NULL);
+('{1F93DC0E-6569-481A-BFD8-709A2B11AB53}', 'another test me', 'mkazi078@uottawa.ca', '{A5329563-EA17-4240-B632-AC3F1627AAC3}', NULL),
+('{60628F87-0CDA-4BEF-8F4B-40B3129D98C6}', 'a new test me', 'mkazi078@uottawa.ca', '{A5329563-EA17-4240-B632-AC3F1627AAC3}', NULL),
+('{EEBD990E-A4D7-4B75-900D-9B5D1F82FD65}', 'a beautiful test', 'mkazi078@uottawa.ca', '', NULL),
+('{BEF9EF7F-EDB8-48E3-9D72-10E2CB3BAFE2}', 'another test me', 'mkazi078@uottawa.ca', '{A5329563-EA17-4240-B632-AC3F1627AAC3}', NULL);
 
 -- --------------------------------------------------------
 

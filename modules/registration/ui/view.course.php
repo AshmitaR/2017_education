@@ -1,7 +1,7 @@
 <?php
 
 include_once 'blade/view.course.blade.php';
-include_once '/../../common/class.common.php';
+include_once './common/class.common.php';
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

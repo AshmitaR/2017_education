@@ -1,6 +1,6 @@
 <?php
 
-include_once 'blade/view.coursetype.blade.php';
+include_once 'blade/view.course_type.blade.php';
 include_once './common/class.common.php';
 
 ?>

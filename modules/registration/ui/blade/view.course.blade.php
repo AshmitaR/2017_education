@@ -1,9 +1,9 @@
 <?php
 
-include_once '/../../../util/class.util.php';
-include_once '/../../../bao/class.coursebao.php';
-include_once '/../../../bao/class.coursetypebao.php';
-include_once '/../../../bao/class.disciplinebao.php';
+include_once './util/class.util.php';
+include_once '/../../bao/class.coursebao.php';
+include_once '/../../bao/class.course_typebao.php';
+include_once './modules/dashboard/bao/class.disciplinebao.php';//here comes module dependency
 
 $_CourseBAO = new CourseBAO();
 $_CourseTypeBAO = new CourseTypeBAO();
@@ -21,8 +21,8 @@ if(isset($_POST['save']))
      $Course->setCredit($_POST['txtcrdit']);
      $Course->setCourseTypeID($_POST['coursetype']);
      $Course->setDisciplineID($_POST['discipline']);
-     echo '<br> checkbox'.$_POST['ISdeleted'];
-     if($_POST['ISdeleted'] == "")
+     
+     if(!isset($_POST['ISdeleted'])||$_POST['ISdeleted'] == "")
      {
      	$Course->setISdeleted(1);
      }
@@ -30,12 +30,8 @@ if(isset($_POST['save']))
      {
      	$Course->setISdeleted(0);
      }
-     
-     
 
-     echo '<br>"save"'. $_POST['txtName'].$_POST['txttitle'].$_POST['ISdeleted'];
-     $_CourseBAO->createCourse($Course);
-	 
+     $_CourseBAO->createCourse($Course);	 
 }
 
 
@@ -47,7 +43,7 @@ if(isset($_GET['del']))
 	$Course->setID($_GET['del']);	
 	$_CourseBAO->deleteCourse($Course); //reading the Course object from the result object
 
-	header("Location: view.Course.php");
+	header("Location:".PageUtil::$COURSE);
 }
 
 
@@ -82,7 +78,7 @@ if(isset($_POST['update']))
     }
 	$_CourseBAO->updateCourse($Course);
 
-	header("Location: view.Course.php");
+	header("Location:".PageUtil::$COURSE);
 }
 
 

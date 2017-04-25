@@ -1,8 +1,8 @@
 <?php
 
 include_once './util/class.util.php';
-include_once '/../../bao/class.coursetypebao.php';
-include_once '/../../bao/class.coursesessionaltypebao.php';
+include_once '/../../bao/class.course_typebao.php';
+include_once '/../../bao/class.course_sessional_typebao.php';
 
 
 
@@ -19,10 +19,10 @@ if(isset($_POST['save']))
 	 
      $CourseType->setName($_DB->secureInput($_POST['txtName']));
      $CourseType->setSessionalTypeID($_POST['sessionaltype']);
-     echo '<br>'.$_POST['sessionaltype'];
-     echo '<br>'.$CourseType->getSessionalTypeID();
+     //echo '<br>'.$_POST['sessionaltype'];
+     //echo '<br>'.$CourseType->getSessionalTypeID();
 	 $_CourseTypeBAO->createCourseType($CourseType);
-	 echo '<br>"save"';
+	 //echo '<br>"save"';
 	 //print_r(school);		 
 }
 
@@ -35,7 +35,7 @@ if(isset($_GET['del']))
 	$CourseType->setID($_GET['del']);	
 	$_CourseTypeBAO->deleteCourseType($CourseType); //reading the CourseType object from the result object
 
-	header("Location: view.CourseType.php");
+	header("Location:".PageUtil::$COURSE_TYPE);
 }
 
 
@@ -57,7 +57,7 @@ if(isset($_POST['update']))
 	$CourseType->setSessionalTypeID($_POST['sessionaltype']);
 	$_CourseTypeBAO->updateCourseType($CourseType);
 
-	header("Location: view.CourseType.php");
+	header("Location:".PageUtil::$COURSE_TYPE);
 }
 
 
